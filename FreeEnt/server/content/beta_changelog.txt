@@ -1,35 +1,35 @@
-(December 19, 2023)
-· Renamed Ktrap to Kmiab, with similar renames throughout other flags, website text, and ingame text.
-· Flash FX now default to disabled.
-· Item price changes:
-  · Cursed Ring: 35000 -> 66000
-  · Life potion: 150 -> 1000
-  · Cure2 potion: 400 -> 300
-  · Long Katana: 11000 -> 22000
-  · Ninja Sword: 66000 -> 44000
-  · Murasame: 93000 -> 66000
-  · Masamune: 106000 -> 88000
-  · Full Moon: 12000 -> 24000
-  · Cat Claw: 30000 -> 10000
-  · Mute Dagger: 10000 -> 15000
-  · Assassin Dagger: 16000 -> 20000
-  · Samurai Helm: 20000 -> 15000
-  · Dragoon Helm: 30000 -> 20000
-  · Headband: 6000 -> 10000
-  · Bandana: 9000 -> 12000
-  · Fire Armor: 30000 -> 15000
-  · Ice Armor: 35000 -> 18000
-  · Diamond Armor: 40000 -> 20000
-  · Samurai Armor: 40000 -> 20000
-  · Dragoon Armor: 50000 -> 30000
-  · Karate Gi: 4000 -> 7000
-  · Black Belt: 14000 -> 20000
-  · Bahamut orb: 85000 -> 60000
-· Item tier changes:
-  · Cat Claw: 5 -> 4
-  · Bahamut orb: 7 -> 6
-· Fixed an issue where DkMatter could replace the Pass in chests.
-· Fixed an issue where MIAB rewards would be duplicated in other chests with Tvanilla.
-· Updated Z sprites and harp songs.
-
-
+(May 24, 2024)
+· Changed default spell progression for Rosa, Porom, Rydia, and Palom. These changes do not alter the j-spells flag.
+  · Rosa
+    · White 48 -> 55
+  · Porom
+    · Blink 23 -> 22
+    · Charm 25 -> 24
+    · Size 31 -> 29
+    · Cure3 33 -> 30
+    · Float 40 -> 32
+    · Fast 38 -> 34
+    · Wall 44 -> 38
+    · Cure4 48 -> 40
+    · Life2 56 -> 46
+    · White 52 -> 56
+  · Rydia
+    · Virus 26 -> 24
+    · Psych 32 -> 29
+    · Ice3 38 -> 30
+    · Fire3 40 -> 30
+    · Lit3 42 -> 40
+    · Drain 35 -> 33
+    · Stone 46 -> 36
+    · Quake 44 -> 38
+    · Fatal 49 -> 42
+    · Weak 48 -> 46
+    · Nuke 50 -> 54
+    · Meteo 60 -> 56
+  · Palom
+    · Ice3 32 -> 30
+    · Fire3 33 -> 30
+    · Lit3 34 -> 40
+    · Fatal 46 -> 42
+    · Weak 48 -> 44
+    · Nuke 52 -> 57

@@ -611,6 +611,8 @@ def build(romfile, options, force_recompile=False):
 
     if options.flags.has('japanese_spells'):
         env.add_file('scripts/japanese_spells.f4c')
+    else:
+        env.add_file('scripts/reordered_spells.f4c')
 
     if options.flags.has('japanese_abilities'):
         env.add_file('scripts/japanese_abilities.f4c')
