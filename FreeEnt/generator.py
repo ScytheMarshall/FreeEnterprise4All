@@ -41,6 +41,7 @@ from . import objective_rando
 from . import kit_rando
 from . import custom_weapon_rando
 from . import wacky_rando
+from . import update_spells
 
 from . import compile_item_prices
 
@@ -715,10 +716,10 @@ def build(romfile, options, force_recompile=False):
     if not options.hide_flags:
         env.add_substitution('flags hidden', '')
 
+    update_spells.apply(env)
+
     # must be last
     wacky_rando.apply(env)
-
-
 
     # finalize rewards table
     rewards_data = env.meta['rewards_assignment'].generate_table()

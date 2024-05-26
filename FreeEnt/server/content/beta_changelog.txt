@@ -33,3 +33,7 @@
     · Fatal 46 -> 42
     · Weak 48 -> 44
     · Nuke 52 -> 57
+· Updated Fire/Ice/Lit spells
+  · Tier 1 now are instant cast (previously ATB Delay of 2)
+  · Tier 2 have an ATB delay of 2 (previously 6)
+  · Tier 3 have an ATB delay of 4 (previously 8)
