@@ -1,13 +1,6 @@
 //---------------------------------------------------------
 // Spell alterations: Nuke to > 1_300_000 xp, White to > 1_200_000 xp
-// 
-
-// LEARNED:   Palom    Rydia
-// Fire3            
-// Ice3     
-// Lit3
-// Quake
-// Virus     
+// FuSoYa and Tellah learn Weak after the earn about 260_000 exp (53 and 33 respectively)
 
 spellset(#Rosa) {
     learned {
@@ -96,5 +89,50 @@ spellset(#Palom) {
         44 #Weak
         50 #Meteo
         57 #Nuke
+    }
+}
+
+spellset(#TellahBlack) {
+    initial {
+        #Fire1
+        #Ice1
+        #Lit1
+        #Stop
+        #Psych
+    }
+    learned {
+        33 #Weak
+    }
+}
+
+spellset(#FusoyaBlack) {
+    initial {
+        #Toad
+        #Piggy
+        #Warp
+        #Venom
+        #Fire1
+        #Fire2
+        #Fire3
+        #Ice1
+        #Ice2
+        #Ice3
+        #Lit1
+        #Lit2
+        #Lit3
+        #Virus
+        #Weak
+        #Quake
+        #Sleep
+        #Stone
+        #Fatal
+        #Stop
+        #Drain
+        #Psych
+        #Meteo
+        #Nuke
+    }
+    learned {
+        53 #Weak
     }
 }

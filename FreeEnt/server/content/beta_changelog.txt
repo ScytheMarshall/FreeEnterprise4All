@@ -50,4 +50,6 @@
 
 (May 27, 2024)
 · Darkness should require underground access to find more often (approx 66% of the time). Enabling `Kunsafe` removes this change.
-  
+
+(May 29, 2024)
+· Fu and Tellah learn Weak after the earn about 260_000 exp (53 and 33 respectively). Neither learns the spell otherwise.
