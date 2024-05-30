@@ -47,4 +47,7 @@
   · Mist Cave from 0,0,35,40,23,2,0,0 to 0,0,35,40,20,5,0,0
   · Tomra from 10,20,40,28,2,0,0,0 to 5,15,40,28,7,5,0,0
   · Giant (MIAB) from 0,0,0,0,30,35,35,0 to 0,0,0,0,25,35,35,5
+
+(May 27, 2024)
+· Darkness should require underground access to find more often (approx 66% of the time). Enabling `Kunsafe` removes this change.
   
