@@ -518,6 +518,34 @@ class FlagLogicCore:
             if not flagset.get_list(r'^Orandom:\d'):
                 self._simple_disable_regex(flagset, log, 'No random objectives specified', r'^Orandom:[^\d]')
 
+        challenges = flagset.get_list(r'^-wacky:')
+        if challenges:
+            print(challenges)
+            # Simplified wacky compatibility logic
+            # If one of these is set, none of the others in this group can be
+            WACKY_SET_1 = ['menarepigs', 'skywarriors', 'zombies', 'afflicted', 'mirrormirror']
+            # If one of the above is set, none of these can be
+            WACKY_SET_2 = ['battlescars', 'tellahmaneuver', 'payablegolbez', 'worthfighting']
+            # These are sets of mutually incompatible modes
+            WACKY_SET_3 = [
+                ['3point', 'battlescars', 'unstackable', 'afflicted', 'menarepigs', 'skywarriors', 'zombies'],
+                ['afflicted', 'friendlyfire'],
+                ['battlescars', 'afflicted', 'zombies', 'worthfighting'],
+                ['darts', 'musical'],
+            ]
+
+            for c in challenges:
+                mode = self._lib.re_sub(r'-wacky:', '', c)
+                print(f'mode is {mode}')
+                if mode in WACKY_SET_1:
+                    disable = [fr'-wacky:{m}' for m in WACKY_SET_1 if m != mode]
+                    self._simple_disable(flagset, log, 'Can only have one enforced status wacky mode', [fr'-wacky:{m}' for m in WACKY_SET_1 if m != mode])
+                    self._simple_disable(flagset, log, 'Modes are incompatible with enforced status wacky modes', [fr'-wacky:{m}' for m in WACKY_SET_2])
+                for group in WACKY_SET_3:
+                    if mode in group:
+                        self._simple_disable(flagset, log, f'Wacky modes are incompatible with {mode}', [fr'-wacky:{m}' for m in group if m != mode])
+                    
+        
         return log
 
 

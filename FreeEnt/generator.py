@@ -689,7 +689,7 @@ def build(romfile, options, force_recompile=False):
         env.add_file('scripts/remove_dark_crystal_skip.f4c')
     if not options.flags.has('glitch_allow_life'):
         env.add_file('scripts/remove_life_glitch.f4c')
-    if (not options.flags.has('glitch_allow_backrow')) or env.meta.get('wacky_challenge', None) == 'sixleggedrace':
+    if (not options.flags.has('glitch_allow_backrow')) or 'sixleggedrace' in env.meta.get('wacky_challenge', []):
         env.add_file('scripts/remove_backrow_glitch.f4c')
 
     # some part of this fix is always needed; substitutions within

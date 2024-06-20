@@ -490,3 +490,14 @@ Free Enterprise replaces Zeromus' battle sprite with a random sprite. (Its battl
     <li>Wacky challenges are not intended to be balanced, robust, coherent, fair, or bug-free.</li>
     <li>(They are intended to be wacky.)</li>
 </ul>
+<p><b>NOTE:</b> While wacky challenges can now be combined, some modes are incompatible:</p>
+<ul>
+	<li>Only one of the following can be used: "afflicted", "menarepigs", "skywarriors", "zombies"</li>
+	<li>If any of the above are set, none of these can be used: "battlescars", "payablegolbez", "tellahmaneuver", "worthfighting"</li>
+	<li>None of these modes can be used together: "3point", "afflicted", "battlescars", "menarepigs", "mirrormirror", "skywarriors", "unstackable", "zombies"</li>
+	<li>None of these modes can be used together: "afflicted", "friendlyfire"</li>
+	<li>None of these modes can be used together: "afflicted", "battlescars", "worthfighting", "zombies"</li>
+	<li>None of these modes can be used together: "darts", "musical"</li>
+	<li>None of these modes can be used together: "3point", "tellahmaneuver"</li>
+</ul>
+<p>If the random option is used and there are not enough compatible modes remaining, less random modes will be chosen.</p>

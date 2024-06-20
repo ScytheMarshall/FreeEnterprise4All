@@ -5060,163 +5060,192 @@ var FLAG_UISPEC = [
       {
         "flag": "@wacky",
         "title": "Wacky challenge",
-        "description": "<ul>\n    <li>Guidingway will introduce the challenge.</li>\n    <li>Guidingway will not explain the challenge.</li>\n    <li>Wacky challenges are not intended to be balanced, robust, coherent, fair, or bug-free.</li>\n    <li>(They are intended to be wacky.)</li>\n</ul>",
+        "description": "<ul>\n    <li>Guidingway will introduce the challenge.</li>\n    <li>Guidingway will not explain the challenge.</li>\n    <li>Wacky challenges are not intended to be balanced, robust, coherent, fair, or bug-free.</li>\n    <li>(They are intended to be wacky.)</li>\n</ul>\n<p><b>NOTE:</b> While wacky challenges can now be combined, some modes are incompatible:</p>\n<ul>\n\t<li>Only one of the following can be used: \"afflicted\", \"menarepigs\", \"skywarriors\", \"zombies\"</li>\n\t<li>If any of the above are set, none of these can be used: \"battlescars\", \"payablegolbez\", \"tellahmaneuver\", \"worthfighting\"</li>\n\t<li>None of these modes can be used together: \"3point\", \"afflicted\", \"battlescars\", \"menarepigs\", \"mirrormirror\", \"skywarriors\", \"unstackable\", \"zombies\"</li>\n\t<li>None of these modes can be used together: \"afflicted\", \"friendlyfire\"</li>\n\t<li>None of these modes can be used together: \"afflicted\", \"battlescars\", \"worthfighting\", \"zombies\"</li>\n\t<li>None of these modes can be used together: \"darts\", \"musical\"</li>\n\t<li>None of these modes can be used together: \"3point\", \"tellahmaneuver\"</li>\n</ul>\n<p>If the random option is used and there are not enough compatible modes remaining, less random modes will be chosen.</p>",
         "subcontrols": [
           {
             "flag": "@anon43",
-            "title": "Select challenge",
+            "title": "Random wacky challenge(s)",
             "type": "select",
             "subcontrols": [
               {
                 "flag": "-wacky:random",
-                "title": "Random wacky challenge",
+                "title": "1 random wacky challenge",
                 "hard": true
               },
               {
-                "flag": "-wacky:afflicted",
-                "title": "\"Afflicted\"",
+                "flag": "-wacky:random2",
+                "title": "2 random wacky challenges",
                 "hard": true
               },
               {
-                "flag": "-wacky:battlescars",
-                "title": "\"Battle Scars\"",
+                "flag": "-wacky:random3",
+                "title": "3 random wacky challenges",
                 "hard": true
               },
               {
-                "flag": "-wacky:bodyguard",
-                "title": "\"The Bodyguard\""
-              },
-              {
-                "flag": "-wacky:enemyunknown",
-                "title": "\"Enemy Unknown\"",
+                "flag": "-wacky:random4",
+                "title": "4 random wacky challenges",
                 "hard": true
               },
               {
-                "flag": "-wacky:musical",
-                "title": "\"Final Fantasy IV: The Musical\"",
+                "flag": "-wacky:random5",
+                "title": "5 random wacky challenges",
                 "hard": true
               },
               {
-                "flag": "-wacky:fistfight",
-                "title": "\"Fist Fight\"",
+                "flag": "-wacky:random6",
+                "title": "6 random wacky challenges",
                 "hard": true
-              },
-              {
-                "flag": "-wacky:floorislava",
-                "title": "\"The Floor Is Made Of Lava\""
-              },
-              {
-                "flag": "-wacky:forwardisback",
-                "title": "\"Forward is the New Back\"",
-                "hard": true
-              },
-              {
-                "flag": "-wacky:friendlyfire",
-                "title": "\"Friendly Fire\""
-              },
-              {
-                "flag": "-wacky:gottagofast",
-                "title": "\"Gotta Go Fast\"",
-                "hard": true
-              },
-              {
-                "flag": "-wacky:batman",
-                "title": "\"Holy Onomatopoeias, Batman!\"",
-                "hard": true
-              },
-              {
-                "flag": "-wacky:imaginarynumbers",
-                "title": "\"Imaginary Numbers\"",
-                "hard": true
-              },
-              {
-                "flag": "-wacky:isthisrandomized",
-                "title": "\"Is This Even Randomized?\""
-              },
-              {
-                "flag": "-wacky:kleptomania",
-                "title": "\"Kleptomania\""
-              },
-              {
-                "flag": "-wacky:menarepigs",
-                "title": "\"Men Are Pigs\"",
-                "hard": true
-              },
-              {
-                "flag": "-wacky:misspelled",
-                "title": "\"Misspelled\""
-              },
-              {
-                "flag": "-wacky:biggermagnet",
-                "title": "\"A Much Bigger Magnet\"",
-                "hard": true
-              },
-              {
-                "flag": "-wacky:mysteryjuice",
-                "title": "\"Mystery Juice\""
-              },
-              {
-                "flag": "-wacky:neatfreak",
-                "title": "\"Neat Freak\"",
-                "hard": true
-              },
-              {
-                "flag": "-wacky:nightmode",
-                "title": "\"Night Mode\"",
-                "hard": true
-              },
-              {
-                "flag": "-wacky:omnidextrous",
-                "title": "\"Omnidextrous\""
-              },
-              {
-                "flag": "-wacky:payablegolbez",
-                "title": "\"Payable Golbez\""
-              },
-              {
-                "flag": "-wacky:saveusbigchocobo",
-                "title": "\"Save Us, Big Chocobo!\"",
-                "hard": true
-              },
-              {
-                "flag": "-wacky:sixleggedrace",
-                "title": "\"Six-Legged Race\""
-              },
-              {
-                "flag": "-wacky:skywarriors",
-                "title": "\"The Sky Warriors\""
-              },
-              {
-                "flag": "-wacky:worthfighting",
-                "title": "\"Something Worth Fighting For\"",
-                "hard": true
-              },
-              {
-                "flag": "-wacky:tellahmaneuver",
-                "title": "\"The Tellah Maneuver\""
-              },
-              {
-                "flag": "-wacky:3point",
-                "title": "\"The 3-Point System\""
-              },
-              {
-                "flag": "-wacky:timeismoney",
-                "title": "\"Time is Money\""
-              },
-              {
-                "flag": "-wacky:darts",
-                "title": "\"World Championship of Darts\""
-              },
-              {
-                "flag": "-wacky:unstackable",
-                "title": "\"Unstackable\"",
-                "hard": true
-              },
-              {
-                "flag": "-wacky:zombies",
-                "title": "\"Zombies!!!\""
               }
             ]
+          },
+          {
+            "flag": "-wacky:afflicted",
+            "title": "\"Afflicted\"",
+            "hard": true
+          },
+          {
+            "flag": "-wacky:battlescars",
+            "title": "\"Battle Scars\"",
+            "hard": true
+          },
+          {
+            "flag": "-wacky:bodyguard",
+            "title": "\"The Bodyguard\""
+          },
+          {
+            "flag": "-wacky:enemyunknown",
+            "title": "\"Enemy Unknown\"",
+            "hard": true
+          },
+          {
+            "flag": "-wacky:musical",
+            "title": "\"Final Fantasy IV: The Musical\"",
+            "hard": true
+          },
+          {
+            "flag": "-wacky:fistfight",
+            "title": "\"Fist Fight\"",
+            "hard": true
+          },
+          {
+            "flag": "-wacky:floorislava",
+            "title": "\"The Floor Is Made Of Lava\""
+          },
+          {
+            "flag": "-wacky:forwardisback",
+            "title": "\"Forward is the New Back\"",
+            "hard": true
+          },
+          {
+            "flag": "-wacky:friendlyfire",
+            "title": "\"Friendly Fire\""
+          },
+          {
+            "flag": "-wacky:gottagofast",
+            "title": "\"Gotta Go Fast\"",
+            "hard": true
+          },
+          {
+            "flag": "-wacky:batman",
+            "title": "\"Holy Onomatopoeias, Batman!\"",
+            "hard": true
+          },
+          {
+            "flag": "-wacky:imaginarynumbers",
+            "title": "\"Imaginary Numbers\"",
+            "hard": true
+          },
+          {
+            "flag": "-wacky:isthisrandomized",
+            "title": "\"Is This Even Randomized?\""
+          },
+          {
+            "flag": "-wacky:kleptomania",
+            "title": "\"Kleptomania\""
+          },
+          {
+            "flag": "-wacky:menarepigs",
+            "title": "\"Men Are Pigs\"",
+            "hard": true
+          },
+          {
+            "flag": "-wacky:misspelled",
+            "title": "\"Misspelled\""
+          },
+          {
+            "flag": "-wacky:biggermagnet",
+            "title": "\"A Much Bigger Magnet\"",
+            "hard": true
+          },
+          {
+            "flag": "-wacky:mirrormirror",
+            "title": "\"Mirror, Mirror, on the Wall\""
+          },
+          {
+            "flag": "-wacky:mysteryjuice",
+            "title": "\"Mystery Juice\""
+          },
+          {
+            "flag": "-wacky:neatfreak",
+            "title": "\"Neat Freak\"",
+            "hard": true
+          },
+          {
+            "flag": "-wacky:nightmode",
+            "title": "\"Night Mode\"",
+            "hard": true
+          },
+          {
+            "flag": "-wacky:omnidextrous",
+            "title": "\"Omnidextrous\""
+          },
+          {
+            "flag": "-wacky:payablegolbez",
+            "title": "\"Payable Golbez\""
+          },
+          {
+            "flag": "-wacky:saveusbigchocobo",
+            "title": "\"Save Us, Big Chocobo!\"",
+            "hard": true
+          },
+          {
+            "flag": "-wacky:sixleggedrace",
+            "title": "\"Six-Legged Race\""
+          },
+          {
+            "flag": "-wacky:skywarriors",
+            "title": "\"The Sky Warriors\""
+          },
+          {
+            "flag": "-wacky:worthfighting",
+            "title": "\"Something Worth Fighting For\"",
+            "hard": true
+          },
+          {
+            "flag": "-wacky:tellahmaneuver",
+            "title": "\"The Tellah Maneuver\""
+          },
+          {
+            "flag": "-wacky:3point",
+            "title": "\"The 3-Point System\""
+          },
+          {
+            "flag": "-wacky:timeismoney",
+            "title": "\"Time is Money\""
+          },
+          {
+            "flag": "-wacky:darts",
+            "title": "\"World Championship of Darts\""
+          },
+          {
+            "flag": "-wacky:unstackable",
+            "title": "\"Unstackable\"",
+            "hard": true
+          },
+          {
+            "flag": "-wacky:zombies",
+            "title": "\"Zombies!!!\""
           }
         ]
       }

@@ -111,7 +111,7 @@ def apply(env):
         maxtier = int(maxtier)
         items_dbview.refine(lambda it: it.tier <= maxtier)
 
-    if env.meta.get('wacky_challenge') == 'kleptomania':
+    if 'kleptomania' in env.meta.get('wacky_challenge', []):
         items_dbview.refine(lambda it: (it.category not in ['weapon', 'armor']))
 
     autosells = {}

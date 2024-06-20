@@ -419,40 +419,46 @@
 [-vintage] Vintage Battlefield
 [-pushbtojump] Push B to Jump
 [@wacky] Wacky challenge
-.<> Select challenge
-..(-wacky:random)!           Random wacky challenge
-..(-wacky:afflicted)!        "Afflicted"
-..(-wacky:battlescars)!      "Battle Scars"
-..(-wacky:bodyguard)         "The Bodyguard"
-..(-wacky:enemyunknown)!     "Enemy Unknown"
-..(-wacky:musical)!          "Final Fantasy IV: The Musical"
-..(-wacky:fistfight)!        "Fist Fight"
-..(-wacky:floorislava)       "The Floor Is Made Of Lava"
-..(-wacky:forwardisback)!    "Forward is the New Back"
-..(-wacky:friendlyfire)      "Friendly Fire"
-..(-wacky:gottagofast)!      "Gotta Go Fast"
-..(-wacky:batman)!           "Holy Onomatopoeias, Batman!"
-..(-wacky:imaginarynumbers)! "Imaginary Numbers"
-..(-wacky:isthisrandomized)  "Is This Even Randomized?"
-..(-wacky:kleptomania)       "Kleptomania"
-..(-wacky:menarepigs)!       "Men Are Pigs"
-..(-wacky:misspelled)        "Misspelled"
-..(-wacky:biggermagnet)!     "A Much Bigger Magnet"
-..(-wacky:mysteryjuice)      "Mystery Juice"
-..(-wacky:neatfreak)!        "Neat Freak"
-..(-wacky:nightmode)!        "Night Mode"
-..(-wacky:omnidextrous)      "Omnidextrous"
-..(-wacky:payablegolbez)     "Payable Golbez"
-..(-wacky:saveusbigchocobo)! "Save Us, Big Chocobo!"
-..(-wacky:sixleggedrace)     "Six-Legged Race"
-..(-wacky:skywarriors)       "The Sky Warriors"
-..(-wacky:worthfighting)!    "Something Worth Fighting For"
-..(-wacky:tellahmaneuver)    "The Tellah Maneuver"
-..(-wacky:3point)            "The 3-Point System"
-..(-wacky:timeismoney)       "Time is Money"
-..(-wacky:darts)             "World Championship of Darts"
-..(-wacky:unstackable)!      "Unstackable"
-..(-wacky:zombies)           "Zombies!!!"
+.<> Random wacky challenge(s)
+..(-wacky:random)!           1 random wacky challenge
+..(-wacky:random2)!          2 random wacky challenges
+..(-wacky:random3)!          3 random wacky challenges
+..(-wacky:random4)!          4 random wacky challenges
+..(-wacky:random5)!          5 random wacky challenges
+..(-wacky:random6)!          6 random wacky challenges
+.(-wacky:afflicted)!        "Afflicted"
+.(-wacky:battlescars)!      "Battle Scars"
+.(-wacky:bodyguard)         "The Bodyguard"
+.(-wacky:enemyunknown)!     "Enemy Unknown"
+.(-wacky:musical)!          "Final Fantasy IV: The Musical"
+.(-wacky:fistfight)!        "Fist Fight"
+.(-wacky:floorislava)       "The Floor Is Made Of Lava"
+.(-wacky:forwardisback)!    "Forward is the New Back"
+.(-wacky:friendlyfire)      "Friendly Fire"
+.(-wacky:gottagofast)!      "Gotta Go Fast"
+.(-wacky:batman)!           "Holy Onomatopoeias, Batman!"
+.(-wacky:imaginarynumbers)! "Imaginary Numbers"
+.(-wacky:isthisrandomized)  "Is This Even Randomized?"
+.(-wacky:kleptomania)       "Kleptomania"
+.(-wacky:menarepigs)!       "Men Are Pigs"
+.(-wacky:misspelled)        "Misspelled"
+.(-wacky:biggermagnet)!     "A Much Bigger Magnet"
+.(-wacky:mirrormirror)      "Mirror, Mirror, on the Wall"
+.(-wacky:mysteryjuice)      "Mystery Juice"
+.(-wacky:neatfreak)!        "Neat Freak"
+.(-wacky:nightmode)!        "Night Mode"
+.(-wacky:omnidextrous)      "Omnidextrous"
+.(-wacky:payablegolbez)     "Payable Golbez"
+.(-wacky:saveusbigchocobo)! "Save Us, Big Chocobo!"
+.(-wacky:sixleggedrace)     "Six-Legged Race"
+.(-wacky:skywarriors)       "The Sky Warriors"
+.(-wacky:worthfighting)!    "Something Worth Fighting For"
+.(-wacky:tellahmaneuver)    "The Tellah Maneuver"
+.(-wacky:3point)            "The 3-Point System"
+.(-wacky:timeismoney)       "Time is Money"
+.(-wacky:darts)             "World Championship of Darts"
+.(-wacky:unstackable)!      "Unstackable"
+.(-wacky:zombies)           "Zombies!!!"
 
 == SPOILERS
 <> No spoiler log

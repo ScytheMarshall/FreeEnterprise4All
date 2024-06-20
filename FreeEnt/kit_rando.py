@@ -233,7 +233,7 @@ def apply(env):
             if type(item_set) is str:
                 item_set = [item_set]
 
-            if env.meta.get('wacky_challenge') == '3point':
+            if '3point' in env.meta.get('wacky_challenge', []):
                 item_set = list(filter(lambda i: i != 'SomaDrop', item_set))
 
             qty_list = entry[1]
@@ -253,7 +253,7 @@ def apply(env):
                         item_const = (f'#item.{item}' if type(item) is str else item.const)
                         if kit_name == 'grabbag' and item.subtype == 'arrow':
                             qty = env.rnd.randint(1,10)
-                        if env.meta.get('wacky_challenge') == 'unstackable':
+                        if 'unstackable' in env.meta.get('wacky_challenge', []):
                             qty = 1
                         kit.append( (items_dbview.find_one(lambda it: it.const == item_const), qty) )
 

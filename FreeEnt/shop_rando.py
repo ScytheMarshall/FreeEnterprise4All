@@ -65,13 +65,14 @@ def apply(env):
     if env.options.flags.has('shops_no_j_items'):
         items_dbview.refine(lambda it: not it.j)
 
-    if env.meta.get('wacky_challenge') == 'kleptomania':
+    wacky = env.meta.get('wacky_challenge', [])
+    if 'kleptomania' in wacky:
         items_dbview.refine(lambda it: (it.category not in ['weapon', 'armor']) or (it.tier == 1))
-    if env.meta.get('wacky_challenge') == 'friendlyfire':
+    if 'friendlyfire' in wacky:
         items_dbview.refine(lambda it: (it.const not in ['#item.Cure3', '#item.Elixir']))
-    if env.meta.get('wacky_challenge') == 'afflicted':
+    if 'afflicted' in wacky:
         items_dbview.refine(lambda it: it.const != '#item.Heal')
-    if env.meta.get('wacky_challenge') == '3point':
+    if '3point' in wacky:
         items_dbview.refine(lambda it: it.const != '#item.SomaDrop')
 
     shop_assignments = [ShopAssignment(sh) for sh in shops_dbview.find_all()]
@@ -214,7 +215,7 @@ def apply(env):
         # guaranteed items
         if not env.options.flags.has('shops_unsafe'):
             guaranteed_free_items = []
-            if env.meta.get('wacky_challenge') == 'friendlyfire':
+            if 'friendlyfire' in wacky:
                 pass
             else:
                 guaranteed_free_items.append('#item.Cure2')
@@ -227,7 +228,7 @@ def apply(env):
                 if not env.options.flags.has('bosses_unsafe'):
                     guaranteed_free_items.append('#item.ThorRage')
 
-            if env.meta.get('wacky_challenge') == 'saveusbigchocobo':
+            if 'saveusbigchocobo' in wacky:
                 guaranteed_free_items.append('#item.Carrot')
 
             free_shop_assignments = list(filter(lambda sa: sa.matches_category('item') and sa.shop.level == 'free', shop_assignments))
@@ -249,7 +250,7 @@ def apply(env):
             if white_mage_not_guaranteed:
                 guaranteed_gated_items.append('#item.Cure3')
 
-            if env.meta.get('wacky_challenge') == 'saveusbigchocobo':
+            if 'saveusbigchocobo' in wacky:
                 guaranteed_gated_items.append('#item.Whistle')
 
             for shop_assignment in gated_shop_assignments:
