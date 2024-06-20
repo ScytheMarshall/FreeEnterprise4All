@@ -19,6 +19,18 @@ _curves_db = csvdb.CsvDb(os.path.join(DB_PATH, 'curves.csvdb'), {
     'tier8' : int,
     })
 
+_tvanillaish_db = csvdb.CsvDb(os.path.join(DB_PATH, 'tvanillaish.csvdb'), {
+    'wikiindex' : int,
+    'tier1' : int,
+    'tier2' : int,
+    'tier3' : int,
+    'tier4' : int,
+    'tier5' : int,
+    'tier6' : int,
+    'tier7' : int,
+    'tier8' : int,
+    })
+
 _treasure_db = csvdb.CsvDb(os.path.join(DB_PATH, 'treasure.csvdb'), {
     'ordr' : int,
     'flag' : csvdb.HexInt,
@@ -68,6 +80,9 @@ _custom_weapons_db = csvdb.CsvDb(os.path.join(DB_PATH, 'custom_weapons.csvdb'), 
 
 def get_curves_dbview():
     return _curves_db.create_view()
+
+def get_tvanillaish_dbview():
+    return _tvanillaish_db.create_view()
 
 def get_treasure_dbview():
     return _treasure_db.create_view()
