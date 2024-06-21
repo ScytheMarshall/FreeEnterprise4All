@@ -1,0 +1,128 @@
+npc(#KaipoInn2FScholar)
+{
+    sprite #Scholar
+    default active
+    eventcall {
+        $4D
+    }
+}
+
+patch($21fa05 bus) {
+// %gold hunt id%
+    00
+// %end%
+}
+
+// All this is unused, and was necessary prior to adding an NPC
+msfpatch{
+    
+    /*
+    // Selling items    
+    .addr $00883b
+        jsl $=GoldHuntEx__FromShop
+      
+    // Gold from looting        
+    .addr $0097b0        
+        jsl $=GoldHuntEx__FromLoot
+        rts
+    */
+
+    .new
+
+    GoldHuntEx__FromShop:
+        ldx #$008b92 
+        jsl $=Bank00LongCallX
+        cli
+        jsr $_CheckGoldObjective
+        rtl
+
+    GoldHuntEx__FromLoot:
+        jsl $15c395 // math_multiply_16bit 
+        ldx #$0ea95 // _transfer_format_number_arg_to_current_number                           
+        jsl $=Bank00LongCallX
+        ldx #$0097dd  // add_party_gp
+        jsl $=Bank00LongCallX
+        ldx #$00b1c8  // _load_message_bank_1_lo_offset                                          
+        jsl $=Bank00LongCallX
+        ldx #$00b0d1  // _show_upper_dialog                                                      
+        jsl $=Bank00LongCallX
+        ldx #$00b164  // _close_upper_dialog                                                     
+        jsl $=Bank00LongCallX
+        jsr $_CheckGoldObjective
+        rtl
+
+    GoldHuntEx__FireEventAfterBattle:
+        stz $06ae   // r_draw_field_sprite_npc_index                                          
+        ldx $09d1   // r_npc_placement_base_offset
+        stx $09cf   // r_npc_placement_offset
+        jsr $_CheckGoldObjective
+        rtl
+
+    %CheckGoldObjective:    
+        lda $=(GoldHunt__Goal)
+        sta $_(GoldHunt_Scratch) 
+        lda $=(GoldHunt__Goal+1)
+        sta $_(GoldHunt_Scratch+1) 
+        lda $=(GoldHunt__Goal+2)
+        sta $_(GoldHunt_Scratch+2) 
+
+        sec
+        lda $16a0
+        sbc $_(GoldHunt_Scratch)
+        lda $16a1
+        sbc $_(GoldHunt_Scratch+1)
+        lda $16a2
+        sbc $_(GoldHunt_Scratch+2)
+        bcc $+NotEnoughGP
+        lda $=GoldHunt__Slot
+        jsl $=Objectives__StageProgress        
+
+    %Passed:    
+        jsl $=EvEx__ObjectivesImpl_DoEvent  // Handles prepping the event queue
+        lda #$08  // Load the $08 event handler (which tackles objectives)
+        ldx #$df63 
+        jsl $=Bank00LongCallX        
+        ldx $1615   // [hardcoded]
+        stx $09d3   // Restore the other events
+    %NotEnoughGP:
+        rts
+        
+}
+
+event($4D)
+{
+    consts(placement)
+    {
+        0 Tory
+    }
+
+    [#B #If #ObjectiveComplete #objective.internal_goldhunter] {
+        map message 6
+        [#B #EndEvent]
+    }
+
+    [#B #If #EnoughGoldGathered 0] {
+        [#B #TakeGoldHunterGold]        
+        map message 5
+        p #Tory spin jump
+        [#B #Objectives_Tick #objective.internal_goldhunter]
+        [#B #EndEvent]
+    }
+
+    map message 7
+}
+
+text(map #AstroTower message 5) {
+Thanks for the gold!
+Time to go shopping for
+one of those fancy 
+airships.
+}
+
+text(map #AstroTower message 6) {
+I'm rich now!
+
+Still no airship though.
+Do you still want yours?
+}
+

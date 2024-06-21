@@ -50,13 +50,13 @@ from . import version
 
 from .util import Distribution
 
-
 F4C_FILES = '''
     scripts/default.consts
     scripts/unused.f4c
     scripts/consts.f4c
     scripts/npcs.f4c
     scripts/characters.f4c
+    scripts/doors.f4c
     scripts/items.f4c
     scripts/menu_data.f4c
     scripts/randomizer.f4c
@@ -156,6 +156,7 @@ F4C_FILES = '''
     scripts/stats.f4c
     scripts/level_up_summary.f4c
     scripts/treasure_discard.f4c
+    scripts/treasure_character.f4c
     scripts/config_init.f4c
     scripts/shadow_party.f4c
     scripts/fusoya_challenge.f4c
@@ -415,6 +416,9 @@ def _generate_title_screen_text(options):
 
     data = []
     for c in text:
+        if (len(data) >= 160):
+            raise BuildError(f"_generate_title_screen_text: data exceeds allocated size in ROM")
+
         if c == ' ':
             data.append('FF 04')
         elif c == '.':
@@ -435,12 +439,18 @@ def _generate_title_screen_text(options):
             data.append('{:02X} 04'.format((ord(c) - ord('a')) + 0xCA))
         else:
             data.append('00 00')
-
     return ' '.join(data)
 
 #--------------------------------------------------------------------------
 def _generate_pregame_screen_text(env):
-    lines = [(l + " " * (32 - len(l))) for l in env.pregame_text_lines]
+    lines = []
+
+    for l in env.pregame_text_lines:
+        line_length = len(l)
+        replacements = (re.findall('\[.*\]', l))
+        for r in replacements:
+            line_length -= len(r)-1
+        lines.append(l + " " * (32 - line_length))
 
     info_bytes = []
 
@@ -452,6 +462,8 @@ def _generate_pregame_screen_text(env):
 
     for line in lines:
         line = line.replace('(', '[$cc]').replace(')', '[$cd]')
+        line = line.replace('!', '[$7e]')
+        line = line.replace('?', '[$7d]')
         tiles = f4c.encode_text(line)
         text_bytes.extend(tiles)
 
@@ -594,7 +606,8 @@ def build(romfile, options, force_recompile=False):
         'vanilla_agility',
         'characters_irretrievable',
         'objective_zeromus',
-        'no_earned_characters'
+        'no_earned_characters',
+        'no_starting_partner',
         ]
     flags_as_hex = []
     for slug in embedded_flags:
@@ -748,7 +761,9 @@ def build(romfile, options, force_recompile=False):
         env.add_pregame_text('FLAGS', 'hidden')
     else:
         env.add_pregame_text('FLAGS', env.options.flags.to_string(pretty=True, wrap_width=26), center=False)
-    env.add_substitution('pregame_screen_text', _generate_pregame_screen_text(env))
+        
+    pregame_bytes = _generate_pregame_screen_text(env)
+    env.add_substitution('pregame_screen_text', pregame_bytes)
 
     if options.debug:
         with open(os.path.join(os.path.dirname(__file__), 'scripts/debug_init.f4c'), 'r') as infile:

@@ -820,6 +820,42 @@ msfpatch {
 }
 
 msfpatch {
+    EvEX__MakeSuperhero:
+        ldx #$0000
+    %MakeSuperheroLoop:        
+        lda $100f,x
+        adc #$32
+        sta $100f,x
+        inx
+        cpx #$000a
+        bcc $+MakeSuperheroLoop
+        jmp $_EvEx__End
+}
+
+msfpatch
+{
+    EvEx__TakeGoldHunterGold:
+        lda $=(GoldHunt__Goal)
+        sta $_(GoldHunt_Scratch) 
+        lda $=(GoldHunt__Goal+1)
+        sta $_(GoldHunt_Scratch+1) 
+        lda $=(GoldHunt__Goal+2)
+        sta $_(GoldHunt_Scratch+2) 
+
+        sec
+        lda $16a0
+        sbc $_(GoldHunt_Scratch)
+        sta $16a0
+        lda $16a1
+        sbc $_(GoldHunt_Scratch+1)
+        sta $16a1
+        lda $16a2
+        sbc $_(GoldHunt_Scratch+2)
+        sta $16a2
+        jmp $_EvEx__End
+}
+
+msfpatch {
     .def StarterKit__Data        $21dd00
     .def StarterKit__MaxLength   $005c
 

@@ -37,6 +37,8 @@ consts(flag) {
     $71   fe_HeroSoloBattle
     $72   fe_BossBypass
     $7F   fe_UptCo
+    $80   fe_CompletedGatedRequirements
+    $81   fe_FinishedOrdealsRoom
 }
 
 consts(vfx) {
@@ -47,6 +49,7 @@ consts(vfx) {
 }
 
 consts(msg) {
+    $80  fe_GatedRequirementsCompleteReward
     $107  fe_Received
     $108  fe_ReceivedFanfare
     $109  fe_Joined
@@ -62,7 +65,6 @@ consts(msg) {
     $118  fe_WackyChallengeIntro
     $119  fe_WackyChallengeTitle
     $11A  fe_WackyChallengeDetail
-
     $14B  fe_WackyDialogue
 }
 

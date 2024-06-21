@@ -5,6 +5,30 @@
 ..[Omode:classicgiant] Classic Giant%
 ..[Omode:fiends] Fiends%
 ..[Omode:dkmatter] Dark Matter Hunt
+..[Omode:bosscollector] Boss Collector
+...<> Set number of required bosses
+....(Obosscollector:1) Collect 1 boss
+....(Obosscollector:2) Collect 2 bosses
+....(Obosscollector:3) Collect 3 bosses
+....(Obosscollector:4) Collect 4 bosses
+....(Obosscollector:5) Collect 5 bosses
+....(Obosscollector:6) Collect 6 bosses
+....(Obosscollector:7) Collect 7 bosses
+....(Obosscollector:8) Collect 8 bosses
+....(Obosscollector:9) Collect 9 bosses
+....(Obosscollector:10) Collect 10 bosses
+....(Obosscollector:15) Collect 15 bosses
+....(Obosscollector:20) Collect 20 bosses
+....(Obosscollector:25) Collect 25 bosses
+....(Obosscollector:30) Collect 30 bosses
+....(Obosscollector:34) Collect 34 bosses
+..[Omode:goldhunter] Gold Hunter
+...<>* Set type of gold hunt
+....(Ogoldhunter:100) Have 100,000 gold
+....(Ogoldhunter:250) Have 250,000 gold
+....(Ogoldhunter:500) Have 500,000 gold
+....(Ogoldhunter:750) Have 750,000 gold
+....(Ogoldhunter:1000) Have 1,000,000 gold
 .[@Ocustom] Custom objectives
 ..<> Custom objective #1
 ...(O1:*)
@@ -22,7 +46,7 @@
 ...(O7:*)
 ..<> Custom objective #8
 ...(O8:*)
-.[] Random objectives
+.[@Orandompool1] Random objectives pool #1
 ..<> Set number of random objectives
 ...(Orandom:1) Add 1 random objective
 ...(Orandom:2) Add 2 random objectives
@@ -38,6 +62,77 @@
 ....(Orandom:tough_quest) Tough quests allowed
 ...[Orandom:boss] Boss hunts allowed
 ...[Orandom:char] Character hunts allowed
+....()# Only include specific characters
+.....[Orandom:onlycecil]  Only include Cecil
+.....[Orandom:onlykain]   Only include Kain
+.....[Orandom:onlyrydia]  Only include Rydia
+.....[Orandom:onlytellah] Only include Tellah
+.....[Orandom:onlyedward] Only include Edward
+.....[Orandom:onlyrosa]   Only include Rosa
+.....[Orandom:onlyyang]   Only include Yang
+.....[Orandom:onlypalom]  Only include Palom
+.....[Orandom:onlyporom]  Only include Porom
+.....[Orandom:onlycid]    Only include Cid
+.....[Orandom:onlyedge]   Only include Edge
+.....[Orandom:onlyfusoya] Only include Fusoya
+.[@Orandompool2] Random objectives pool #2
+..<> Set number of random objectives
+...(Orandom2:1) Add 1 random objective
+...(Orandom2:2) Add 2 random objectives
+...(Orandom2:3) Add 3 random objectives
+...(Orandom2:4) Add 4 random objectives
+...(Orandom2:5) Add 5 random objectives
+...(Orandom2:6) Add 6 random objectives
+...(Orandom2:7) Add 7 random objectives
+...(Orandom2:8) Add 8 random objectives
+..[@Orandomtypes2] Restrict allowed random objective types
+...<> Quests allowed
+....(Orandom2:quest) Any quests allowed
+....(Orandom2:tough_quest) Tough quests allowed
+...[Orandom2:boss] Boss hunts allowed
+...[Orandom2:char] Character hunts allowed
+....()# Only include specific characters
+.....[Orandom2:onlycecil]  Only include Cecil
+.....[Orandom2:onlykain]   Only include Kain
+.....[Orandom2:onlyrydia]  Only include Rydia
+.....[Orandom2:onlytellah] Only include Tellah
+.....[Orandom2:onlyedward] Only include Edward
+.....[Orandom2:onlyrosa]   Only include Rosa
+.....[Orandom2:onlyyang]   Only include Yang
+.....[Orandom2:onlypalom]  Only include Palom
+.....[Orandom2:onlyporom]  Only include Porom
+.....[Orandom2:onlycid]    Only include Cid
+.....[Orandom2:onlyedge]   Only include Edge
+.....[Orandom2:onlyfusoya] Only include Fusoya
+.[@Orandompool3] Random objectives pool #3
+..<> Set number of random objectives
+...(Orandom3:1) Add 1 random objective
+...(Orandom3:2) Add 2 random objectives
+...(Orandom3:3) Add 3 random objectives
+...(Orandom3:4) Add 4 random objectives
+...(Orandom3:5) Add 5 random objectives
+...(Orandom3:6) Add 6 random objectives
+...(Orandom3:7) Add 7 random objectives
+...(Orandom3:8) Add 8 random objectives
+..[@Orandomtypes3] Restrict allowed random objective types
+...<> Quests allowed
+....(Orandom3:quest) Any quests allowed
+....(Orandom3:tough_quest) Tough quests allowed
+...[Orandom3:boss] Boss hunts allowed
+...[Orandom3:char] Character hunts allowed
+....()# Only include specific characters
+.....[Orandom3:onlycecil]  Only include Cecil
+.....[Orandom3:onlykain]   Only include Kain
+.....[Orandom3:onlyrydia]  Only include Rydia
+.....[Orandom3:onlytellah] Only include Tellah
+.....[Orandom3:onlyedward] Only include Edward
+.....[Orandom3:onlyrosa]   Only include Rosa
+.....[Orandom3:onlyyang]   Only include Yang
+.....[Orandom3:onlypalom]  Only include Palom
+.....[Orandom3:onlyporom]  Only include Porom
+.....[Orandom3:onlycid]    Only include Cid
+.....[Orandom3:onlyedge]   Only include Edge
+.....[Orandom3:onlyfusoya] Only include Fusoya
 .<> Set number of objectives required to earn reward
 ..(Oreq:all) Complete all objectives for reward
 ..(Oreq:1) Complete 1 objectives for reward
@@ -50,6 +145,44 @@
 ..(Oreq:8) Complete 8 objectives for reward
 ..(Oreq:9) Complete 9 objectives for reward
 ..(Oreq:10) Complete 10 objectives for reward
+.<> Gated Objective
+..(Ogated:1) Objective #1 is gated behind other objectives
+..(Ogated:2) Objective #2 is gated behind other objectives
+..(Ogated:3) Objective #3 is gated behind other objectives
+..(Ogated:4) Objective #4 is gated behind other objectives
+..(Ogated:5) Objective #5 is gated behind other objectives
+..(Ogated:6) Objective #6 is gated behind other objectives
+..(Ogated:7) Objective #7 is gated behind other objectives
+..(Ogated:8) Objective #8 is gated behind other objectives
+..(Ogated:9) Objective #9 is gated behind other objectives
+..(Ogated:10) Objective #10 is gated behind other objectives
+..(Ogated:11) Objective #11 is gated behind other objectives
+..(Ogated:12) Objective #12 is gated behind other objectives
+..(Ogated:13) Objective #13 is gated behind other objectives
+..(Ogated:14) Objective #14 is gated behind other objectives
+..(Ogated:15) Objective #15 is gated behind other objectives
+..(Ogated:16) Objective #16 is gated behind other objectives
+..(Ogated:17) Objective #17 is gated behind other objectives
+..(Ogated:18) Objective #18 is gated behind other objectives
+.()# Hard Required Objectives
+..[Ohardreq:1] Objective #1 is hard required
+..[Ohardreq:2] Objective #2 is hard required
+..[Ohardreq:3] Objective #3 is hard required
+..[Ohardreq:4] Objective #4 is hard required
+..[Ohardreq:5] Objective #5 is hard required
+..[Ohardreq:6] Objective #6 is hard required
+..[Ohardreq:7] Objective #7 is hard required
+..[Ohardreq:8] Objective #8 is hard required
+..[Ohardreq:9] Objective #9 is hard required
+..[Ohardreq:10] Objective #10 is hard required
+..[Ohardreq:11] Objective #11 is hard required
+..[Ohardreq:12] Objective #12 is hard required
+..[Ohardreq:13] Objective #13 is hard required
+..[Ohardreq:14] Objective #14 is hard required
+..[Ohardreq:15] Objective #15 is hard required
+..[Ohardreq:16] Objective #16 is hard required
+..[Ohardreq:17] Objective #17 is hard required
+..[Ohardreq:18] Objective #18 is hard required
 .<>* Reward
 ..(Owin:game) Completing objectives wins the game
 ..(Owin:crystal) Completing objectives awards the Crystal
@@ -67,6 +200,22 @@
 ...(Kforce:magma) Guarantee underworld access via Magma Key
 ...(Kforce:hook)! Force underworld access via Hook route
 ..[Kunsafe]! No safety checks
+..<> Starting items
+...(Kstart:package) You start with the Package
+...(Kstart:sandruby) You start with the Sandruby
+...(Kstart:baron) You start with the Baron Key
+...(Kstart:twinharp) You start with the Twinharp
+...(Kstart:earthcrystal) You start with the Earth Crystal
+...(Kstart:magma) You start with the Magma Key
+...(Kstart:tower) You start with the Tower Key
+...(Kstart:hook) You start with the Hook
+...(Kstart:luca) You start with the Luca Key
+...(Kstart:darkcrystal) You start with the Dark Crystal
+...(Kstart:rat) You start with the Rat Tail
+...(Kstart:pan) You start with the Pan
+...(Kstart:crystal) You start with the Crystal
+...(Kstart:legend) You start with the Legend Sword
+...(Kstart:adamant) You start with the Adamant
 
 == PASS
 [Pshop] Include Pass in a shop
@@ -173,6 +322,7 @@
 ....[Cno:fusoya] Exclude Fusoya
 [Cnofree]! No free characters
 [Cnoearned]! No earned characters
+[Cnopartner]! No starting partner
 <>- Specify possible starting characters
 .(@CstartDefine)# Define starting character pool
 ..[Cstart:cecil]  May start with Cecil
@@ -204,6 +354,7 @@
 [Cj:spells] Characters learn J-spells
 [Cj:abilities] Characters have J-commands
 [Cnekkie] Characters start with limited gear
+[Cpaladin] Cecil starts the game as a paladin
 [Cnodupes] Duplicate characters not allowed
 [Cbye] Dismissed characters are irretrievable
 <> Limit maximum party size
@@ -215,7 +366,9 @@
 <> Permadeath options
 .[Cpermadeath]! Permadeath
 .[Cpermadeader]! Permadeader
-[Chero]! Hero challenge
+<> Hero Options
+.[Chero]! Hero challenge
+.[Csuperhero]! Superhero challenge
 
 == TREASURES
 <>* Treasure chests (other than MIABs)
@@ -240,6 +393,11 @@
 ...(Tmaxtier:5) Chests contain tier 5 items at best
 ...(Tmaxtier:4)! Chests contain tier 4 items at best
 ...(Tmaxtier:3)! Chests contain tier 3 items at best
+..()# Unrestrict item quality
+...[Tunrestrict:treasury] Chests in the toroia treasury will be unaffected by any Tmaxtier flags
+...[Tunrestrict:moon] Chests on the moon will be unaffected by any Tmaxtier flags
+...[Tunrestrict:underworld] Chests in the underworld will be unaffected by any Tmaxtier flags
+...[Tunrestrict:overworld] Chests on the overworld will be unaffected by any Tmaxtier flags
 .(Tpro) Pro chest randomization
 ..[ECHO:Tstandard]
 .(Twild) Wild chest randomization
@@ -263,8 +421,10 @@
 .(Swild) Wild shop randomization
 ..[ECHO:Sstandard]
 .(Scabins)! Shops sell only cabins
+.(Ssame)! Shops sell only one type of item.  All shops in the game are the same.
 .(Sempty)! Shops sell nothing
 [Sfree] Shop items are free
+[Ssingles]! Shops sell only a single item
 <> Sell prices
 .(Ssell:quarter) Items sell for 1/4 price
 .(Ssell:0) Items sell for 0 GP
@@ -272,7 +432,30 @@
 [Sno:apples] No Apples/Soma Drops in shops
 [Sno:sirens] No Sirens in shops
 [Sno:life] No Life potions in shops
-
+<> Shop price adjustments
+.(Sprice:20) Shop prices are adjusted to 20% of their normal value
+..()# Only affect specific item types
+...[Spricey:items] Only affect consumable items
+...[Spricey:weapons] Only affect weapons
+...[Spricey:armor] Only affect armor
+.(Sprice:40) Shop prices are adjusted to 40% of their normal value
+..[ECHO:Sprice:20]
+.(Sprice:60) Shop prices are adjusted to 60% of their normal value
+..[ECHO:Sprice:20]
+.(Sprice:80) Shop prices are adjusted to 80% of their normal value
+..[ECHO:Sprice:20]
+.(Sprice:120) Shop prices are adjusted to 120% of their normal value
+..[ECHO:Sprice:20]
+.(Sprice:140) Shop prices are adjusted to 140% of their normal value
+..[ECHO:Sprice:20]
+.(Sprice:160) Shop prices are adjusted to 160% of their normal value
+..[ECHO:Sprice:20]
+.(Sprice:180) Shop prices are adjusted to 180% of their normal value
+..[ECHO:Sprice:20]
+.(Sprice:200) Shop prices are adjusted to 200% of their normal value
+..[ECHO:Sprice:20]
+.(Sprice:400)! Shop prices are adjusted to 400% of their normal value
+..[ECHO:Sprice:20]
 == BOSSES
 <>* Bosses
 .(Bvanilla)- No boss randomization
@@ -283,6 +466,7 @@
 <> Change Wyvern's opening MegaNuke
 .(Bwhyburn) Disable Wyvern's opening MegaNuke
 .(Bwhichburn) Replace Wyvern's opening MegaNuke with random attack
+.(Bitburns) Replace Wyvern's opening MegaNuke with random, incredibly dangerous attack
 
 == ENCOUNTERS
 <>* Random encounter rate

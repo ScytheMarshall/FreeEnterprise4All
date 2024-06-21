@@ -31,6 +31,115 @@ var FLAG_UISPEC = [
                 "flag": "Omode:dkmatter",
                 "title": "Dark Matter Hunt",
                 "description": "45 Dark Matters are randomly placed in chests (MIABs excluded); bring 30 of them to Kory in Agart to complete this objective."
+              },
+              {
+                "flag": "Omode:bosscollector",
+                "title": "Boss Collector",
+                "description": "Find and defeat the specified number of bosses to complete this objective",
+                "subcontrols": [
+                  {
+                    "flag": "@anon1",
+                    "title": "Set number of required bosses",
+                    "type": "select",
+                    "subcontrols": [
+                      {
+                        "flag": "Obosscollector:1",
+                        "title": "Collect 1 boss"
+                      },
+                      {
+                        "flag": "Obosscollector:2",
+                        "title": "Collect 2 bosses"
+                      },
+                      {
+                        "flag": "Obosscollector:3",
+                        "title": "Collect 3 bosses"
+                      },
+                      {
+                        "flag": "Obosscollector:4",
+                        "title": "Collect 4 bosses"
+                      },
+                      {
+                        "flag": "Obosscollector:5",
+                        "title": "Collect 5 bosses"
+                      },
+                      {
+                        "flag": "Obosscollector:6",
+                        "title": "Collect 6 bosses"
+                      },
+                      {
+                        "flag": "Obosscollector:7",
+                        "title": "Collect 7 bosses"
+                      },
+                      {
+                        "flag": "Obosscollector:8",
+                        "title": "Collect 8 bosses"
+                      },
+                      {
+                        "flag": "Obosscollector:9",
+                        "title": "Collect 9 bosses"
+                      },
+                      {
+                        "flag": "Obosscollector:10",
+                        "title": "Collect 10 bosses"
+                      },
+                      {
+                        "flag": "Obosscollector:15",
+                        "title": "Collect 15 bosses"
+                      },
+                      {
+                        "flag": "Obosscollector:20",
+                        "title": "Collect 20 bosses"
+                      },
+                      {
+                        "flag": "Obosscollector:25",
+                        "title": "Collect 25 bosses"
+                      },
+                      {
+                        "flag": "Obosscollector:30",
+                        "title": "Collect 30 bosses"
+                      },
+                      {
+                        "flag": "Obosscollector:34",
+                        "title": "Collect 34 bosses"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "flag": "Omode:goldhunter",
+                "title": "Gold Hunter",
+                "description": "Collect the specified amount of GP and bring them to Tory (he's below Kory) in Agart to complete this objective.",
+                "subcontrols": [
+                  {
+                    "flag": "@anon2",
+                    "title": "Set type of gold hunt",
+                    "important": true,
+                    "type": "select",
+                    "subcontrols": [
+                      {
+                        "flag": "Ogoldhunter:100",
+                        "title": "Have 100,000 gold"
+                      },
+                      {
+                        "flag": "Ogoldhunter:250",
+                        "title": "Have 250,000 gold"
+                      },
+                      {
+                        "flag": "Ogoldhunter:500",
+                        "title": "Have 500,000 gold"
+                      },
+                      {
+                        "flag": "Ogoldhunter:750",
+                        "title": "Have 750,000 gold"
+                      },
+                      {
+                        "flag": "Ogoldhunter:1000",
+                        "title": "Have 1,000,000 gold"
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           },
@@ -40,7 +149,7 @@ var FLAG_UISPEC = [
             "description": "<ul>\n    <li>Duplicate objectives will be omitted.</li>\n    <li>A character objective is met when the requirements to gain the character have been fulfilled; you do not need to actually add them to your party.</li>\n    <li>Starting characters do not count towards character objectives.</li>\n    <li>Setting the Pass quest objective with no other P flags will force Pkey to be enabled.</li>\n</ul>",
             "subcontrols": [
               {
-                "flag": "@anon1",
+                "flag": "@anon3",
                 "title": "Custom objective #1",
                 "type": "select",
                 "subcontrols": [
@@ -391,7 +500,7 @@ var FLAG_UISPEC = [
                 ]
               },
               {
-                "flag": "@anon2",
+                "flag": "@anon4",
                 "title": "Custom objective #2",
                 "type": "select",
                 "subcontrols": [
@@ -742,7 +851,7 @@ var FLAG_UISPEC = [
                 ]
               },
               {
-                "flag": "@anon3",
+                "flag": "@anon5",
                 "title": "Custom objective #3",
                 "type": "select",
                 "subcontrols": [
@@ -1093,7 +1202,7 @@ var FLAG_UISPEC = [
                 ]
               },
               {
-                "flag": "@anon4",
+                "flag": "@anon6",
                 "title": "Custom objective #4",
                 "type": "select",
                 "subcontrols": [
@@ -1444,7 +1553,7 @@ var FLAG_UISPEC = [
                 ]
               },
               {
-                "flag": "@anon5",
+                "flag": "@anon7",
                 "title": "Custom objective #5",
                 "type": "select",
                 "subcontrols": [
@@ -1795,7 +1904,7 @@ var FLAG_UISPEC = [
                 ]
               },
               {
-                "flag": "@anon6",
+                "flag": "@anon8",
                 "title": "Custom objective #6",
                 "type": "select",
                 "subcontrols": [
@@ -2146,7 +2255,7 @@ var FLAG_UISPEC = [
                 ]
               },
               {
-                "flag": "@anon7",
+                "flag": "@anon9",
                 "title": "Custom objective #7",
                 "type": "select",
                 "subcontrols": [
@@ -2497,7 +2606,7 @@ var FLAG_UISPEC = [
                 ]
               },
               {
-                "flag": "@anon8",
+                "flag": "@anon10",
                 "title": "Custom objective #8",
                 "type": "select",
                 "subcontrols": [
@@ -2850,11 +2959,11 @@ var FLAG_UISPEC = [
             ]
           },
           {
-            "flag": "@anon9",
-            "title": "Random objectives",
+            "flag": "@Orandompool1",
+            "title": "Random objectives pool #1",
             "subcontrols": [
               {
-                "flag": "@anon10",
+                "flag": "@anon11",
                 "title": "Set number of random objectives",
                 "type": "select",
                 "subcontrols": [
@@ -2897,7 +3006,7 @@ var FLAG_UISPEC = [
                 "title": "Restrict allowed random objective types",
                 "subcontrols": [
                   {
-                    "flag": "@anon11",
+                    "flag": "@anon12",
                     "title": "Quests allowed",
                     "type": "select",
                     "subcontrols": [
@@ -2918,14 +3027,333 @@ var FLAG_UISPEC = [
                   },
                   {
                     "flag": "Orandom:char",
-                    "title": "Character hunts allowed"
+                    "title": "Character hunts allowed",
+                    "subcontrols": [
+                      {
+                        "flag": "@anon13",
+                        "title": "Only include specific characters",
+                        "compact": true,
+                        "subcontrols": [
+                          {
+                            "flag": "Orandom:onlycecil",
+                            "title": "Only include Cecil"
+                          },
+                          {
+                            "flag": "Orandom:onlykain",
+                            "title": "Only include Kain"
+                          },
+                          {
+                            "flag": "Orandom:onlyrydia",
+                            "title": "Only include Rydia"
+                          },
+                          {
+                            "flag": "Orandom:onlytellah",
+                            "title": "Only include Tellah"
+                          },
+                          {
+                            "flag": "Orandom:onlyedward",
+                            "title": "Only include Edward"
+                          },
+                          {
+                            "flag": "Orandom:onlyrosa",
+                            "title": "Only include Rosa"
+                          },
+                          {
+                            "flag": "Orandom:onlyyang",
+                            "title": "Only include Yang"
+                          },
+                          {
+                            "flag": "Orandom:onlypalom",
+                            "title": "Only include Palom"
+                          },
+                          {
+                            "flag": "Orandom:onlyporom",
+                            "title": "Only include Porom"
+                          },
+                          {
+                            "flag": "Orandom:onlycid",
+                            "title": "Only include Cid"
+                          },
+                          {
+                            "flag": "Orandom:onlyedge",
+                            "title": "Only include Edge"
+                          },
+                          {
+                            "flag": "Orandom:onlyfusoya",
+                            "title": "Only include Fusoya"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
             ]
           },
           {
-            "flag": "@anon12",
+            "flag": "@Orandompool2",
+            "title": "Random objectives pool #2",
+            "subcontrols": [
+              {
+                "flag": "@anon14",
+                "title": "Set number of random objectives",
+                "type": "select",
+                "subcontrols": [
+                  {
+                    "flag": "Orandom2:1",
+                    "title": "Add 1 random objective"
+                  },
+                  {
+                    "flag": "Orandom2:2",
+                    "title": "Add 2 random objectives"
+                  },
+                  {
+                    "flag": "Orandom2:3",
+                    "title": "Add 3 random objectives"
+                  },
+                  {
+                    "flag": "Orandom2:4",
+                    "title": "Add 4 random objectives"
+                  },
+                  {
+                    "flag": "Orandom2:5",
+                    "title": "Add 5 random objectives"
+                  },
+                  {
+                    "flag": "Orandom2:6",
+                    "title": "Add 6 random objectives"
+                  },
+                  {
+                    "flag": "Orandom2:7",
+                    "title": "Add 7 random objectives"
+                  },
+                  {
+                    "flag": "Orandom2:8",
+                    "title": "Add 8 random objectives"
+                  }
+                ]
+              },
+              {
+                "flag": "@Orandomtypes2",
+                "title": "Restrict allowed random objective types",
+                "subcontrols": [
+                  {
+                    "flag": "@anon15",
+                    "title": "Quests allowed",
+                    "type": "select",
+                    "subcontrols": [
+                      {
+                        "flag": "Orandom2:quest",
+                        "title": "Any quests allowed"
+                      },
+                      {
+                        "flag": "Orandom2:tough_quest",
+                        "title": "Tough quests allowed"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "Orandom2:boss",
+                    "title": "Boss hunts allowed"
+                  },
+                  {
+                    "flag": "Orandom2:char",
+                    "title": "Character hunts allowed",
+                    "subcontrols": [
+                      {
+                        "flag": "@anon16",
+                        "title": "Only include specific characters",
+                        "compact": true,
+                        "subcontrols": [
+                          {
+                            "flag": "Orandom2:onlycecil",
+                            "title": "Only include Cecil"
+                          },
+                          {
+                            "flag": "Orandom2:onlykain",
+                            "title": "Only include Kain"
+                          },
+                          {
+                            "flag": "Orandom2:onlyrydia",
+                            "title": "Only include Rydia"
+                          },
+                          {
+                            "flag": "Orandom2:onlytellah",
+                            "title": "Only include Tellah"
+                          },
+                          {
+                            "flag": "Orandom2:onlyedward",
+                            "title": "Only include Edward"
+                          },
+                          {
+                            "flag": "Orandom2:onlyrosa",
+                            "title": "Only include Rosa"
+                          },
+                          {
+                            "flag": "Orandom2:onlyyang",
+                            "title": "Only include Yang"
+                          },
+                          {
+                            "flag": "Orandom2:onlypalom",
+                            "title": "Only include Palom"
+                          },
+                          {
+                            "flag": "Orandom2:onlyporom",
+                            "title": "Only include Porom"
+                          },
+                          {
+                            "flag": "Orandom2:onlycid",
+                            "title": "Only include Cid"
+                          },
+                          {
+                            "flag": "Orandom2:onlyedge",
+                            "title": "Only include Edge"
+                          },
+                          {
+                            "flag": "Orandom2:onlyfusoya",
+                            "title": "Only include Fusoya"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "flag": "@Orandompool3",
+            "title": "Random objectives pool #3",
+            "subcontrols": [
+              {
+                "flag": "@anon17",
+                "title": "Set number of random objectives",
+                "type": "select",
+                "subcontrols": [
+                  {
+                    "flag": "Orandom3:1",
+                    "title": "Add 1 random objective"
+                  },
+                  {
+                    "flag": "Orandom3:2",
+                    "title": "Add 2 random objectives"
+                  },
+                  {
+                    "flag": "Orandom3:3",
+                    "title": "Add 3 random objectives"
+                  },
+                  {
+                    "flag": "Orandom3:4",
+                    "title": "Add 4 random objectives"
+                  },
+                  {
+                    "flag": "Orandom3:5",
+                    "title": "Add 5 random objectives"
+                  },
+                  {
+                    "flag": "Orandom3:6",
+                    "title": "Add 6 random objectives"
+                  },
+                  {
+                    "flag": "Orandom3:7",
+                    "title": "Add 7 random objectives"
+                  },
+                  {
+                    "flag": "Orandom3:8",
+                    "title": "Add 8 random objectives"
+                  }
+                ]
+              },
+              {
+                "flag": "@Orandomtypes3",
+                "title": "Restrict allowed random objective types",
+                "subcontrols": [
+                  {
+                    "flag": "@anon18",
+                    "title": "Quests allowed",
+                    "type": "select",
+                    "subcontrols": [
+                      {
+                        "flag": "Orandom3:quest",
+                        "title": "Any quests allowed"
+                      },
+                      {
+                        "flag": "Orandom3:tough_quest",
+                        "title": "Tough quests allowed"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "Orandom3:boss",
+                    "title": "Boss hunts allowed"
+                  },
+                  {
+                    "flag": "Orandom3:char",
+                    "title": "Character hunts allowed",
+                    "subcontrols": [
+                      {
+                        "flag": "@anon19",
+                        "title": "Only include specific characters",
+                        "compact": true,
+                        "subcontrols": [
+                          {
+                            "flag": "Orandom3:onlycecil",
+                            "title": "Only include Cecil"
+                          },
+                          {
+                            "flag": "Orandom3:onlykain",
+                            "title": "Only include Kain"
+                          },
+                          {
+                            "flag": "Orandom3:onlyrydia",
+                            "title": "Only include Rydia"
+                          },
+                          {
+                            "flag": "Orandom3:onlytellah",
+                            "title": "Only include Tellah"
+                          },
+                          {
+                            "flag": "Orandom3:onlyedward",
+                            "title": "Only include Edward"
+                          },
+                          {
+                            "flag": "Orandom3:onlyrosa",
+                            "title": "Only include Rosa"
+                          },
+                          {
+                            "flag": "Orandom3:onlyyang",
+                            "title": "Only include Yang"
+                          },
+                          {
+                            "flag": "Orandom3:onlypalom",
+                            "title": "Only include Palom"
+                          },
+                          {
+                            "flag": "Orandom3:onlyporom",
+                            "title": "Only include Porom"
+                          },
+                          {
+                            "flag": "Orandom3:onlycid",
+                            "title": "Only include Cid"
+                          },
+                          {
+                            "flag": "Orandom3:onlyedge",
+                            "title": "Only include Edge"
+                          },
+                          {
+                            "flag": "Orandom3:onlyfusoya",
+                            "title": "Only include Fusoya"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "flag": "@anon20",
             "title": "Set number of objectives required to earn reward",
             "type": "select",
             "subcontrols": [
@@ -2976,7 +3404,165 @@ var FLAG_UISPEC = [
             ]
           },
           {
-            "flag": "@anon13",
+            "flag": "@anon21",
+            "title": "Gated Objective",
+            "type": "select",
+            "subcontrols": [
+              {
+                "flag": "Ogated:1",
+                "title": "Objective #1 is gated behind other objectives"
+              },
+              {
+                "flag": "Ogated:2",
+                "title": "Objective #2 is gated behind other objectives"
+              },
+              {
+                "flag": "Ogated:3",
+                "title": "Objective #3 is gated behind other objectives"
+              },
+              {
+                "flag": "Ogated:4",
+                "title": "Objective #4 is gated behind other objectives"
+              },
+              {
+                "flag": "Ogated:5",
+                "title": "Objective #5 is gated behind other objectives"
+              },
+              {
+                "flag": "Ogated:6",
+                "title": "Objective #6 is gated behind other objectives"
+              },
+              {
+                "flag": "Ogated:7",
+                "title": "Objective #7 is gated behind other objectives"
+              },
+              {
+                "flag": "Ogated:8",
+                "title": "Objective #8 is gated behind other objectives"
+              },
+              {
+                "flag": "Ogated:9",
+                "title": "Objective #9 is gated behind other objectives"
+              },
+              {
+                "flag": "Ogated:10",
+                "title": "Objective #10 is gated behind other objectives"
+              },
+              {
+                "flag": "Ogated:11",
+                "title": "Objective #11 is gated behind other objectives"
+              },
+              {
+                "flag": "Ogated:12",
+                "title": "Objective #12 is gated behind other objectives"
+              },
+              {
+                "flag": "Ogated:13",
+                "title": "Objective #13 is gated behind other objectives"
+              },
+              {
+                "flag": "Ogated:14",
+                "title": "Objective #14 is gated behind other objectives"
+              },
+              {
+                "flag": "Ogated:15",
+                "title": "Objective #15 is gated behind other objectives"
+              },
+              {
+                "flag": "Ogated:16",
+                "title": "Objective #16 is gated behind other objectives"
+              },
+              {
+                "flag": "Ogated:17",
+                "title": "Objective #17 is gated behind other objectives"
+              },
+              {
+                "flag": "Ogated:18",
+                "title": "Objective #18 is gated behind other objectives"
+              }
+            ]
+          },
+          {
+            "flag": "@anon22",
+            "title": "Hard Required Objectives",
+            "compact": true,
+            "subcontrols": [
+              {
+                "flag": "Ohardreq:1",
+                "title": "Objective #1 is hard required"
+              },
+              {
+                "flag": "Ohardreq:2",
+                "title": "Objective #2 is hard required"
+              },
+              {
+                "flag": "Ohardreq:3",
+                "title": "Objective #3 is hard required"
+              },
+              {
+                "flag": "Ohardreq:4",
+                "title": "Objective #4 is hard required"
+              },
+              {
+                "flag": "Ohardreq:5",
+                "title": "Objective #5 is hard required"
+              },
+              {
+                "flag": "Ohardreq:6",
+                "title": "Objective #6 is hard required"
+              },
+              {
+                "flag": "Ohardreq:7",
+                "title": "Objective #7 is hard required"
+              },
+              {
+                "flag": "Ohardreq:8",
+                "title": "Objective #8 is hard required"
+              },
+              {
+                "flag": "Ohardreq:9",
+                "title": "Objective #9 is hard required"
+              },
+              {
+                "flag": "Ohardreq:10",
+                "title": "Objective #10 is hard required"
+              },
+              {
+                "flag": "Ohardreq:11",
+                "title": "Objective #11 is hard required"
+              },
+              {
+                "flag": "Ohardreq:12",
+                "title": "Objective #12 is hard required"
+              },
+              {
+                "flag": "Ohardreq:13",
+                "title": "Objective #13 is hard required"
+              },
+              {
+                "flag": "Ohardreq:14",
+                "title": "Objective #14 is hard required"
+              },
+              {
+                "flag": "Ohardreq:15",
+                "title": "Objective #15 is hard required"
+              },
+              {
+                "flag": "Ohardreq:16",
+                "title": "Objective #16 is hard required"
+              },
+              {
+                "flag": "Ohardreq:17",
+                "title": "Objective #17 is hard required"
+              },
+              {
+                "flag": "Ohardreq:18",
+                "title": "Objective #18 is hard required"
+              }
+            ]
+          },
+          {
+            "flag": "@anon23",
             "title": "Reward",
             "important": true,
             "type": "select",
@@ -3001,7 +3587,7 @@ var FLAG_UISPEC = [
     "title": "KEY ITEMS",
     "controls": [
       {
-        "flag": "@anon14",
+        "flag": "@anon24",
         "title": "Key Items",
         "important": true,
         "type": "select",
@@ -3049,7 +3635,7 @@ var FLAG_UISPEC = [
                 "hard": true
               },
               {
-                "flag": "@anon15",
+                "flag": "@anon25",
                 "title": "Underworld access",
                 "type": "select",
                 "subcontrols": [
@@ -3071,6 +3657,73 @@ var FLAG_UISPEC = [
                 "title": "No safety checks",
                 "description": "<ul>\n    <li>Normally, you are guaranteed a path to the underworld that does not require first going to the moon. This flag removes that check.</li>\n    <li>If Kmiab is enabled, key items may appear in the Lunar Subterrane monster-in-a-box chests.</li>\n</ul>",
                 "hard": true
+              },
+              {
+                "flag": "@anon26",
+                "title": "Starting items",
+                "type": "select",
+                "subcontrols": [
+                  {
+                    "flag": "Kstart:package",
+                    "title": "You start with the Package"
+                  },
+                  {
+                    "flag": "Kstart:sandruby",
+                    "title": "You start with the Sandruby"
+                  },
+                  {
+                    "flag": "Kstart:baron",
+                    "title": "You start with the Baron Key"
+                  },
+                  {
+                    "flag": "Kstart:twinharp",
+                    "title": "You start with the Twinharp"
+                  },
+                  {
+                    "flag": "Kstart:earthcrystal",
+                    "title": "You start with the Earth Crystal"
+                  },
+                  {
+                    "flag": "Kstart:magma",
+                    "title": "You start with the Magma Key"
+                  },
+                  {
+                    "flag": "Kstart:tower",
+                    "title": "You start with the Tower Key"
+                  },
+                  {
+                    "flag": "Kstart:hook",
+                    "title": "You start with the Hook"
+                  },
+                  {
+                    "flag": "Kstart:luca",
+                    "title": "You start with the Luca Key"
+                  },
+                  {
+                    "flag": "Kstart:darkcrystal",
+                    "title": "You start with the Dark Crystal"
+                  },
+                  {
+                    "flag": "Kstart:rat",
+                    "title": "You start with the Rat Tail"
+                  },
+                  {
+                    "flag": "Kstart:pan",
+                    "title": "You start with the Pan"
+                  },
+                  {
+                    "flag": "Kstart:crystal",
+                    "title": "You start with the Crystal"
+                  },
+                  {
+                    "flag": "Kstart:legend",
+                    "title": "You start with the Legend Sword"
+                  },
+                  {
+                    "flag": "Kstart:adamant",
+                    "title": "You start with the Adamant"
+                  }
+                ]
               }
             ]
           }
@@ -3100,7 +3753,7 @@ var FLAG_UISPEC = [
     "title": "CHARACTERS",
     "controls": [
       {
-        "flag": "@anon16",
+        "flag": "@anon27",
         "title": "Characters",
         "important": true,
         "type": "select",
@@ -3121,7 +3774,7 @@ var FLAG_UISPEC = [
                 "description": "Normally, the randomizer will try to include every eligible character in the game at least once. This flag removes that logic, meaning some eligible characters may not appear."
               },
               {
-                "flag": "@anon17",
+                "flag": "@anon28",
                 "title": "Limit number of distinct characters",
                 "hard": true,
                 "null": true,
@@ -3182,12 +3835,12 @@ var FLAG_UISPEC = [
                 ]
               },
               {
-                "flag": "@anon18",
+                "flag": "@anon29",
                 "title": "Specify available characters",
                 "type": "select",
                 "subcontrols": [
                   {
-                    "flag": "@anon19",
+                    "flag": "@anon30",
                     "title": "Only include specific characters",
                     "compact": true,
                     "subcontrols": [
@@ -3242,7 +3895,7 @@ var FLAG_UISPEC = [
                     ]
                   },
                   {
-                    "flag": "@anon20",
+                    "flag": "@anon31",
                     "title": "Exclude specific characters",
                     "compact": true,
                     "subcontrols": [
@@ -3367,7 +4020,7 @@ var FLAG_UISPEC = [
                 "description": "Normally, the randomizer will try to include every eligible character in the game at least once. This flag removes that logic, meaning some eligible characters may not appear."
               },
               {
-                "flag": "@anon21",
+                "flag": "@anon32",
                 "title": "Limit number of distinct characters",
                 "hard": true,
                 "null": true,
@@ -3428,12 +4081,12 @@ var FLAG_UISPEC = [
                 ]
               },
               {
-                "flag": "@anon22",
+                "flag": "@anon33",
                 "title": "Specify available characters",
                 "type": "select",
                 "subcontrols": [
                   {
-                    "flag": "@anon23",
+                    "flag": "@anon34",
                     "title": "Only include specific characters",
                     "compact": true,
                     "subcontrols": [
@@ -3488,7 +4141,7 @@ var FLAG_UISPEC = [
                     ]
                   },
                   {
-                    "flag": "@anon24",
+                    "flag": "@anon35",
                     "title": "Exclude specific characters",
                     "compact": true,
                     "subcontrols": [
@@ -3561,7 +4214,12 @@ var FLAG_UISPEC = [
         "hard": true
       },
       {
-        "flag": "@anon25",
+        "flag": "Cnopartner",
+        "title": "No starting partner",
+        "hard": true
+      },
+      {
+        "flag": "@anon36",
         "title": "Specify possible starting characters",
         "null": true,
         "type": "select",
@@ -3700,6 +4358,10 @@ var FLAG_UISPEC = [
         "description": "Characters start with a random low-level weapon and no armor. (Duplicate characters will have the same starting gear.)"
       },
       {
+        "flag": "Cpaladin",
+        "title": "Cecil starts the game as a paladin"
+      },
+      {
         "flag": "Cnodupes",
         "title": "Duplicate characters not allowed",
         "description": "If a duplicate character tries to join your party, instead nothing happens."
@@ -3710,7 +4372,7 @@ var FLAG_UISPEC = [
         "description": "Dismissed characters cannot be retrieved. (Normally, dismissed characters go to the Mysidia crystal room and the Tower of Wishes where they may be reclaimed.)"
       },
       {
-        "flag": "@anon26",
+        "flag": "@anon37",
         "title": "Limit maximum party size",
         "type": "select",
         "subcontrols": [
@@ -3738,7 +4400,7 @@ var FLAG_UISPEC = [
         "description": "You have the choice of whether to accept each new party member, but once your party is full, you cannot recruit anyone else."
       },
       {
-        "flag": "@anon27",
+        "flag": "@anon38",
         "title": "Permadeath options",
         "type": "select",
         "subcontrols": [
@@ -3757,10 +4419,23 @@ var FLAG_UISPEC = [
         ]
       },
       {
-        "flag": "Chero",
-        "title": "Hero challenge",
-        "description": "<ul><li>The starting character is your hero.</li><li>The hero is the only instance of that character available (unless other flags force it).</li><li>The hero cannot be dismissed.</li><li>The hero fights the Mt. Ordeals mirror room boss alone.</li><li>Kokkol will craft an FF4 Advance weapon usable by the hero.</li><li>The hero gains EXP even if incapacitated.</li><li>The hero is your agility anchor.</li><li>The hero is exempt from permadeath.</li></ul>",
-        "hard": true
+        "flag": "@anon39",
+        "title": "Hero Options",
+        "type": "select",
+        "subcontrols": [
+          {
+            "flag": "Chero",
+            "title": "Hero challenge",
+            "description": "<ul><li>The starting character is your hero.</li><li>The hero is the only instance of that character available (unless other flags force it).</li><li>The hero cannot be dismissed.</li><li>The hero fights the Mt. Ordeals mirror room boss alone.</li><li>Kokkol will craft an FF4 Advance weapon usable by the hero.</li><li>The hero gains EXP even if incapacitated.</li><li>The hero is your agility anchor.</li><li>The hero is exempt from permadeath.</li></ul>",
+            "hard": true
+          },
+          {
+            "flag": "Csuperhero",
+            "title": "Superhero challenge",
+            "description": "<ul><li>This flag acts the same as Chero, except your starting character will obtain incredible stat boosts, until finding the earth crystal (their one weakness).</li></ul>",
+            "hard": true
+          }
+        ]
       }
     ]
   },
@@ -3768,7 +4443,7 @@ var FLAG_UISPEC = [
     "title": "TREASURES",
     "controls": [
       {
-        "flag": "@anon28",
+        "flag": "@anon40",
         "title": "Treasure chests (other than MIABs)",
         "important": true,
         "type": "select",
@@ -3779,7 +4454,7 @@ var FLAG_UISPEC = [
             "null": true,
             "subcontrols": [
               {
-                "flag": "@anon29",
+                "flag": "@anon41",
                 "title": "Sparse options",
                 "type": "select",
                 "subcontrols": [
@@ -3829,7 +4504,7 @@ var FLAG_UISPEC = [
             "description": "Treasure contents are the same as in original FF4, but their positions are shuffled. This randomization is weighted so that overworld treasures tend to remain in the overworld, and similarly for underworld/moon treasures.",
             "subcontrols": [
               {
-                "flag": "@anon29",
+                "flag": "@anon41",
                 "title": "Sparse options",
                 "type": "select",
                 "subcontrols": [
@@ -3879,7 +4554,7 @@ var FLAG_UISPEC = [
             "description": "A basic randomization, allowing items of reasonable strength to appear. Items are equally likely to appear in any chest regardless of location.",
             "subcontrols": [
               {
-                "flag": "@anon29",
+                "flag": "@anon41",
                 "title": "Sparse options",
                 "type": "select",
                 "subcontrols": [
@@ -3922,7 +4597,7 @@ var FLAG_UISPEC = [
                 ]
               },
               {
-                "flag": "@anon30",
+                "flag": "@anon42",
                 "title": "Restrict item quality",
                 "type": "select",
                 "subcontrols": [
@@ -3947,6 +4622,29 @@ var FLAG_UISPEC = [
                     "flag": "Tmaxtier:3",
                     "title": "Chests contain tier 3 items at best",
                     "hard": true
+                  }
+                ]
+              },
+              {
+                "flag": "@anon43",
+                "title": "Unrestrict item quality",
+                "compact": true,
+                "subcontrols": [
+                  {
+                    "flag": "Tunrestrict:treasury",
+                    "title": "Chests in the toroia treasury will be unaffected by any Tmaxtier flags"
+                  },
+                  {
+                    "flag": "Tunrestrict:moon",
+                    "title": "Chests on the moon will be unaffected by any Tmaxtier flags"
+                  },
+                  {
+                    "flag": "Tunrestrict:underworld",
+                    "title": "Chests in the underworld will be unaffected by any Tmaxtier flags"
+                  },
+                  {
+                    "flag": "Tunrestrict:overworld",
+                    "title": "Chests on the overworld will be unaffected by any Tmaxtier flags"
                   }
                 ]
               }
@@ -3958,7 +4656,7 @@ var FLAG_UISPEC = [
             "description": "A skill-testing randomization, limiting the strength of available items, and weighted to favor stronger items in later-game and infrequently-visited areas.",
             "subcontrols": [
               {
-                "flag": "@anon29",
+                "flag": "@anon41",
                 "title": "Sparse options",
                 "type": "select",
                 "subcontrols": [
@@ -4001,7 +4699,7 @@ var FLAG_UISPEC = [
                 ]
               },
               {
-                "flag": "@anon30",
+                "flag": "@anon42",
                 "title": "Restrict item quality",
                 "type": "select",
                 "subcontrols": [
@@ -4026,6 +4724,29 @@ var FLAG_UISPEC = [
                     "flag": "Tmaxtier:3",
                     "title": "Chests contain tier 3 items at best",
                     "hard": true
+                  }
+                ]
+              },
+              {
+                "flag": "@anon43",
+                "title": "Unrestrict item quality",
+                "compact": true,
+                "subcontrols": [
+                  {
+                    "flag": "Tunrestrict:treasury",
+                    "title": "Chests in the toroia treasury will be unaffected by any Tmaxtier flags"
+                  },
+                  {
+                    "flag": "Tunrestrict:moon",
+                    "title": "Chests on the moon will be unaffected by any Tmaxtier flags"
+                  },
+                  {
+                    "flag": "Tunrestrict:underworld",
+                    "title": "Chests in the underworld will be unaffected by any Tmaxtier flags"
+                  },
+                  {
+                    "flag": "Tunrestrict:overworld",
+                    "title": "Chests on the overworld will be unaffected by any Tmaxtier flags"
                   }
                 ]
               }
@@ -4037,7 +4758,7 @@ var FLAG_UISPEC = [
             "description": "An unrestricted randomization, allowing equal chance for items to appear in any chest, including the most powerful items.",
             "subcontrols": [
               {
-                "flag": "@anon29",
+                "flag": "@anon41",
                 "title": "Sparse options",
                 "type": "select",
                 "subcontrols": [
@@ -4080,7 +4801,7 @@ var FLAG_UISPEC = [
                 ]
               },
               {
-                "flag": "@anon30",
+                "flag": "@anon42",
                 "title": "Restrict item quality",
                 "type": "select",
                 "subcontrols": [
@@ -4105,6 +4826,29 @@ var FLAG_UISPEC = [
                     "flag": "Tmaxtier:3",
                     "title": "Chests contain tier 3 items at best",
                     "hard": true
+                  }
+                ]
+              },
+              {
+                "flag": "@anon43",
+                "title": "Unrestrict item quality",
+                "compact": true,
+                "subcontrols": [
+                  {
+                    "flag": "Tunrestrict:treasury",
+                    "title": "Chests in the toroia treasury will be unaffected by any Tmaxtier flags"
+                  },
+                  {
+                    "flag": "Tunrestrict:moon",
+                    "title": "Chests on the moon will be unaffected by any Tmaxtier flags"
+                  },
+                  {
+                    "flag": "Tunrestrict:underworld",
+                    "title": "Chests in the underworld will be unaffected by any Tmaxtier flags"
+                  },
+                  {
+                    "flag": "Tunrestrict:overworld",
+                    "title": "Chests on the overworld will be unaffected by any Tmaxtier flags"
                   }
                 ]
               }
@@ -4116,7 +4860,7 @@ var FLAG_UISPEC = [
             "description": "Allows items of any strength to appear, including the most powerful items, but uses location-based weighting like the pro randomization.",
             "subcontrols": [
               {
-                "flag": "@anon29",
+                "flag": "@anon41",
                 "title": "Sparse options",
                 "type": "select",
                 "subcontrols": [
@@ -4159,7 +4903,7 @@ var FLAG_UISPEC = [
                 ]
               },
               {
-                "flag": "@anon30",
+                "flag": "@anon42",
                 "title": "Restrict item quality",
                 "type": "select",
                 "subcontrols": [
@@ -4184,6 +4928,29 @@ var FLAG_UISPEC = [
                     "flag": "Tmaxtier:3",
                     "title": "Chests contain tier 3 items at best",
                     "hard": true
+                  }
+                ]
+              },
+              {
+                "flag": "@anon43",
+                "title": "Unrestrict item quality",
+                "compact": true,
+                "subcontrols": [
+                  {
+                    "flag": "Tunrestrict:treasury",
+                    "title": "Chests in the toroia treasury will be unaffected by any Tmaxtier flags"
+                  },
+                  {
+                    "flag": "Tunrestrict:moon",
+                    "title": "Chests on the moon will be unaffected by any Tmaxtier flags"
+                  },
+                  {
+                    "flag": "Tunrestrict:underworld",
+                    "title": "Chests in the underworld will be unaffected by any Tmaxtier flags"
+                  },
+                  {
+                    "flag": "Tunrestrict:overworld",
+                    "title": "Chests on the overworld will be unaffected by any Tmaxtier flags"
                   }
                 ]
               }
@@ -4201,7 +4968,7 @@ var FLAG_UISPEC = [
         "title": "No J-items in chests"
       },
       {
-        "flag": "@anon31",
+        "flag": "@anon44",
         "title": "Junk management",
         "type": "select",
         "subcontrols": [
@@ -4223,7 +4990,7 @@ var FLAG_UISPEC = [
     "title": "SHOPS",
     "controls": [
       {
-        "flag": "@anon32",
+        "flag": "@anon45",
         "title": "Shops",
         "important": true,
         "type": "select",
@@ -4283,6 +5050,16 @@ var FLAG_UISPEC = [
             "hard": true
           },
           {
+            "flag": "Ssame",
+            "title": "Shops sell only one type of item.  All shops in the game are the same.",
+            "hard": true
+          },
+          {
+            "flag": "Ssingles",
+            "title": "Shops sell only a single item",
+            "hard": true
+          },
+          {
             "flag": "Sempty",
             "title": "Shops sell nothing",
             "hard": true
@@ -4294,7 +5071,7 @@ var FLAG_UISPEC = [
         "title": "Shop items are free"
       },
       {
-        "flag": "@anon33",
+        "flag": "@anon46",
         "title": "Sell prices",
         "type": "select",
         "subcontrols": [
@@ -4323,6 +5100,264 @@ var FLAG_UISPEC = [
       {
         "flag": "Sno:life",
         "title": "No Life potions in shops"
+      },
+      {
+        "flag": "@anon47",
+        "title": "Shop price adjustments",
+        "type": "select",
+        "subcontrols": [
+          {
+            "flag": "Sprice:20",
+            "title": "Shop prices are adjusted to 20% of their normal value",
+            "subcontrols": [
+              {
+                "flag": "@anon48",
+                "title": "Only affect specific item types",
+                "compact": true,
+                "subcontrols": [
+                  {
+                    "flag": "Spricey:items",
+                    "title": "Only affect consumable items"
+                  },
+                  {
+                    "flag": "Spricey:weapons",
+                    "title": "Only affect weapons"
+                  },
+                  {
+                    "flag": "Spricey:armor",
+                    "title": "Only affect armor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "flag": "Sprice:40",
+            "title": "Shop prices are adjusted to 40% of their normal value",
+            "subcontrols": [
+              {
+                "flag": "@anon48",
+                "title": "Only affect specific item types",
+                "compact": true,
+                "subcontrols": [
+                  {
+                    "flag": "Spricey:items",
+                    "title": "Only affect consumable items"
+                  },
+                  {
+                    "flag": "Spricey:weapons",
+                    "title": "Only affect weapons"
+                  },
+                  {
+                    "flag": "Spricey:armor",
+                    "title": "Only affect armor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "flag": "Sprice:60",
+            "title": "Shop prices are adjusted to 60% of their normal value",
+            "subcontrols": [
+              {
+                "flag": "@anon48",
+                "title": "Only affect specific item types",
+                "compact": true,
+                "subcontrols": [
+                  {
+                    "flag": "Spricey:items",
+                    "title": "Only affect consumable items"
+                  },
+                  {
+                    "flag": "Spricey:weapons",
+                    "title": "Only affect weapons"
+                  },
+                  {
+                    "flag": "Spricey:armor",
+                    "title": "Only affect armor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "flag": "Sprice:80",
+            "title": "Shop prices are adjusted to 80% of their normal value",
+            "subcontrols": [
+              {
+                "flag": "@anon48",
+                "title": "Only affect specific item types",
+                "compact": true,
+                "subcontrols": [
+                  {
+                    "flag": "Spricey:items",
+                    "title": "Only affect consumable items"
+                  },
+                  {
+                    "flag": "Spricey:weapons",
+                    "title": "Only affect weapons"
+                  },
+                  {
+                    "flag": "Spricey:armor",
+                    "title": "Only affect armor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "flag": "Sprice:120",
+            "title": "Shop prices are adjusted to 120% of their normal value",
+            "subcontrols": [
+              {
+                "flag": "@anon48",
+                "title": "Only affect specific item types",
+                "compact": true,
+                "subcontrols": [
+                  {
+                    "flag": "Spricey:items",
+                    "title": "Only affect consumable items"
+                  },
+                  {
+                    "flag": "Spricey:weapons",
+                    "title": "Only affect weapons"
+                  },
+                  {
+                    "flag": "Spricey:armor",
+                    "title": "Only affect armor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "flag": "Sprice:140",
+            "title": "Shop prices are adjusted to 140% of their normal value",
+            "subcontrols": [
+              {
+                "flag": "@anon48",
+                "title": "Only affect specific item types",
+                "compact": true,
+                "subcontrols": [
+                  {
+                    "flag": "Spricey:items",
+                    "title": "Only affect consumable items"
+                  },
+                  {
+                    "flag": "Spricey:weapons",
+                    "title": "Only affect weapons"
+                  },
+                  {
+                    "flag": "Spricey:armor",
+                    "title": "Only affect armor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "flag": "Sprice:160",
+            "title": "Shop prices are adjusted to 160% of their normal value",
+            "subcontrols": [
+              {
+                "flag": "@anon48",
+                "title": "Only affect specific item types",
+                "compact": true,
+                "subcontrols": [
+                  {
+                    "flag": "Spricey:items",
+                    "title": "Only affect consumable items"
+                  },
+                  {
+                    "flag": "Spricey:weapons",
+                    "title": "Only affect weapons"
+                  },
+                  {
+                    "flag": "Spricey:armor",
+                    "title": "Only affect armor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "flag": "Sprice:180",
+            "title": "Shop prices are adjusted to 180% of their normal value",
+            "subcontrols": [
+              {
+                "flag": "@anon48",
+                "title": "Only affect specific item types",
+                "compact": true,
+                "subcontrols": [
+                  {
+                    "flag": "Spricey:items",
+                    "title": "Only affect consumable items"
+                  },
+                  {
+                    "flag": "Spricey:weapons",
+                    "title": "Only affect weapons"
+                  },
+                  {
+                    "flag": "Spricey:armor",
+                    "title": "Only affect armor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "flag": "Sprice:200",
+            "title": "Shop prices are adjusted to 200% of their normal value",
+            "subcontrols": [
+              {
+                "flag": "@anon48",
+                "title": "Only affect specific item types",
+                "compact": true,
+                "subcontrols": [
+                  {
+                    "flag": "Spricey:items",
+                    "title": "Only affect consumable items"
+                  },
+                  {
+                    "flag": "Spricey:weapons",
+                    "title": "Only affect weapons"
+                  },
+                  {
+                    "flag": "Spricey:armor",
+                    "title": "Only affect armor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "flag": "Sprice:400",
+            "title": "Shop prices are adjusted to 400% of their normal value",
+            "hard": true,
+            "subcontrols": [
+              {
+                "flag": "@anon48",
+                "title": "Only affect specific item types",
+                "compact": true,
+                "subcontrols": [
+                  {
+                    "flag": "Spricey:items",
+                    "title": "Only affect consumable items"
+                  },
+                  {
+                    "flag": "Spricey:weapons",
+                    "title": "Only affect weapons"
+                  },
+                  {
+                    "flag": "Spricey:armor",
+                    "title": "Only affect armor"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -4330,7 +5365,7 @@ var FLAG_UISPEC = [
     "title": "BOSSES",
     "controls": [
       {
-        "flag": "@anon34",
+        "flag": "@anon49",
         "title": "Bosses",
         "important": true,
         "type": "select",
@@ -4367,7 +5402,7 @@ var FLAG_UISPEC = [
         "description": "Replaces the Fabul Gauntlet boss with five unscaled normal enemy encounters from the nearby area."
       },
       {
-        "flag": "@anon35",
+        "flag": "@anon50",
         "title": "Change Wyvern's opening MegaNuke",
         "type": "select",
         "subcontrols": [
@@ -4379,6 +5414,11 @@ var FLAG_UISPEC = [
             "flag": "Bwhichburn",
             "title": "Replace Wyvern's opening MegaNuke with random attack",
             "description": "The replacement attack will be weaker than MegaNuke (unless <em>Bunsafe</em> is enabled, in which case it may not be)."
+          },
+          {
+            "flag": "Bitburns",
+            "title": "Replace Wyvern's opening MegaNuke with random, incredibly dangerous attack",
+            "description": "The replacement attack will include Meganuke, Big Bang, Zanteksuken, Full party charm, and Meteo"
           }
         ]
       }
@@ -4388,7 +5428,7 @@ var FLAG_UISPEC = [
     "title": "ENCOUNTERS",
     "controls": [
       {
-        "flag": "@anon36",
+        "flag": "@anon51",
         "title": "Random encounter rate",
         "important": true,
         "type": "select",
@@ -4461,7 +5501,7 @@ var FLAG_UISPEC = [
         ]
       },
       {
-        "flag": "@anon37",
+        "flag": "@anon52",
         "title": "Drop tables",
         "type": "select",
         "subcontrols": [
@@ -4538,7 +5578,7 @@ var FLAG_UISPEC = [
         "description": "Starter kits allow you to begin the game with additional items in your inventory.",
         "subcontrols": [
           {
-            "flag": "@anon38",
+            "flag": "@anon53",
             "title": "Kit 1",
             "type": "select",
             "subcontrols": [
@@ -4675,7 +5715,7 @@ var FLAG_UISPEC = [
             ]
           },
           {
-            "flag": "@anon39",
+            "flag": "@anon54",
             "title": "Kit 2",
             "type": "select",
             "subcontrols": [
@@ -4812,7 +5852,7 @@ var FLAG_UISPEC = [
             ]
           },
           {
-            "flag": "@anon40",
+            "flag": "@anon55",
             "title": "Kit 3",
             "type": "select",
             "subcontrols": [
@@ -4964,7 +6004,7 @@ var FLAG_UISPEC = [
         "title": "Edward can equip the Spoon"
       },
       {
-        "flag": "@anon41",
+        "flag": "@anon56",
         "title": "Smithy reward",
         "type": "select",
         "subcontrols": [
@@ -5002,7 +6042,7 @@ var FLAG_UISPEC = [
         ]
       },
       {
-        "flag": "@anon42",
+        "flag": "@anon57",
         "title": "Restore vanilla behaviors",
         "subcontrols": [
           {
@@ -5063,7 +6103,7 @@ var FLAG_UISPEC = [
         "description": "<ul>\n    <li>Guidingway will introduce the challenge.</li>\n    <li>Guidingway will not explain the challenge.</li>\n    <li>Wacky challenges are not intended to be balanced, robust, coherent, fair, or bug-free.</li>\n    <li>(They are intended to be wacky.)</li>\n</ul>",
         "subcontrols": [
           {
-            "flag": "@anon43",
+            "flag": "@anon58",
             "title": "Select challenge",
             "type": "select",
             "subcontrols": [
@@ -5226,7 +6266,7 @@ var FLAG_UISPEC = [
     "title": "SPOILERS",
     "controls": [
       {
-        "flag": "@anon44",
+        "flag": "@anon59",
         "title": "No spoiler log",
         "type": "select",
         "subcontrols": [
@@ -5280,7 +6320,7 @@ var FLAG_UISPEC = [
             ]
           },
           {
-            "flag": "@anon45",
+            "flag": "@anon60",
             "title": "Partial spoiler log",
             "subcontrols": [
               {
@@ -5296,7 +6336,7 @@ var FLAG_UISPEC = [
                 "title": "Spoil characters"
               },
               {
-                "flag": "@anon46",
+                "flag": "@anon61",
                 "title": "Spoil treasure chests",
                 "type": "select",
                 "subcontrols": [

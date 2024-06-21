@@ -94,14 +94,41 @@ UNSAFE_COMMANDS = {
     '#spell.Enemy_BigBang' : 'all characters',
     }
 
+WORST_COMMANDS = {
+    '#spell.Enemy_Globe199' : 'front row / back row',
+    '#spell.Quake' : 'all characters',
+    '#spell.Enemy_MegaNuke' : 'all characters',
+    '#spell.Meteo' : 'all characters',
+    '#spell.Enemy_Odin' : 'all characters',
+    '#spell.Enemy_BigBang' : 'all characters',
+    '#spell.Enemy_Charm' : 'all characters',
+    '#spell.Enemy_Glance' : 'all characters',
+    '#spell.Enemy_Magnet' : 'front row / back row',
+    '#spell.Stone' : 'front row / back row',
+    '#spell.Fatal' : 'front row / back row',
+    '#spell.Stop' : 'front row / back row',
+    '#spell.Enemy_Gaze' : 'front row / back row',
+    '#spell.Enemy_Bluster' : 'front row / back row',
+    }
+
 def apply(env):
     if env.options.flags.has('wyvern_no_meganuke'):
         env.add_file('scripts/wyvern_nomeganuke.f4c')
-
     elif env.options.flags.has('wyvern_random_meganuke'):
         commands = dict(POSSIBLE_COMMANDS)
         if env.options.flags.has('bosses_unsafe'):
             commands.update(UNSAFE_COMMANDS)
+    elif env.options.flags.has('wyvern_all_bad_things'):
+        commands = dict(WORST_COMMANDS)
+        if 'wyvern' in [env.assignments[b] for b in ['elements_slot','dlunar_slot']]:
+            commands.update({'#spell.Enemy_Laser' : 'all characters'})
+            commands.update({'#spell.Enemy_Wave' : 'all characters'})
+            commands.update({'#spell.Enemy_Tornado' : 'all characters'})
+            commands.update({'#spell.Enemy_Blizzard' : 'all characters'})
+        if 'wyvern' in [env.assignments[b] for b in ['cpu_slot','ogopogo_slot']]:
+            commands.update({'#spell.Enemy_Glare' : 'all characters'})
+            commands.update({'#spell.Enemy_HeatRay' : 'all characters'})
+            commands.update({'#spell.White' : 'all characters'})
 
         cmd = env.rnd.choice(list(commands))
         target = env.rnd.choice(commands[cmd].split(' / '))

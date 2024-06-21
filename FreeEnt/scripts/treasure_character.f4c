@@ -1,0 +1,22 @@
+consts(item) {
+    $FD fe_CharacterChestItem
+}
+
+text(bank 1 message $83) {
+    Found a character!
+}
+
+msfpatch {
+    TreasureCharacter_CheckIfChar:             
+        lda $08
+        cmp #$FD  // character item
+        beq $+DoCharacterReward   
+        rtl
+    %DoCharacterReward:
+        lda #$83 // message is incremented by 1
+        sta $b2 
+        lda #$13
+        jsl $=Rewards__DeliverFromSlot
+        sec      
+        rtl
+}

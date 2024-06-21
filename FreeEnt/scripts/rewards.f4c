@@ -90,12 +90,23 @@ consts(reward_slot)
     $5B     forge_item
     $5C     pink_trade_item
     $5D     fixed_crystal
+    $5E     gated_objective
 
-    // current maximum: 0x60 reward slots
+    $5E     gated_objective
+    $5F     treasure_character_1
+    $60     treasure_character_2
+    $61     treasure_character_3
+    $62     treasure_character_4
+    $63     treasure_character_5
+    $64     miab_character_1
+    $65     miab_character_2
+    $66     miab_character_3
+    $67     miab_character_4   
+    // current maximum: 0x70 reward slots
 }
 
 msfpatch {
-    .def  Rewards__MaxSlotCount  $60
+    .def  Rewards__MaxSlotCount  $70    
 }
 
 msfpatch {
@@ -197,6 +208,12 @@ msfpatch {
         "Adamant Grotto[$cc][tail]Pink trade[$cd]     "   // $5C     pink_trade_item
         "Objective completion            "   // $5D     fixed_crystal
 }
+
+text(bank 1 message $120) {
+The earth crystal weakens
+your super powers!
+}
+
 
 msfpatch {
     .def Rewards__CurrentSlot     $7e1621
@@ -317,14 +334,40 @@ msfpatch {
         ldx #$_Tracker__KeyItemFoundFlags
         jsl $=Tracker__SetBit
         lda $_Rewards__CurrentValueLo
-        cmp #$3e // check if spoon
-        bne $+ItemNotYetUsed
+        // %flag superhero_challenge on%
+        // Earth crystal depowers superhero
+        cmp #$f1        
+        beq $+RemoveSuperhero
+        // %end%
+    %SkipSuperHeroCheck:
+        cmp #$3e // check if spoon        
+        bne $+ItemNotYetUsed        
         // for items like spoon, mark as already "used"
         lda $1680
         ldx #$_Tracker__KeyItemUsedFlags
         jsl $=Tracker__SetBit
-    %ItemNotYetUsed:
-    
+        bra $+ItemNotYetUsed
+    %RemoveSuperhero:       
+        // Show depower message
+        lda #$20 // refers to $120 since this is the behavior for a bank 1 message 
+        sta $b2
+        ldx #$b1e1
+        jsl $=Bank00LongCallX
+        ldx #$b0d1
+        jsl $=Bank00LongCallX
+        ldx #$b164
+        jsl $=Bank00LongCallX
+        ldx #$0000
+
+    %RemoveSuperheroLoop:        
+        lda $100f,x
+        sec
+        sbc #$32
+        sta $100f,x
+        inx
+        cpx #$000a
+        bcc $+RemoveSuperheroLoop
+    %ItemNotYetUsed:    
         lda $1680
         asl a
         tax
@@ -332,10 +375,13 @@ msfpatch {
         sta $=Tracker__KeyItemLocations,x
         inx
         lda #$00
-        sta $=Tracker__KeyItemLocations,x
+        sta $=Tracker__KeyItemLocations,x       
 
-        rtl
+        rtl   
+        
 }
+
+
 
 msfpatch {
     // params: A = reward slot, X = target text buffer

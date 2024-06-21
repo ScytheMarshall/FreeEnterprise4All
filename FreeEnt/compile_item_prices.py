@@ -16,6 +16,17 @@ def apply(env):
             item = items_dbview.find_one(lambda it: it.code == item_code)
             price = (item.price if item else 0)
 
+        price_adjustment = env.options.flags.get_suffix('Sprice:')        
+        has_any_adjustment_filters = env.options.flags.get_suffix('Spricey:')
+        can_adjust_price = not has_any_adjustment_filters or ((env.options.flags.has('Spricey:items') and item.category == 'item' ) or (env.options.flags.has('Spricey:weapons') and item.category == 'weapon' ) or (env.options.flags.has('Spricey:armor') and item.category == 'armor' ))
+        if price_adjustment and can_adjust_price: 
+            prevPrice = price;
+            price = price * float(price_adjustment)//100.0
+            price = int(price)
+            if (price > 0 and price < 10):
+                price = 10
+            #print(f"{item.const} adjust pricing from "+price_adjustment+" from "+str(prevPrice)+" to "+str(price))
+
         if price > 126000:
             prices.append(0xFF)
             megaprices[item_code] = price

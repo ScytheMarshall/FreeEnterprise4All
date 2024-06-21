@@ -5,7 +5,7 @@ event($10)  //Opening events
     // Initial game state
     set #OpeningComplete
     set #DamcyanBombed
-    set #ReinforcedEnterprise
+    set #ReinforcedEnterprise    
 
     // disable "free" spots with no free lunch flag
     // (Damcyan needs special case handling in damcyan.f4c)
@@ -36,7 +36,9 @@ event($10)  //Opening events
     [#B #DebugFillShadowParty]
     // %end%
 
-    // %debug init%
+    // %flag characters_cecil_paladin on%
+    set #CecilBecamePaladin
+    [#B #Rando_PaladinizeCecil]    
     // %end%
 
     // %quickstart%
@@ -66,7 +68,7 @@ event($10)  //Opening events
         p #Soldier2 toggle visible
         p #Soldier3 toggle visible
     }
-
+    
     toggle screen fade
     pause 2
     player visible
@@ -121,18 +123,36 @@ event($10)  //Opening events
     }
     pause 2
 
-    [#B #Text_LoadRewardNameFromSlot #reward_slot.starting_partner_character 0]
-    map message 6 // Let's go!
+
+    // Has partner flag
+    set #Temp
 
     // %flags: Cparty:1 ~Cpermajoin%
-    p #Kain1 toggle visible
+    clear #Temp
     // %end%
 
-    //TODO: restore? [#B #Objectives_TickRewardSlot #reward_slot.starting_partner_character]
-    [#B #Rando_DeliverRewardFromSlot #reward_slot.starting_partner_character]
-    pause 2
+    [#B #Rando_CheckFlag #randoflag.no_starting_partner]    
+    [#B #If #Flag #flag.Result] {
+        clear #Temp
+    }
 
-    [#B #If #not_PartySize 1]
+    [#B #If #Flag #flag.Temp]
+    {
+        [#B #Text_LoadRewardNameFromSlot #reward_slot.starting_partner_character 0]
+        map message 6 // Let's go!
+
+        //TODO: restore? [#B #Objectives_TickRewardSlot #reward_slot.starting_partner_character]
+        [#B #Rando_DeliverRewardFromSlot #reward_slot.starting_partner_character]
+        pause 2
+    }
+        
+    // %flags: superhero_challenge%
+    [#B #MakeSuperhero]
+    // %end%
+    // %debug init%
+    // %end%
+
+    [#B #If #Flag #flag.Temp]
     {
         batch 1 {
             player bow head
@@ -176,7 +196,7 @@ event($10)  //Opening events
         }
     }
 
-    [#B #If #PartySize 1]
+    [#B #If #not_Flag #flag.Temp]
     {
         player bow head
         pause 2
@@ -216,13 +236,13 @@ event($10)  //Opening events
     }
     load map #DockedAirship at 25 8 facing left
     player face left
-    [#B #If #not_PartySize 1] {
+    [#B #If #Flag #flag.Temp] {
         batch {
             player move left
             p #Kain toggle visible
         }
     }
-    [#B #If #PartySize 1] {
+    [#B #If #not_Flag #flag.Temp] {
         player move left
     }
 

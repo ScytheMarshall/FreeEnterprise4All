@@ -27,7 +27,16 @@ SLOTS = {
     'arydia_slot' : 0x11, 
     'edge_slot' : 0x12,
     'fusoya_slot' : 0x13, 
-    'kain3_slot' : 0x14
+    'kain3_slot' : 0x14,
+    'treasure_character_1' : 0x15, 
+    'treasure_character_2' : 0x16,
+    'treasure_character_3' : 0x17, 
+    'treasure_character_4' : 0x18,
+    'treasure_character_5' : 0x19,
+    'miab_character_1' : 0x1A, 
+    'miab_character_2' : 0x1B,
+    'miab_character_3' : 0x1C, 
+    'miab_character_4' : 0x1D,
 }
 
 DEFAULTS = {
@@ -48,7 +57,16 @@ DEFAULTS = {
     'arydia_slot' : 'rydia', 
     'edge_slot' : 'edge',
     'fusoya_slot' : 'fusoya', 
-    'kain3_slot' : 'kain'    
+    'kain3_slot' : 'kain',
+    'treasure_slot_1' : 'tellah',
+    'treasure_slot_2' : 'tellah',
+    'treasure_slot_3' : 'tellah',
+    'treasure_slot_4' : 'tellah',
+    'treasure_slot_5' : 'tellah',
+    'miab_slot_1' : 'tellah',
+    'miab_slot_2' : 'tellah',
+    'miab_slot_3' : 'tellah',
+    'miab_slot_4' : 'tellah',
 }
 
 MUTUALLY_EXCLUSIVE_SLOTS = [
@@ -119,8 +137,7 @@ def apply(env):
             restricted_characters.append(ch)
     
     if not restricted_characters:
-        restricted_characters.extend(['fusoya', 'edge'])
-        
+        restricted_characters.extend(['fusoya', 'edge'])       
 
     if requested_start_characters and disrequested_start_characters:
         raise Exception("Cannot specify both inclusions and exclusions for starting character pool")
@@ -128,6 +145,18 @@ def apply(env):
         start_character = env.rnd.choice(requested_start_characters)
 
     assignable_slots = STARTING_SLOTS.copy()
+    
+    # maximum party size
+    max_party_size = env.options.flags.get_suffix('Cparty:')
+    if max_party_size:
+        max_party_size = int(max_party_size)
+    else:
+        max_party_size = 5
+
+    env.add_binary(BusAddress(0x21F0FF), [max_party_size])
+    
+    if env.options.flags.has('no_starting_partner'):
+        assignable_slots.remove('kain1_slot')
     if not env.options.flags.has('no_earned_characters'):
         assignable_slots.extend(EASY_SLOTS + HARD_SLOTS)
     if not env.options.flags.has('no_free_characters'):
@@ -196,7 +225,7 @@ def apply(env):
                 allowed_characters.append(char)
 
         # remove hero from further allowance, if able
-        if env.options.flags.has('hero_challenge') and start_character in allowed_characters and len(allowed_characters) > 1 and start_character not in env.meta['objective_required_characters']:
+        if (env.options.flags.has('hero_challenge') or env.options.flags.has('superhero_challenge')) and start_character in allowed_characters and len(allowed_characters) > 1 and start_character not in env.meta['objective_required_characters']:
             allowed_characters.remove(start_character)
 
         pregame_name_characters = set(allowed_characters)
@@ -233,6 +262,20 @@ def apply(env):
         if start_character is not None:
             assignable_slots.remove('dkcecil_slot')
 
+
+        if not env.options.flags.has('Ctreasure'):
+            assignable_slots.remove('treasure_character_1')
+            assignable_slots.remove('treasure_character_2')
+            assignable_slots.remove('treasure_character_3')
+            assignable_slots.remove('treasure_character_4')
+            assignable_slots.remove('treasure_character_5')
+
+        if not env.options.flags.has('Cmiab'):
+            assignable_slots.remove('miab_character_1')
+            assignable_slots.remove('miab_character_2')
+            assignable_slots.remove('miab_character_3')
+            assignable_slots.remove('miab_character_4')
+
         num_easy_slots = len([s for s in assignable_slots if s not in HARD_SLOTS])
 
         def subtract_if_able(original_set, subtract_set):
@@ -245,7 +288,7 @@ def apply(env):
         # violating the fewest constraints
         possible_assignments = []
 
-        for attempt in range(20):
+        for attempt in range( len(SLOTS) ):
             characters = []
             if not env.options.flags.has('characters_not_guaranteed'):
                 characters.extend(allowed_characters)
@@ -369,8 +412,9 @@ def apply(env):
     env.meta['available_nonstarting_characters'] = set()
     for slot in assignment:
         character = assignment[slot]
+        #print(f'Assigning character {character} to slot {slot}')
         if character is None:
-            if slot in ['crydia_slot', 'rosa1_slot', 'yang2_slot', 'rosa2_slot', 'kain2_slot']:
+            if slot in ['crydia_slot', 'rosa1_slot', 'yang2_slot', 'rosa2_slot', 'kain1_slot', 'kain2_slot']:
                 axtor_map[SLOTS[slot]] = 0xFE  # placeholder piggy for required overworld NPCs
             else:
                 axtor_map[SLOTS[slot]] = 0x00
@@ -382,15 +426,6 @@ def apply(env):
             env.meta['available_nonstarting_characters'].add(character)
 
     env.add_substitution('axtor map', ' '.join([f'{b:02X}' for b in axtor_map]))
-
-    # maximum party size
-    max_party_size = env.options.flags.get_suffix('Cparty:')
-    if max_party_size:
-        max_party_size = int(max_party_size)
-    else:
-        max_party_size = 5
-
-    env.add_binary(BusAddress(0x21F0FF), [max_party_size])
 
     # permadeath :S
     if env.options.flags.has('characters_permadeath'):
@@ -498,6 +533,8 @@ def apply(env):
     env.update_assignments(assignment)
 
     # generate character assignment spoilers
+    # for x in SLOTS:
+    #     print(f'Slots are '+ x)
     CHARACTER_SLOT_SPOILER_NAMES = {
         s : rewards.REWARD_SLOT_SPOILER_NAMES[rewards.RewardSlot(SLOTS[s])] 
         for s in SLOTS
@@ -555,7 +592,7 @@ def apply(env):
     env.meta['starting_character'] = assignment['dkcecil_slot']
 
     # apply extra scripts for hero challenge
-    if env.options.flags.has('hero_challenge'):
+    if env.options.flags.has('hero_challenge') or env.options.flags.has('superhero_challenge'):
         env.add_file('scripts/hero_exp.f4c')
 
 

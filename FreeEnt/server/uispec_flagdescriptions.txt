@@ -13,6 +13,12 @@ Defeat Milon, Milon Z., Kainazzo, Valvalis, Rubicant, and Elements to complete t
 [Omode:dkmatter]
 45 Dark Matters are randomly placed in chests (MIABs excluded); bring 30 of them to Kory in Agart to complete this objective.
 
+[Omode:bosscollector]
+Find and defeat the specified number of bosses to complete this objective
+
+[Omode:goldhunter]
+Collect the specified amount of GP and bring them to Tory (he's below Kory) in Agart to complete this objective.
+
 [Orandom:tough_quest]
 Refers only to the more difficult, later-game quest objectives.
 
@@ -120,6 +126,9 @@ Party members that are swoon or stone at the end of any battle are permanently r
 - The hero is your agility anchor.
 - The hero is exempt from permadeath.
 
+[Csuperhero]
+- This flag acts the same as Chero, except your starting character will obtain incredible stat boosts, until finding the earth crystal (their one weakness).
+
 [Tshuffle]
 Treasure contents are the same as in original FF4, but their positions are shuffled. This randomization is weighted so that overworld treasures tend to remain in the overworld, and similarly for underworld/moon treasures.
 
@@ -153,6 +162,12 @@ A skill-testing randomization, limiting the strength of available items, and wei
 [Swild]
 An unrestricted randomization, allowing equal chance for items to appear in any shop, including the most powerful items.
 
+[Ssame]
+Shops only sell a single item, and all shops in the game are the same.  The item chosen uses the same rules as Swild.
+
+[Ssingles]
+Shops only sell a single item, but follow the standard randomization rules and safety checks (unless disabled).
+
 [Sunsafe]
 Normally, the randomizer guarantees Cure2 potions, Life potions and StarVeils are readily available, and that Cure3 potions are available in seeds without white mages. This flag removes those checks.
 
@@ -170,6 +185,9 @@ Replaces the Fabul Gauntlet boss with five unscaled normal enemy encounters from
 
 [Bwhichburn]
 The replacement attack will be weaker than MegaNuke (unless <em>Bunsafe</em> is enabled, in which case it may not be).
+
+[Bitburns]
+The replacement attack will include Meganuke, Big Bang, Zanteksuken, Full party charm, and Meteo
 
 [@G]
 The glitches explicitly referenced here are <em>disabled by default</em>; setting these flags enables them to act as they do in original FF4. Glitches not mentioned here remain intact and available.

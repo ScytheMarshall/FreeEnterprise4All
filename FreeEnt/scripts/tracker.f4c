@@ -301,8 +301,7 @@ msfpatch {
         jsr $_MK_SetBG2
 
         jsl $=TrackerMenu__DrawTitleWindow
-        jsl $=TrackerMenu__DrawCountWindow
-
+        jsl $=TrackerMenu__DrawCountWindow        
         ldy #$_Text__KeyItemsCaption
         phk
         pla
@@ -845,11 +844,11 @@ msfpatch {
 
         jsl $=TrackerMenu__DrawTitleWindow
         jsl $=TrackerMenu__DrawCountWindow
-
+        
         ldy #$_Text__ObjectivesCaption
         phk
         pla
-        ldx #$0084
+        ldx #$0084        
         jsr $_MK_DrawText
 
         lda $=Objectives__Count
@@ -919,6 +918,20 @@ msfpatch {
         // slash
         lda #$c7
         sta $a6b6
+
+        // lda #$c5
+        // sta $a6bf
+
+        //lda #$28 // Change palette
+        //sta $1681
+        //ldx #$0000
+        //lda #$08
+
+        //lda #$ca // ampersand
+        //sta $a6ac        
+        
+        // lda #$c5
+        // sta $a6bf
 
     %SkipObjectiveCounts:
 
@@ -1025,16 +1038,29 @@ msfpatch {
 
         // check if objective is completed
         lda #$04   // grey palette
-        sta $1686
+        sta $1686            
         ldx $1680
         lda $=Objectives__Thresholds,x
         cmp $_Objectives__Progress,x
         beq $+ObjectiveCompleted
         bcc $+ObjectiveCompleted
+        lda $=ObjectivesHardRequired__IDs,x
+        cmp #$00
+        beq $+NotHardRequired
+        lda #$08   // hard required palette
+        sta $1686
+        bra $+ObjectiveCompleted
+    %NotHardRequired:
+        lda $=Objectives__IDs,x
+        cmp $=Objectives__GatedObjectiveID
+        bne $+NotGatedObjective
+        lda #$0c   // gated objective palette
+        sta $1686
+        bra $+ObjectiveCompleted
+    %NotGatedObjective:
         lda #$00   // white palette
-        sta $1686  
+        sta $1686        
     %ObjectiveCompleted:
-
         // blank line 0
         jsr $_BlankLine
         jsr $_NextLine
@@ -1062,10 +1088,11 @@ msfpatch {
         lda $1688
         ora #$80
         sta $b604,y
-        // period
+        ldx $1680          
+        // period    
         lda #$c1
         sta $b608,y
-
+    %WriteText:
         // copy text line 1
         ldx $1684
         ldy $1682
@@ -1153,9 +1180,33 @@ msfpatch {
         phk
         pla
         ldx #$0604
+        
+        tay
+        
+        // %has gated objective%
+        jsr $_HasCompletedGatedRequirements
+        cmp #$00
+        beq $+DefaultText
+        tya
+        ldy #$_Text_Enabled0GateOpen
+        bra $+DrawFirstLine
+        // %end%
+    %DefaultText:
+        tya
         ldy #$_Text_Enabled0
+        bra $+DrawFirstLine
+    %DrawFirstLine:
         jsr $_MK_DrawText
 
+        // %has gated objective%
+        jsr $_HasCompletedGatedRequirements
+        cmp #$01
+        beq $+WinOrCrystal
+        ldy #$_Text_Enabled1GatedRequired
+        bra $+HaveLine1
+        // %end%
+
+    %WinOrCrystal:
         lda $=RandoFlag_objective_zeromus
         beq $+ObjectivesWin
         ldy #$_Text_Enabled1Crystal
@@ -1163,7 +1214,6 @@ msfpatch {
     %ObjectivesWin:
         ldy #$_Text_Enabled1Win
         bra $+HaveLine1
-
     %ObjectivesDisabled:
         phk
         pla
@@ -1179,12 +1229,33 @@ msfpatch {
         
         rtl
 
-    %Text_NotEnabled0: "Objectives are not enabled" [[ 00 ]]
-    %Text_NotEnabled1: "in this randomization." [[ 00 ]]
+    %HasCompletedGatedRequirements:
+        jsl $=CountCompletedNonGated
+        cmp $=Objectives__GatedObjectiveRequiredCount
+        bcs $+CompletedAll
+        lda #$00
+        rts
+    %CompletedAll:
+        lda #$01       
+        rts
 
+    %Text_NotEnabled0: "Objectives are not enabled" [[ 00 ]]
+    %Text_NotEnabled1: "in this randomization." [[ 00 ]]    
+    
+// %has gated objective%
+    %Text_Enabled0GateOpen:    "Complete the required"             [[ 00 ]]
+    %Text_Enabled1Win: "objective to win the game."             [[ 00 ]]
+    %Text_Enabled1Crystal: "objective for the [crystal]Crystal."             [[ 00 ]]
+
+    %Text_Enabled0:              "Complete {% required objective count text : all objectives %} in any"             [[ 00 ]]
+    %Text_Enabled1GatedRequired: "order for the {% gated objective reward text %}."          [[ 00 ]]    
+// %end%
+
+// %no gated objective% 
     %Text_Enabled0:        "Complete {% required objective count text : all objectives %} in"             [[ 00 ]]
     %Text_Enabled1Win:     "any order to win the game."             [[ 00 ]]
     %Text_Enabled1Crystal: "any order for the [crystal]Crystal." [[ 00 ]]
+// %end% 
 }
 
 msfpatch {
