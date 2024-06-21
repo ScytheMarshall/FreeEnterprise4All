@@ -47,6 +47,12 @@ _spells_db = csvdb.CsvDb(os.path.join(DB_PATH, 'spells.csvdb'), {
     'data' : csvdb.List(',', value_type=csvdb.HexInt)
     })
 
+_update_spells_db = csvdb.CsvDb(os.path.join(DB_PATH, 'updated_spells.csvdb'), {
+    'code' : csvdb.HexInt,
+    'mp' : int,
+    'data' : csvdb.List(',', value_type=csvdb.HexInt)
+})
+
 _custom_weapons_db = csvdb.CsvDb(os.path.join(DB_PATH, 'custom_weapons.csvdb'), {
     'id' : csvdb.HexInt,
     'equip' : csvdb.List(','),
@@ -80,6 +86,9 @@ def get_shops_dbview():
 
 def get_spells_dbview():
     return _spells_db.create_view()
+
+def get_update_spells_dbview():
+    return _update_spells_db.create_view()
 
 def get_custom_weapons_dbview():
     return _custom_weapons_db.create_view()

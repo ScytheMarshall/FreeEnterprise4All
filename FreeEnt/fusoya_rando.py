@@ -67,7 +67,6 @@ ALL_SPELLS_BY_LEVEL = {
     '#spell.Wall'  : 0,
     '#spell.Life2' : 0,
     '#spell.Fatal' : 1,
-    '#spell.Weak'  : 1,
     '#spell.White' : 0,
     '#spell.Meteo' : 1,
     '#spell.Nuke'  : 1,
