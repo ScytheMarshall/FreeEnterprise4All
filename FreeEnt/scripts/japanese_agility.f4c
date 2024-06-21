@@ -1,0 +1,27 @@
+// agility patch on $01 to change 30 agility to 106..111 
+patch($0ea622 bus) { 
+6A 6F
+}
+
+// agility patch on $2F to change 65 agility to 80
+patch($0ea67e bus) { 
+50 50
+}
+
+// agility patch on $34 to change 66 agility to 86
+patch($0ea688 bus) { 
+56 56
+}
+
+// agility patch on $3C to change 89 agility to 99
+patch($0ea690 bus) { 
+63 63
+}
+
+
+// agility patch on $3F to change 69 agility to 101
+patch($0ea69e bus) { 
+65 65
+}
+
+

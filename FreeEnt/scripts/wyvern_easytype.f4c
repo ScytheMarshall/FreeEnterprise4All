@@ -1,0 +1,21 @@
+// changes to Easytype vanilla MegaNuke and call magic counterattack for Wyvern
+ai_script(moon $25)
+{
+    message $7A next action   // "           3"
+    pass
+    
+    message $7B next action   // "           2"
+    pass
+    
+    message $7C next action   // "           1"
+
+    use #Enemy_MegaNuke
+    
+    target self
+    use #Wall
+}
+
+ai_script(moon $27)
+{
+    use #Enemy_Storm
+}

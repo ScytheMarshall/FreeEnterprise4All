@@ -7,14 +7,14 @@ text(item name #fe_Hook) {Hook}
 
 
 //-------------------------------------------------------------------
-// make PinkPuffs just directly drop Adamant Armor
+// make PinkPuffs just directly drop passes
 droptable($28) {
     common #Ether2
     uncommon #Elixir
     rare #NinjaStar
     mythic 
         // %pink_tail_item const%
-        #AdamantArmor
+        #Pass
         // %end%
 }
 

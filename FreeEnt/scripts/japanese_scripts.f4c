@@ -1,0 +1,88 @@
+// modified scripts and such for FF4j bosses
+// 
+// Milon Z.
+// 
+
+// aigroup($96) {
+//     condition set $08 : script $9D  // anyone (character) uses #Fire magic
+// }
+
+// Rubicant
+// aigroup($B5) {
+//     condition set $46 : script $BE  // formation $FD, anyone (character) uses #Fire magic
+//     condition set $48 : script $C2  // self hp below index $0A /* 1000 */, anyone (character) uses #Fight
+//     condition set $06 : script $C1  // anyone (character) uses #Fight
+//     condition set $1A : script $C0  // actor #PCecil dead, anyone (character) uses #Fire magic
+//     condition set $1B : script $C0  // actor #ARydia dead, anyone (character) uses #Fire magic
+//     condition set $1C : script $C0  // actor #Kain2 dead, anyone (character) uses #Fire magic
+//     condition set $1D : script $C0  // actor #Rosa2 dead, anyone (character) uses #Fire magic
+// }
+
+ 
+// spell($5B)  // Patch Asura summon for Armor
+// {
+//     casting time 0
+//     target $02
+//     param $01   // 1
+//     hit 66
+//     boss False
+//     effect $0D
+//     damage True
+//     element $00
+//     impact False
+//     mp cost 50
+//     ignore wall True
+// }
+
+
+
+patch($00ffdc bus) {
+73 87 8C 78
+}
+
+patch($0ee330 bus) {
+9D
+}
+
+patch($0ee3d7 bus) {
+FF 00 C3 FF 02 C4 11 00 00 5F FF 24 C5 FF 02 C8 12 C7 11 00 00 C6 FF 49 C9 FF 02 CA 12 01 11 CB 00 00 FF 00 CC FF 11 CE 00 CD FF 04 CF FF 1F D0 00 D1 FF 00 D3 FF 4A D4 FF 11 D6 00 D5 FF 5A 1E 04 1D 07 1D FF 00 51 FF 5B 52 FF 4B DB 11 DA 00 D9 FF 00 00 FF 08 DC 09 DD 0F DE FF 12 E2 4C E1 11 E0 00 DF FF 4D E3 FF 00 E4 FF 12 E7 11 E6 00 E5 FF 50 EA 4F E9 4E E8 FF 11 ED 00 EB FF 58 EE 57 EC FF 13 F1 00 EF FF 59 F0 FF 00 D7 FF 00 D6 FF 00 41 FF 52 43 0F 42 FF 00 41 FF 53 44 5F 45 FF 00 33 FF 54 34 FF 00 18 FF 00 3C FF 00 01 FF 06 8E FF 12 49 11 48 00 47 FF 5E 4A 04 46 FF 15 57 14 55 13 4C 00 4B FF 61 56 18 54 5D 4E 51 58 0F 4F 07 4D FF 01 17 00 16 FF 04 18 FF 01 1A 02 1B 00 19 FF 51 1C FF 11 20 00 1F FF 00 FF 12 22 00 21 FF 0A 23 FF 19 26 11 3D 00 25 FF 51 27 FF 00 28 FF 0A 29 51 2A 07 2A FF 00 30 FF 51 31 06 32 08 33 09 34 0A 35 FF 00 38 FF 06 39 0F 3A FF 00 3B FF 07 3C FF 61 40 00 3F FF 00 53 FF 06 F9 FF 00 FA FF 00 00 FF 00 FB FF 00 FC FF 17 7C FF 04 FD FF 00 7D FF 7D FF FF
+}
+
+
+
+// --END HEX PATCHING--
+
+text(battle message $AA) {
+Inhale the undead gas!
+}
+
+ai_script($9D)
+{
+    message $AA   // "!"
+    use #Enemy_DullSong
+}
+
+// Asura
+ai_script($E5) // Patch Asura action to Armor
+{
+    set sprite $36
+    target self
+    use #Armor
+    condition 1
+}
+
+// Doot Doot
+ai_script(moon $30) // 4j doot doot has storm doot
+{
+    fight
+    
+    fight
+    
+    fight
+    
+    fight
+    
+    fight
+
+    use #Enemy_Storm
+}

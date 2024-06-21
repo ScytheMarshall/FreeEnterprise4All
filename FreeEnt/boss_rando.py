@@ -1,10 +1,25 @@
 from . import core_rando
-from .boss_rando_formation_data import *
 from .palette_wizard import PaletteWizard
 from .address import *
 from .spoilers import SpoilerRow
 import math
+import os
+from . import bstats
 from copy import copy
+
+print(bstats.is_jp)
+print(bstats.is_unsafe)
+print(bstats.is_et)
+
+if bstats.is_jp:
+    if bstats.is_unsafe:
+        from .boss_rando_formation_data_jp_unsafe import *
+    else:
+        from .boss_rando_formation_data_jp import *
+elif bstats.is_et:
+    from .boss_rando_formation_data_et import *        
+else:
+    from .boss_rando_formation_data_us import *        
 
 CSV_OUTPUT = False
 
@@ -93,6 +108,10 @@ FORMATION_MAP = {
     'ogopogo' : 0x1FA,
     }
 
+FORMATION_MAGNES = {
+    'darkelf' : 0x82,
+    }
+
 MONSTER_HP_OFFSETS = {
     0xA4 : 10000,  # Mombomb
     0xA5 : 1000,   # Milon
@@ -101,15 +120,6 @@ MONSTER_HP_OFFSETS = {
     0xC4 : 45600,  # Waterhag :>
     0xB9 : 57000,  # K.Eblan
     0xBA : 57000,  # Q.Eblan
-    }
-
-MONSTER_HP_SCALED_THRESHOLDS = {
-    0xAA : { 0x02 : 700.0 / 4000.0 },    # Kainazzo
-    0xB3 : { 0x04 : 100.0 / 4624.0 },    # Calbrena
-    0xBB : { 0x0A : 1000.0 / 25200.0 },  # Rubicant
-    0xC1 : { 0x08 : 11000.0 / 57000.0,   # Elements
-             0x07 : 40000.0 / 57000.0 }, 
-    0xC2 : { 0x09 : 27000.0 / 47000.0 }  # Elements
     }
 
 MONSTER_SCRIPTED_CHANGES = {
@@ -305,6 +315,9 @@ BOSS_SPRITES = {
     'ogopogo' : [
         ['Sparkle', 0x00, 0]
         ],
+    'harumph' : [
+        ['Captain', 0x01, 0]
+        ],
 }
 
 MULTITARGET_BOSSES = [
@@ -424,6 +437,7 @@ BOSS_SPOILER_NAMES = {
     'plague' : 'Plague',
     'dlunar' : 'D.Lunars',
     'ogopogo' : 'Ogopogo',
+    
 }
 
 BOSS_SLOT_SPOILER_NAMES = { f"{b}_slot": BOSS_SPOILER_NAMES[b] + " position" for b in BOSS_SPOILER_NAMES }
@@ -465,6 +479,12 @@ ALT_GAUNTLETS = {
     'ogopogo_slot' : [0x197, 0x1A3, 0x197, 0x199, 0x19A],
 }
 
+
+
+
+
+
+         
 def _is_moon_formation(formation_number):
     if (formation_number >= 0x180 and formation_number <= 0x1A3):
         return True
@@ -476,6 +496,7 @@ def _is_moon_formation(formation_number):
         return False
 
 def _get_cumulative_formation(formation_data):
+    
     if type(formation_data) is not list:
         formation_data = [formation_data]
 
@@ -542,6 +563,7 @@ def _get_spell_power_ratio(monster1, monster2):
 
 
 def apply(env):
+       
     # random boss assignments handled in core_rando
 
     script_lines = []
@@ -559,8 +581,12 @@ def apply(env):
         boss = assignment[slot]
         is_alt_gauntlet = (env.options.flags.has('bosses_alt_gauntlet') and boss == 'fabulgauntlet')
 
-        source_formation_id = FORMATION_MAP[slot[:-5]] # remove "_slot" suffix
-        target_formation_id = FORMATION_MAP[boss]
+        if slot != 'darkelf_slot':
+             source_formation_id = FORMATION_MAP[slot[:-5]] # remove "_slot" suffix
+             target_formation_id = FORMATION_MAP[boss]
+        else:
+             source_formation_id = FORMATION_MAGNES['darkelf'] 
+             target_formation_id = FORMATION_MAP['darkelf']
 
         script_lines.append(f'// {slot} <- {boss}')
 
@@ -926,10 +952,15 @@ def apply(env):
     # generate spoiler
     boss_spoilers = []
     missing_bosses = set(BOSSES)
+
+    
     for slot in assignment:
         boss = assignment[slot]
-        missing_bosses.remove(boss)
-        boss_spoilers.append( SpoilerRow(BOSS_SLOT_SPOILER_NAMES[slot], BOSS_SPOILER_NAMES[boss], obscurable=True) )
+        
+        if slot != 'darkelf_slot':
+            boss_spoilers.append( SpoilerRow(BOSS_SLOT_SPOILER_NAMES[slot], BOSS_SPOILER_NAMES[boss], obscurable=True) )
+            missing_bosses.remove(boss)
+            
     for boss in missing_bosses:
         boss_spoilers.append( SpoilerRow("(not available)", BOSS_SPOILER_NAMES[boss], obscurable=True) )
     env.spoilers.add_table("BOSSES", boss_spoilers, public=env.options.flags.has_any('-spoil:all', '-spoil:bosses'))

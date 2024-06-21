@@ -1,0 +1,11 @@
+# hide stuff I don't want going out there
+shit*.f4c
+fuctco*.f4c
+*.old
+*.bak
+*.backup
+consts.f4c
+_tester_.f4c
+*pycache*/
+*.py[cod]
+*$py.class

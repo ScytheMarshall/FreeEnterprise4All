@@ -1,9 +1,9 @@
 <html>
     <head>
         {% if hide_flags %}
-        <title>FF4FE: (flags hidden) / {{ seed.seed }}</title>
+        <title>FF4FE Perfected: (flags hidden) / {{ seed.seed }}</title>
         {% else %}
-        <title>FF4FE: {{ seed.flags }} / {{ seed.seed }}</title>
+        <title>FF4FE Perfected: {{ seed.flags }} / {{ seed.seed }}</title>
         {% endif %}
 
         <style type="text/css">
@@ -373,7 +373,7 @@
                 <div id="error"></div>
             </div>
             <div id="share">
-                This seed can be shared by saving and distributing <a href="" download="FF4FE.{{ seed_key }}.html">this HTML file</a>, or by sharing this <a href="javascript:;" onclick="downloadBpsPatch();">BPS patch</a>. It can also be shared via <a href="{{ seed_url }}">this link</a>, though be aware that the link will expire if not accessed for some time.
+                This seed can be shared by saving and distributing <a href="" download="FF4FEPerfected.{{ seed_key }}.html">this HTML file</a>, or by sharing this <a href="javascript:;" onclick="downloadBpsPatch();">BPS patch</a>. It can also be shared via <a href="{{ seed_url }}">this link</a>, though be aware that the link will expire if not accessed for some time.
             </div>
         </div>
 
@@ -513,7 +513,7 @@
                         }
                         else throw e;
                     }
-                    var basename = "FF4FE.{{ seed_key }}";
+                    var basename = "FF4FEPerfected.{{ seed_key }}";
                     var ext = '.' + romData.name.split(".").pop();
                     download(ret, basename + ext, romData.mime);
 

@@ -1,0 +1,173 @@
+// updated monster stats
+
+monster($C9)   // Zeromus 
+{
+    boss
+    level 96
+    hp 65498
+    gp 0
+    xp 0
+    attack index $5F         // (13, 99, 174)
+    defense index $81        // (3, 35, 3)
+    magic defense index $D0  // (8, 80, 39)
+    speed index $3F          // (101, 101)
+    drop index $3F
+    drop rate $00
+    attack sequence $E0
+    spell power 39
+    reaction sequence $E1
+    gfx {
+        size $B9
+        palette $00
+        pointer $32DF
+    }
+}
+
+ai_script(moon $49)
+{
+    chain {
+        use #Enemy_Disrupt
+        
+        use #ZeromusShake2
+    }
+}
+
+
+ai_script(moon $4A)
+{
+    message $AC   // "His true colors emerged!"
+    darken $00
+    music #None
+    message $A9   // "Zeromus:GRR__ERRRGH__"
+    music #Zeromus
+    use #Transform3
+    darken $80
+}
+
+ai_script(moon $4B)
+{
+    use #InvincibleOff
+  
+    use #ZeromusShake2
+
+    use #Enemy_BigBang
+    condition 3
+}
+
+ai_script(moon $4C)
+{
+    pass
+
+    use #ZeromusShake2
+
+    set spell power 39
+    use #Enemy_BigBang
+    
+    use #Enemy_BlkHole
+    message $75   // "Magics became invalid."
+    wait
+    pass
+    
+    use #ZeromusShake2
+    
+    set spell power 39
+    use #Enemy_BigBang
+    
+    set spell power 49
+    target all characters
+    use #Virus
+
+    use #Enemy_BlkHole
+    message $75   // "Magics became invalid."
+    wait
+    pass
+    
+    use #ZeromusShake2
+
+    set spell power 39
+    use #Enemy_BigBang
+ 
+    use #Enemy_BlkHole
+    message $75   // "Magics became invalid."
+}
+
+ai_script(moon $4D)
+{
+    set spell power 21
+    use #Nuke
+}
+
+ai_script(moon $4E)
+{
+    set spell power 21
+    use #Nuke
+}
+
+ai_script(moon $4F)
+{
+    use #Enemy_WeakEnemy
+}
+
+ai_script(moon $54)
+{
+    condition 4
+    use #Enemy_Vanish2
+}
+
+ai_script(moon $55)
+{
+    pass
+    
+    use #ZeromusShake2
+    
+    set spell power 39
+    use #Enemy_BigBang
+    
+    use #Enemy_BlkHole
+    message $75   // "Magics became invalid."
+    wait
+    set spell power 21
+    use #Nuke
+    
+    pass
+    
+    pass
+    
+    use #ZeromusShake2
+    
+    set spell power 39
+    use #Enemy_BigBang    
+}
+
+
+ai_script(moon $56)
+{
+    condition 5
+    pass
+}
+
+ai_script(moon $57)
+{
+    chain {
+        set spell power 3
+        pass
+        
+        target all characters
+        use #Meteo
+    }
+    
+    pass
+}
+
+
+ai_script(moon $58)
+{
+    set spell power 40
+    target all characters
+    use #Virus
+}
+
+
+
+
+

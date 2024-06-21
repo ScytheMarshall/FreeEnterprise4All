@@ -5,6 +5,7 @@
 ..[Omode:classicgiant] Classic Giant%
 ..[Omode:fiends] Fiends%
 ..[Omode:dkmatter] Dark Matter Hunt
+..[Omode:harp]! THE HARP CHECK
 .[@Ocustom] Custom objectives
 ..<> Custom objective #1
 ...(O1:*)
@@ -278,6 +279,9 @@
 .(Bvanilla)- No boss randomization
 .(Bstandard) Randomize bosses
 ..[Bunsafe]! No safety checks
+<> Alternate boss stats/scripts
+.[Bstats:jp] FF4j boss stats and scripts
+.[Bstats:et] (not yet implemented) FF4 Easytype boss stats and scripts 
 [Bnofree]! No free bosses
 [Balt:gauntlet] Alt Gauntlet
 <> Change Wyvern's opening MegaNuke
@@ -415,6 +419,7 @@
 .[-vanilla:fashion] Vanilla fashion
 .[-vanilla:miabs] Vanilla monster-in-a-box locations
 .[-vanilla:giant] Vanilla Giant
+.[-vanilla:harp] Vanilla harp song
 .[-vanilla:z] Vanilla Z sprite
 [-vintage] Vintage Battlefield
 [-pushbtojump] Push B to Jump

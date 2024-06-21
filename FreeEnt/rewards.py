@@ -30,7 +30,7 @@ class RewardSlot(enum.IntEnum):
     baron_inn_item              = 0x24
     baron_castle_item           = 0x25
     toroia_hospital_item        = 0x26
-    magnes_item                 = 0x27
+    agart_item                  = 0x27
     zot_item                    = 0x28
     babil_boss_item             = 0x29
     cannon_item                 = 0x2A
@@ -85,7 +85,8 @@ class RewardSlot(enum.IntEnum):
     forge_item                  = 0x5B
     pink_trade_item             = 0x5C
     fixed_crystal               = 0x5D
-
+    magnes_item                 = 0x5E
+    
     MAX_COUNT = 0x60
 
 ACTOR_CODES = {
@@ -137,6 +138,7 @@ REWARD_SLOT_SPOILER_NAMES = {
     RewardSlot.baron_castle_item           : "Baron Castle item",
     RewardSlot.toroia_hospital_item        : "Edward/Toroia item",
     RewardSlot.magnes_item                 : "Cave Magnes item",
+    RewardSlot.agart_item                  : "Agart Well item",
     RewardSlot.zot_item                    : "Zot item",
     RewardSlot.babil_boss_item             : "Lower Bab-il item (Tower Key slot)",
     RewardSlot.cannon_item                 : "Super Cannon destruction item",

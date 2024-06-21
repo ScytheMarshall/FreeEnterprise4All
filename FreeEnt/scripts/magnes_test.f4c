@@ -1,0 +1,500 @@
+//---------------------------------------------------------------------
+
+npc(#DarkElf)
+{
+    sprite #DarkElf
+    default active
+    eventcall {
+        if #DarkElfBattle1:
+            $81   //Dark Elf 'Fire2' battle
+        else:
+            $73   //Dark Elf 'Me Attack You' battle
+    }
+}
+
+// change Yang placement to our boss rando alternate
+placement($94 2)
+{
+    position 11 11
+    npc #fe_DynamicNPC
+    // %darkelf_slot sprite main palette%
+    // %end%
+    walking off
+    tangible
+    face down
+    turning on
+    marching on
+    speed 3
+}
+
+// Create TwinHarp NPC
+npc(#fe_TwinHarp)
+{
+    sprite #FlameTop
+    default inactive
+    eventcall { $28 } // map message 1
+}
+
+// override FlameTop tiles with harp graphic
+chr($dfe60 3bit) {
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000260000062000
+0000026212660000
+0000025454560000
+0000025353560000
+0000025151560000
+0000025353560000
+0000002266650000
+0000005555500000
+0000000000000000
+0000000000000000
+}
+
+placement($94 3)  //#CaveMagnesCrystalRoom
+{
+    npc #fe_TwinHarp
+    position 12 12
+    walking off
+    tangible
+    face down
+    palette 0
+    turning off
+    marching off
+    speed 1
+}
+
+
+
+event($73)  //Dark Elf 'Me Attack You' battle
+{
+    // do TwinHarp item check here instead
+    [#B #If #not_Item #item.TwinHarp] {
+        message $DB   // "Dark Elf:YOU CANNOT GO  ANY FURTHER."
+        fight $FC
+        [#B #EndEvent]
+    }
+
+    consts(placement) {
+        2   Yang1
+        3   Harp
+    }
+    // autodetected map #CaveMagnesCrystalRoom
+    message $DB   // "Dark Elf:YOU CANNOT GO  ANY FURTHER."
+    music #BossBattle
+    fight $E6
+    player face up
+    music #Hurry
+    pause 6
+    player lie down
+    pause 16
+    player invisible
+    consts(placement) {
+        0   Edward4
+        1   EdwardHarp2
+        2   Man4
+        3   Woman2
+    }
+    load map #ToroiaCastleHospital at 9 7 
+
+    p #Edward4 bow head
+    pause 8
+    p #Edward4 face down
+    pause 4
+    p #Edward4 face right
+    p #Edward4 move right
+    p #Edward4 move right
+    p #Edward4 lie down
+    batch 1 {
+        p #Man4 move down
+        p #Woman2 move down
+    }
+    p #Man4 move down
+    p #Man4 move down
+    p #Man4 move right
+    p #Man4 face up
+    p #Edward4 bow head
+    pause 4
+    p #Edward4 face down
+    pause 4
+    toggle music fade
+    player toggle turning
+    batch 1 {
+        p #Edward4 face right
+        p #Man4 move down
+        p #Woman2 move up
+    }
+    player toggle turning
+    p #Edward4 move right
+    p #Edward4 move right
+    p #Edward4 face up
+    batch 1 {
+        p #Man4 move up
+        p #Woman2 move down
+    }
+    batch 1 {
+        p #Man4 move up
+        p #Woman2 face right
+    }
+    p #Man4 face right
+    p #Edward4 move up
+    p #Edward4 move up
+    p #Edward4 bow head
+    pause 4
+    batch 1 {
+        p #Edward4 toggle visible
+        p #EdwardHarp2 toggle visible
+    }
+    music #Edward
+    pause 48
+    toggle screen fade
+    consts(placement) {
+        1   DarkElf
+        3   Harp
+        5   DarkElfSeal
+    }
+    load map #CaveMagnesCrystalRoom at 11 12 
+    player lie down
+    player visible
+    toggle screen fade
+    take item #TwinHarp
+    pause 4
+    p #Harp move left
+    p #Harp toggle visible
+    p #Harp move right
+    pause 4
+    message $DE   // "[harp]TwinHarp made a sound synchronizing the tune"
+    sound $5D
+    toggle tint $B7
+    batch 16 {
+        p #DarkElf toggle visible
+    }
+    screen blur
+    screen blur
+    batch 8 {
+        screen flash
+    }
+    toggle tint $00
+    pause 8
+    message $DF   // "[Edward]:Wield your sword_!  Dark Elf cannot control"
+    player bow head
+    pause 8
+    player face down
+    pause 8
+    clear status 
+    restore hp
+    restore mp
+    set #DarkElfBattle1
+    clear #DarkElfBattle2
+    activate #DarkElfSeal
+    activate #fe_TwinHarp
+    p #DarkElfSeal toggle visible
+    player move down
+    player face up
+}
+
+event($81)  //Dark Elf 'Fire2' battle
+{
+    consts(placement) {
+        1   DarkElf
+        2   TrueForm
+        5   DarkElfSeal
+    }
+    // autodetected map #CaveMagnesCrystalRoom
+    map message 3  // "GRRR_ YOU_ YOU_!"
+    [#B #Rando_CheckFlag #randoflag.bosses]
+    [#B #If #Flag #flag.Result] {
+        map message 0 // ME CHANGE
+        sound #BlackMagic
+        batch 5 {
+            p #TrueForm toggle visible
+            p #DarkElf toggle visible
+        }
+        pause 4
+    }
+
+    music #None
+
+    pause 8
+    message $E0   // "Dark Elf:W_ WHY DID THAT  MUSIC REACH HERE?"
+
+    [#B #If #Flag #flag.Result] {
+        batch 10 {
+            p #TrueForm toggle visible
+        }
+    }
+    [#B #If #not_Flag #flag.Result] {
+        batch 10 {
+            p #DarkElf toggle visible
+        }
+    }
+
+    sound $7E
+    batch 8 {
+        screen flash
+    }
+    [#B #If #Flag #flag.Result] {
+        p #TrueForm toggle visible
+    }
+    [#B #If #not_Flag #flag.Result] {
+        p #DarkElf toggle visible
+    }
+    music #Prelude fade in
+    pause 8
+    deactivate #DarkElf
+    deactivate #DarkElfSeal
+    p #DarkElfSeal toggle visible
+    vfx #PopWarpStack
+    vfx #PopWarpStack
+}
+
+event($74)  //Obtaining the Earth Crystal
+{
+    consts(placement) {
+        0   CaveMagnesCrystal
+    }
+    // autodetected map #CaveMagnesCrystalRoom
+
+    sound #Crystal
+    pause 12
+    [#B #Text_LoadRewardNameFromSlot #reward_slot.magnes_item 0]
+    p #CaveMagnesCrystal toggle visible
+    deactivate #CaveMagnesCrystal
+    message #msg.fe_ReceivedFanfare
+    music #Prelude
+    [#B #Objectives_TickRewardSlot #reward_slot.magnes_item]
+    [#B #Rando_DeliverRewardFromSlot #reward_slot.magnes_item]
+    [#B #Objectives_Tick #objective.internal_magnes]
+}
+
+text(bank 1 message $DB) {
+harumph: YOU CANNOT GO
+ ANY FURTHER.
+ YOU CANNOT FINISH THE
+ HARP CHECK!
+ DEATH TO THE HARP
+ CARTEL!
+ YOU CANNOT DEFEAT ME.
+}
+
+text(bank 1 message $DE) {
+[harp]TwinHarp made a sound
+synchronizing the tune
+played by [Edward]!
+
+harumph: WHAT!?  WHAT IS
+ THIS NASTY MUSIC!?
+ U-Ugh!
+}
+
+
+
+text(bank 1 message $E0) {
+harumph: THE HARP CARTEL_
+ MUST_ NOT_ SURVIVE_
+ I WILL HAVE MY REVENGE_
+ harumph_
+}
+
+text(map name $47) {
+THE HARP CHECK
+}
+
+
+text(map #CaveMagnesCrystalRoom message $00) {
+harumph: PREPARE TO DIE!
+}
+
+text(map #CaveMagnesCrystalRoom message $02) {
+Sealed by harumph.
+}
+
+text(map #CaveMagnesCrystalRoom message $03) {
+harumphs_
+YOU_ FOOLS_!
+}
+
+text(map #CaveMagnes1F message $00) {
+TURN AROUND AND LEAVE NOW!
+}
+
+// "Erase" Cid NPC in Magnes crystal room
+
+placement($94 4)  //#CaveMagnesCrystalRoom
+{
+    npc #fe_None
+    position 0 0
+    intangible
+}
+
+// Alter messages in Dark Elf "we can't" fight
+
+ai_script($AA)
+{
+    pass
+    
+    pass
+    
+    pass
+    
+    message $09   // "DarkElf:ME ATTACK YOU!"
+    chain {
+        use #Enemy_Fire
+        
+        use #Enemy_BigWave
+        
+        use #Enemy_Blaze
+    }
+    
+    use #Enemy_BigBang
+    
+    message $0B   // "[Cecil]:We can't_"
+    use #EndBattle
+}
+
+ai_script($AB)
+{
+    message $2C   // "harumph: THIS IS THE END!"
+    fight
+    
+    fight
+    
+    fight
+    
+    fight
+    
+    fight
+    
+    target all characters
+
+    use #Meteo
+}
+
+ai_script($AC)
+{
+    chain {
+        use #Enemy_Fire
+        
+        use #Enemy_BigWave
+        
+        use #Enemy_Blaze
+    }
+    
+    use #Enemy_BigBang
+
+    use #Meteo 
+}
+
+ai_script($AD)
+{
+    chain {
+        message $0D   // "DarkElf:ME CHANGE!"
+        pass
+        
+        music #Zeromus
+        pass
+        
+        use #Transform3
+    }
+}
+
+ai_script($AE)
+{
+    fight
+    
+    use #Enemy_Globe199
+}
+
+text(battle message $09) {
+harumph:TIME FOR PAIN!
+}
+
+text(battle message $0B) {
+We can't_
+}
+
+text(battle message $0D) {
+harumph:NOW YOU SUFFER!
+}
+
+text(battle message $2c) {
+harumph:THIS IS THE END!
+}
+
+text(monster name $AB) {harumph}
+text(monster name $AC) {harumph}
+text(monster name $C3) {harumph}
+
+monster($AB)   // Dark Elf
+{
+    boss
+    level 99
+    hp 61000
+    gp 0
+    xp 0
+    attack index $DF         // (99, 99, 254)
+    defense index $60        // (0, 0, 0)
+    magic defense index $DF  // (99, 99, 254)
+    speed index $2E          // (43, 46)
+    drop index $00
+    drop rate $00
+    attack sequence $9F
+    spell power 57
+    gfx {
+        size $97
+        palette $92
+        pointer $A834
+    }
+}
+
+monster($AC)   // Dark Elf
+{
+    boss
+    level 99
+    hp 65000
+    gp 0
+    xp 0
+    attack index $1F         // (4, 99, 54)
+    defense index $60        // (0, 0, 0)
+    magic defense index $DF  // (99, 99, 254)
+    speed index $2E          // (43, 46)
+    drop index $00
+    drop rate $00
+    attack sequence $DE
+    spell power 32
+    reaction sequence $AD
+    gfx {
+        size $97
+        palette $92
+        pointer $A834
+    }
+}
+
+monster($C3)   // Dark Elf
+{
+    boss
+    level 99
+    hp 65000
+    gp 0
+    xp 0
+    attack index $1F         // (4, 99, 54)
+    defense index $63        // (0, 0, 3)
+    magic defense index $DF  // (99, 99, 254)
+    speed index $2E          // (43, 46)
+    drop index $00
+    drop rate $00
+    attack sequence $DF
+    spell power 32
+    reaction sequence $C9
+    gfx {
+        size $07
+        palette $92
+        pointer $9828
+    }
+}
+
+

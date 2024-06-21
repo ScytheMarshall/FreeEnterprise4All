@@ -1081,6 +1081,8 @@ consts(spell) {
     $5C     AsuraEffect3
     $5D     BahamutEffect
     $5E     WMeteo
+    $5F     Enemy_HarpFade
+    $60     Enemy_Nuke
     $61     Enemy_Gaze
     $62     Enemy_Bluster
     $63     Enemy_Slap

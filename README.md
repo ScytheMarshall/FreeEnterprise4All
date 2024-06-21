@@ -27,4 +27,4 @@ Many of the ideas are due to other community members asking questions or request
 
 ### License
 
-This repo is distributed under the MIT License.
+This fork is distributed under the MIT License.

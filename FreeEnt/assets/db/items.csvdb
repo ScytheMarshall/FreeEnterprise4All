@@ -33,7 +33,7 @@ code,const,name,spoilername,category,subtype,j,flag,tier,shopoverride,price,thro
 0x1F,#item.DrainSword,[sword]Drain,Drain Sword,weapon,sword,,,3,,5000,yes,yes,,,"kain,pcecil"
 0x20,#item.Ancient,[sword]Ancient,Ancient Sword,weapon,sword,,,1,,3000,yes,yes,,,"kain,pcecil"
 0x21,#item.Sleep,[sword]Slumber,Slumber Sword,weapon,sword,,,3,,6000,yes,yes,,,"kain,pcecil"
-0x22,#item.MedusaSword,[sword]Medusa,Medusa Sword,weapon,sword,,D,,,18000,yes,yes,,,"kain,pcecil"
+0x22,#item.Obsidian,[sword]Obsidian,Obsidian Sword,weapon,sword,,D,,,0,yes,yes,,golbez
 0x23,#item.Spear,[spear]Spear,Spear,weapon,spear,,,1,,60,,yes,,,kain
 0x24,#item.Wind,[spear]Wind,Wind Spear,weapon,spear,,,2,,7000,,yes,,,kain
 0x25,#item.FlameSpear,[spear]Flame,Flame Spear,weapon,spear,,,3,,11000,,yes,,,kain
@@ -125,7 +125,7 @@ code,const,name,spoilername,category,subtype,j,flag,tier,shopoverride,price,thro
 0x7B,#item.Tiara,[helmet]Tiara,Tiara,armor,hat,,,5,,20000,,yes,,,"crydia,rosa,porom,arydia"
 0x7C,#item.Ribbon,[helmet]Ribbon,Ribbon,armor,hat,,,6,,65000,,,,,"kain,crydia,tellah,edward,rosa,yang,palom,porom,pcecil,cid,arydia,edge,fusoya"
 0x7D,#item.Headband,[helmet]Headband,Headband,armor,hat,,,3,,10000,,,,,"kain,crydia,tellah,edward,rosa,yang,palom,porom,pcecil,cid,arydia,edge,fusoya"
-0x7E,#item.Bandanna,[helmet]Bandanna,Bandanna,armor,hat,,,4,,12000,,,,,"kain,crydia,tellah,edward,rosa,yang,palom,porom,pcecil,cid,arydia,edge,fusoya"
+0x7E,#item.Bandanna,[helmet]Bandanna,Bandanna,armor,hat,,,4,,12000,,,,,"kain,crydia,tellah,edward,rosa,yang,palom,porom,pcecil,cid,arydia,edge,fusoya,golbez"
 0x7F,#item.NinjaHelm,[helmet]Ninja,Ninja Mask,armor,hat,,,5,,25000,,,,,"kain,crydia,tellah,edward,rosa,yang,palom,porom,pcecil,cid,arydia,edge,fusoya"
 0x80,#item.Glass,[helmet]Glass,Glass Mask,armor,hat,,,6,,45000,,,,,"kain,crydia,tellah,edward,rosa,yang,palom,porom,pcecil,cid,arydia,edge,fusoya"
 0x81,#item.IronArmor,[armor]Iron,Iron Armor,armor,armor,,,1,,600,,yes,,,"kain,pcecil,cid"
@@ -153,7 +153,7 @@ code,const,name,spoilername,category,subtype,j,flag,tier,shopoverride,price,thro
 0x97,#item.Bard,[shirt]Bard,Bard Tunic,armor,robe,,,1,,70,,,,,"kain,crydia,tellah,edward,rosa,yang,palom,porom,pcecil,cid,arydia,edge,fusoya"
 0x98,#item.Karate,[shirt]Karate,Karate Gi,armor,robe,,,3,,7000,,,,,"kain,crydia,tellah,edward,rosa,yang,palom,porom,pcecil,cid,arydia,edge,fusoya"
 0x99,#item.BlBelt,[shirt]Bl.Belt,Black Belt,armor,robe,,,4,,20000,,,,,"kain,crydia,tellah,edward,rosa,yang,palom,porom,pcecil,cid,arydia,edge,fusoya"
-0x9A,#item.AdamantArmor,[armor]Adamant,Adamant Armor,armor,armor,,,8,,500000,,,,,"kain,crydia,tellah,edward,rosa,yang,palom,porom,pcecil,cid,arydia,edge,fusoya"
+0x9A,#item.AdamantArmor,[armor]Adamant,Adamant Armor,armor,armor,,,8,,500000,,,,,"kain,crydia,tellah,edward,rosa,yang,palom,porom,pcecil,cid,arydia,edge,fusoya,golbez"
 0x9B,#item.NinjaArmor,[shirt]Ninja,Ninja Shirt,armor,robe,,,5,,50000,,,,,edge
 0x9C,#item.IronGauntlet,[gauntlet]Iron,Iron Gauntlet,armor,gauntlet,,,1,,130,,yes,,,"kain,pcecil,cid,edge"
 0x9D,#item.ShadowGauntlet,[gauntlet]Shadow,Shadow Gauntlet,armor,gauntlet,,,1,,260,,yes,,,dkcecil
@@ -162,7 +162,7 @@ code,const,name,spoilername,category,subtype,j,flag,tier,shopoverride,price,thro
 0xA0,#item.PaladinGauntlet,[gauntlet]Paladin,Paladin Gauntlet,armor,gauntlet,,,1,,3000,,yes,,,pcecil
 0xA1,#item.SilverGauntlet,[gauntlet]Silver,Silver Gauntlet,armor,gauntlet,,,1,,2000,,yes,,,"kain,pcecil,cid,edge"
 0xA2,#item.DiamondGauntlet,[gauntlet]Diamond,Diamond Gauntlet,armor,gauntlet,,,2,,5000,,,,,"kain,pcecil,cid"
-0xA3,#item.Zeus,[gauntlet]Zeus,Zeus Gauntlet,armor,gauntlet,,,6,,65000,,,,,"kain,yang,pcecil,cid,arydia,edge"
+0xA3,#item.Zeus,[gauntlet]Zeus,Zeus Gauntlet,armor,gauntlet,,,6,,65000,,,,,"kain,yang,pcecil,cid,arydia,edge,golbez"
 0xA4,#item.SamuraiGauntlet,[gauntlet]Samurai,Samurai Gauntlet,armor,gauntlet,,,3,,10000,,,,,"kain,pcecil,cid,edge"
 0xA5,#item.DragoonGauntlet,[gauntlet]Dragoon,Dragoon Gauntlet,armor,gauntlet,,,4,,20000,,,,,"kain,pcecil,cid"
 0xA6,#item.CrystalGauntlet,[gauntlet]Crystal,Crystal Gauntlet,armor,gauntlet,,,5,,20000,,,,,pcecil

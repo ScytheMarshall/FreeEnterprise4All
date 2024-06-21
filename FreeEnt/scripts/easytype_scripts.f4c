@@ -1,0 +1,174 @@
+
+
+// remove condition $44 used by: Calbrena
+// aigroup($AB) {
+//     condition set $08 : script $40  // anyone (character) uses #Fire magic
+//     condition set $09 : script $2B  // anyone (character) uses #Ice magic
+//     condition set $0A : script $42  // anyone (character) uses #Lit magic// 
+// }
+// 
+// used by: Elements
+// aigroup($CF) {
+//     condition set $4D : script $EE  // condition flag 1, self hp below index $08 /* 11000 */, damaged
+//     condition set $57 : script $EC  // condition flag 0, self hp below index $07 /* 40000 */, damaged
+// }
+// 
+// used by: D. Lunar
+// aigroup($B2) {
+//     condition set $02 : script $2E  // Self is only remaining monster
+//     condition set $19 : script $2C  // self has wall
+//     condition set $00 : script $2B  // $FF $FF $FF $FF
+// }
+// 
+// aigroup($B3) {
+//     condition set $07 : script $03  // alone
+//     condition set $51 : script $2F  // anyone (character) uses #Call
+//     condition set $28 : script $2D  // condition flag 1, anyone (character) uses #Fight
+// }
+
+
+patch($00ffdc bus) {
+AA 89 55 76
+}
+
+patch($0ee395 bus) {
+08 40 09 2B 0A 42 FF 03 BD 00 01 FF 06 01 FF 03 BD 00 01 FF 06 01 FF 56 58 FF 56 58 06 47 FF 02 2E 19 2C 00 2B FF 07 03 51 2F 31 2D
+}
+
+// ------
+
+ai_script($CE)
+{
+    use #Enemy_Beam
+    
+    use #Enemy_Laser
+    
+    use #Enemy_Emission
+    
+    target all characters
+    use #Enemy_Heal
+    
+    chain {
+        use #Enemy_Beam
+
+        use #Enemy_Beam
+    }
+}
+
+// Easytype script for Pale Dim
+ai_script(moon $30)
+{
+    fight
+    
+    use #Enemy_Blizzard
+    
+    use #Enemy_WeakEnemy
+}
+
+// revised Wyvern script for easy type
+ai_script(moon $26)
+{
+    set spell power 14
+    target self
+    use #Nuke
+
+    set spell power 14
+    target self
+    use #Venom
+
+    set spell power 14
+    target self
+    use #Nuke
+}
+
+// moon $25 and $27 script being handled by wyvern_rando to avoid script conflict
+
+
+
+ai_script(moon $2E)
+{
+    use #Enemy_Quake
+
+    use #Enemy_Quake
+
+    use #Enemy_Breath
+}
+
+ai_script(moon $2F)
+{
+    target self
+    use #Enemy_Remedy
+}
+
+
+
+
+
+
+
+ai_script(moon $2B)
+{
+    condition 1
+    use #Enemy_Fire
+
+    use #Enemy_Fire
+
+    use #Enemy_Fire
+
+    use #Enemy_Fire
+
+    target all characters
+    use #Enemy_Breath
+}
+
+ai_script(moon $2C)
+{
+    target random other monster
+    use #Virus
+}
+
+ai_script(moon $2D)
+{
+    target all monsters
+    use #Wall
+    condition 0
+}
+
+ai_script(moon $2E)
+{
+    use #Enemy_Quake
+
+    use #Enemy_Quake
+
+    use #Enemy_Breath
+}
+
+ai_script(moon $2F)
+{
+    target self
+    use #Enemy_Remedy
+}
+
+// used by: Ogopogo 
+ai_script(moon $29)
+{
+    use #Enemy_Blaze
+}
+
+ai_script(moon $2A)
+{
+    use #Enemy_BigWave
+}
+
+ai_script(moon $2E)
+{
+    use #Enemy_Quake
+
+    use #Enemy_Quake
+
+    use #Enemy_Breath
+}
+
+
+
+

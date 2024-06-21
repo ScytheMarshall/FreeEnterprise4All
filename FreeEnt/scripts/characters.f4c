@@ -164,7 +164,11 @@ actor(#Edge)
     // %end%
 }
 
-
+actor(#Golbez)
+{
+    // %golbez actor%
+    // %end%
+}
 
 // name code lookup table
 
@@ -192,7 +196,11 @@ npc(#AdultRydia4) { sprite $91 }
 
 // set the NPCs we use for cutscenes to all default inactive
 npc(#PaladinCecil2)     { default inactive }
-npc(#Edward2)           { default inactive }
+npc(#Edward2) 
+{ 
+    sprite #Golbez 
+    default inactive
+}
 npc(#Palom2)            { default inactive }
 npc(#Porom2)            { default inactive }
 npc(#Cid1)              { default inactive }
@@ -213,6 +221,7 @@ consts(character) {
    
     $0C     Edge
     $0D     Fusoya
+    $0E     Golbez
 }
 
 // Actor family data (a map of actor -> family ID number(s). 
@@ -238,6 +247,8 @@ patch($218980 bus) {
     /* Edge */      #job.Edge       FF
     /* Fusoya */    #job.Fusoya     FF
     /* Kain3 */     #job.Kain       FF
+    /* Golbez */    #job.Golbez     FF
+
 }
 
 // Character data (a map of job -> alternate job numbers). 

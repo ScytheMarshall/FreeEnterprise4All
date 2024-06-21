@@ -1,0 +1,205 @@
+// patch for FF4j Easytope at Zeromus
+
+monster($C9)   // Zeromus 
+{
+    boss
+    level 96
+    hp 61000
+    gp 0
+    xp 0
+    attack index $5F         // (13, 99, 174)
+    defense index $6F        // (1, 90, 1)
+    magic defense index $BB  // (5, 60, 17)
+    speed index $3F          // (60, 60)
+    drop index $3F
+    drop rate $00
+    attack sequence $E0
+    spell power 30
+    reaction sequence $E1
+    gfx {
+        size $B9
+        palette $00
+        pointer $32DF
+    }
+}
+
+ai_script(moon $49)
+{
+    chain {
+        use #Enemy_Disrupt
+        
+        use #ZeromusShake2
+    }
+}
+
+ai_script(moon $4A)
+{
+    message $AC   // "His true colors emerged!"
+    darken $00
+    music #None
+    message $A9   // "Zeromus:GRR__ERRRGH__"
+    music #Zeromus
+    use #Transform3
+    darken $80
+}
+
+ai_script(moon $4B)
+{
+    use #InvincibleOff
+    
+    use #ZeromusShake2
+    
+    use #Enemy_BigBang
+    condition 3
+}
+
+ai_script(moon $4C)
+{
+    pass
+    
+    use #ZeromusShake2
+    
+    set spell power 27
+    use #Enemy_BigBang
+    
+    use #Enemy_BlkHole
+    message $75   // "Magics became invalid."
+    wait
+    pass
+    
+    use #ZeromusShake2
+    
+    set spell power 28
+    use #Enemy_BigBang
+    
+    target all characters
+    use #Enemy_Count
+    
+    use #Enemy_BlkHole
+    message $75   // "Magics became invalid."
+    wait
+    pass
+    
+    use #ZeromusShake2
+    
+    set spell power 28
+    use #Enemy_BigBang
+    
+    use #Enemy_BlkHole
+    message $75   // "Magics became invalid."
+}
+
+ai_script(moon $4D)
+{
+    set spell power 11
+    use #Nuke
+}
+
+ai_script(moon $4E)
+{
+    set spell power 14
+    use #Enemy_Hug
+}
+
+ai_script(moon $4F)
+{
+    use #Enemy_WeakEnemy
+}
+
+ai_script(moon $54)
+{
+    condition 4
+    use #Enemy_Vanish2
+}
+
+ai_script(moon $55)
+{
+    pass
+    
+    use #ZeromusShake2
+    
+    set spell power 28
+    use #Enemy_BigBang
+    
+    use #Enemy_BlkHole
+    message $75   // "Magics became invalid."
+    wait
+    set spell power 11
+    use #Nuke
+    
+    pass
+    
+    pass
+    
+    use #ZeromusShake2
+    
+    set spell power 27
+    use #Enemy_BigBang 
+}
+
+
+ai_script(moon $56)
+{
+    condition 5
+    pass
+}
+
+ai_script(moon $57)
+{
+    target all characters
+    use #Enemy_Count
+    
+    pass
+       
+    set spell power 3
+    target all characters
+    use #Meteo   
+    
+    pass
+           
+    set spell power 3
+    target all characters
+    use #Meteo   
+    
+    pass
+            
+    set spell power 3
+    target all characters
+    use #Meteo  
+    
+    pass
+     
+    set spell power 3
+    target all characters
+    use #Meteo  
+
+    pass
+       
+    set spell power 3
+    target all characters
+    use #Meteo  
+
+    pass
+        
+    set spell power 3
+    target all characters
+    use #Meteo  
+
+    pass
+       
+    set spell power 3
+    target all characters
+    use #Meteo  
+
+    pass
+}
+
+
+ai_script(moon $58)
+{
+    set spell power 36
+    target all characters
+    use #Virus
+}
+
+

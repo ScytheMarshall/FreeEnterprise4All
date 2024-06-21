@@ -1,0 +1,78 @@
+impact = damage
+damage = Split damage
+
+
+// Obsidian sword stats
+Item		0x22
+Attack 		0xC8 	200
+Attack% 	0x63 	99
+Equipability	Golbez 	(may require equipability edit)
+Element/Status	0x04 	Darkness
+Stat Modifier   0x03    +15
+Spell		Cure3
+Spell Power	30
+Spell Animation	11
+
+Stats		Wisdom/Vitality/Strength
+
+Type		None
+
+Flags		No Critical
+
+Monster Type	Human
+
+
+// magnes harumph spells
+spell($5F)  // Harpfade
+{
+    casting time 0
+    target $06
+    param $00   // 0
+    hit 100
+    boss False
+    effect $2A
+    damage False
+    element $00
+    impact False
+    mp cost 0
+    ignore wall True
+    # Graphics 0 0 0 47
+}
+
+spell($60)  // harumph's NUKE
+{
+    casting time 0
+    target $05
+    param $64   // 100
+    hit 100
+    boss False
+    effect $00
+    damage False
+    element $00
+    impact True
+    mp cost 0
+    ignore wall False
+    # Graphics 19 4 36 33
+}
+
+
+
+///  Asura Armor for FF4j summon (Done with japanese_scripts.f4c
+
+spell($5B)  // #AsuraEffect2
+{
+    casting time 0
+    target $02
+    param $01   // 30
+    hit 66
+    boss False
+    effect $0D
+    damage False
+    element $00
+    impact False
+    mp cost 50
+    ignore wall True
+    # Graphics 8 1 14 0
+}
+
+

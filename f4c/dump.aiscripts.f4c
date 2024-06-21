@@ -3032,7 +3032,7 @@ ai_script(moon $4C)
     
     set spell power 32
     use #Enemy_BigBang
-    
+    pass
     use #Enemy_BlkHole
     message $75   // "Magics became invalid."
 }

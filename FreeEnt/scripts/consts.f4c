@@ -5,6 +5,7 @@ consts(map) {
 }
 
 consts(item) {
+    $22    Obsidian
     $E6    Sylph
     $E7    Odin
     $E8    Levia
@@ -36,7 +37,7 @@ consts(flag) {
     $70   fe_EncountersOff
     $71   fe_HeroSoloBattle
     $72   fe_BossBypass
-    $7F   fe_UptCo
+    $7F   FuckYouThatsWhy
 }
 
 consts(vfx) {

@@ -13,6 +13,14 @@ Defeat Milon, Milon Z., Kainazzo, Valvalis, Rubicant, and Elements to complete t
 [Omode:dkmatter]
 45 Dark Matters are randomly placed in chests (MIABs excluded); bring 30 of them to Kory in Agart to complete this objective.
 
+[Omode:harp]
+<ul>
+    <li>Complete THE HARP CHECK at Cave Magnes.</li>
+    <li>Setting THE HARP CHECK mode will force Oreq:all and Owin:crystal.</li>
+    <li>Nothing else has been changed, but this will change.</li>
+    <li>Always fade the harp.</li>
+</ul>
+
 [Orandom:tough_quest]
 Refers only to the more difficult, later-game quest objectives.
 
@@ -27,13 +35,23 @@ Complete the required number of objectives to get the Crystal, then defeat Zerom
     <li>Duplicate objectives will be omitted.</li>
     <li>A character objective is met when the requirements to gain the character have been fulfilled; you do not need to actually add them to your party.</li>
     <li>Starting characters do not count towards character objectives.</li>
-    <li>Setting the Pass quest objective with no other P flags will force Pkey to be enabled.</li>
+    <li>Setting the Pass quest objective with no other P flags will force Pchests to be enabled.</li>
+</ul>
+
+[Kvanilla]
+<ul>
+    <li>Note: There is no key item check at Cave Magnes.</li>
+    <li>A key item can be obtained by throwing the TwinHarp into the Agart Well.</li>
 </ul>
 
 [Kmain]
-The locations of key items are shuffled amongst each other. For example, you may find the Magma Key in the Antlion's Nest instead of the Sandruby.
+<ul>
+    <li>The locations of key items are shuffled amongst each other. For example, you may find the Magma Key in the Antlion's Nest instead of the Sandruby.</li>
+    <li>The items randomized this way are the <em>Package, SandRuby, Legend Sword, Baron Key, TwinHarp, Earth Crystal, Magma Key, Tower Key, Airship Hook, Luca Key, Dark Crystal, Pink Tail, Rat Tail, Pan, Spoon, Adamant,</em> and the <em>Crystal used to transform Zeromus</em> (yes, you have to find it.)</li>
+    <li>Note: There is no key item check at Cave Magnes.</li>
+    <li>A key item can be obtained by throwing the TwinHarp into the Agart Well.</li>
 
-The items randomized this way are the <em>Package, SandRuby, Legend Sword, Baron Key, TwinHarp, Earth Crystal, Magma Key, Tower Key, Airship Hook, Luca Key, Dark Crystal, Pink Tail, Rat Tail, Pan, Spoon, Adamant,</em> and the <em>Crystal used to transform Zeromus</em> (yes, you have to find it.)
+</ul>
 
 [Ksummon]
 Key items may be awarded by the Sylphs, the king and queen of the Feymarch, Odin's throne, and Cave Bahamut.
@@ -163,7 +181,16 @@ The positions of bosses are shuffled. Boss stats are roughly scaled to match the
 Normally, you are guaranteed a path to the underworld that does not require defeating the most difficult bosses. This flag removes that check.
 
 [Bnofree]
-All boss battle enemies have the "boss bit" set.  The alternate win conditions are removed from the D.Knight, Karate, K/Q.Eblan, and WaterHag fights.
+- All boss battle enemies have the "boss bit" set.  The alternate win conditions are removed from the D.Knight, Karate, K/Q.Eblan, and WaterHag fights.
+- If Bstats:jp is on, the Karate spot at Baron Inn scales to 62000 HP.
+
+[Bstats:jp]
+- Bosses (including Zeromus) have FF4j scripts, the Asura summon can cast Armor/Cure3/Life, and boss location stats scale with FF4j except Karate (scaled to 5000 HP).
+- If Bunsafe is on, the Karate spot at Baron Inn scales to FF4j HP stats (62000 HP).
+
+[Bstats:et]
+- NOT YET IMPLEMENTED - WILL NOT WORK
+- Bosses (including Zeromus) and boss location stats scale with FF4j Easytype
 
 [Balt:gauntlet]
 Replaces the Fabul Gauntlet boss with five unscaled normal enemy encounters from the nearby area.
@@ -480,8 +507,11 @@ By default, monster-in-a-box chests are relocated randomly within the same dunge
 [-vanilla:giant]
 Removes the added exit at the start of the Giant of Bab-il, forcing you to complete it in order to return to the Big Whale. (Be careful not to get stuck with your only save file being inside the Giant.) This exit is restored once the Giant is completed.
 
+[-vanilla:harp]
+Free Enterprise replaces the song Edward plays at Cave Magnes with a random song. Enable this flag to preserve the original Melody of Lute (and Eddie's fingers).
+
 [-vanilla:z]
-Free Enterprise replaces Zeromus' battle sprite with a random sprite. (Its battle behavior and stats are unchanged.) Enable this flag to preserve Zeromus' original battle sprite.
+Free Enterprise replaces Zeromus' battle sprite with a random sprite. (Its battle behavior and stats are unchanged unless modified by a Bstats flag.) Enable this flag to preserve Zeromus' original battle sprite.
 
 [@wacky]
 <ul>

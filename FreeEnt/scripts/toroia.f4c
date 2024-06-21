@@ -36,7 +36,7 @@ Crystal yet?[next]
 }
 
 
-
+// Original patch corrected valet only parking, no longer needed since manually patched with full overworld. 
 // put a bridge near Toroia to simplify process for people
 // who get a ship stuck at Zot
-patch($169bd2 bus) { 3F }
+// patch($169bd2 bus) { 3F }

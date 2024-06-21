@@ -50,6 +50,9 @@ consts(randoflag)
     $0A     characters_irretrievable
     $0B     objective_zeromus
     $0C     no_earned_characters
+    $0D     bosses_jp
+    $0E     bosses_unsafe
+    $0F     bosses_et
 }
 
 msfpatch {
@@ -69,6 +72,10 @@ msfpatch {
     .def  RandoFlag_vanilla_agility                $21f0d9
     .def  RandoFlag_characters_irretrievable       $21f0da
     .def  RandoFlag_objective_zeromus              $21f0db
+    .def  RandoFlag_no_earned_characters           $21f0dc
+    .def  RandoFlag_bosses_jp                      $21f0dd
+    .def  RandoFlag_bosses_unsafe                  $21f0de
+    .def  RandoFlag_bosses_et                      $21f0df
 }
 
 // these definitions are still used when Fashion

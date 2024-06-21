@@ -53,7 +53,7 @@
     quest_ordeals                            Complete Mt. Ordeals
     quest_baroninn                           Defeat the bosses of Baron Inn
     quest_baroncastle                        Liberate Baron Castle
-    quest_magnes                             Complete Cave Magnes
+    quest_agart                              Drop the TwinHarp into the Agart Well
     quest_zot                                Complete the Tower of Zot
     quest_dwarfcastle                        Defeat the bosses of Dwarf Castle
     quest_lowerbabil                         Defeat the boss of Lower Bab-il
@@ -73,7 +73,7 @@
     quest_curefever                          Cure the fever with the SandRuby
    #find_legend_sword                        Find the Legend Sword
     quest_unlocksewer                        Unlock the sewer with the Baron Key
-    quest_music                              Break the Dark Elf's spell with the TwinHarp
+   #quest_music                              Break the Dark Elf's spell with the TwinHarp
     quest_toroiatreasury                     Open the Toroia treasury with the Earth Crystal
     quest_magma                              Drop the Magma Key into the Agart well
     quest_supercannon                        Destroy the Super Cannon
@@ -89,3 +89,4 @@
     quest_tradepink                          Trade away the Pink Tail
     quest_pass                               Unlock the Pass door in Toroia
     internal_dkmatter                        Bring 30 DkMatters to Kory in Agart
+    internal_magnes                          Complete THE HARP CHECK

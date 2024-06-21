@@ -12,6 +12,7 @@ import json
 import datetime
 import uuid
 import enum
+from . import bstats
 
 import pyaes
 
@@ -30,7 +31,8 @@ from . import keyitem_rando
 from . import character_rando
 from . import shop_rando
 from . import treasure_rando
-from . import boss_rando
+# from . import boss_rando
+# from . import boss_rando_jp
 from . import fusoya_rando
 from . import encounter_rando
 from . import dialogue_rando
@@ -53,6 +55,7 @@ from .util import Distribution
 
 F4C_FILES = '''
     scripts/default.consts
+    scripts/_tester_.f4c
     scripts/unused.f4c
     scripts/consts.f4c
     scripts/npcs.f4c
@@ -68,6 +71,8 @@ F4C_FILES = '''
     scripts/dialog_box_background.f4c
     scripts/bank00_extensions.f4c
     scripts/post_battle.f4c
+    scripts/playable_golbez.f4c
+    
 
     scripts/titlescreen.f4c
     scripts/opening.f4c
@@ -163,7 +168,8 @@ F4C_FILES = '''
     scripts/fix_airship_menu_softlock.f4c
     scripts/fix_edward_ghost_command.f4c
     scripts/fix_attack_power_overflow.f4c
-    scripts/uptco_surprise.f4c
+    scripts/fuctco_surprise.f4c
+    scripts/shit_to_hide.f4c
     scripts/sound_engine.f4c
     scripts/mute.f4c
     scripts/no_flashing.f4c
@@ -185,6 +191,7 @@ F4C_FILES = '''
     scripts/blank_textbox_fix.f4c
     scripts/cycle_party_leader.f4c
     scripts/item_delivery_quantity.f4c
+
 '''
 
 BINARY_PATCHES = {
@@ -205,7 +212,7 @@ class Generator:
 
 class GeneratorOptions:
     def __init__(self):
-        self.debug = False
+        self.debug = True
         self.seed = str(int(time.time()) % 100000000)
         self.cache_path = None
         self.clean_cache = True
@@ -565,7 +572,11 @@ def build(romfile, options, force_recompile=False):
         '',
         f"SEED:       {env.options.seed}"
         )
-
+    
+    bstats.is_jp = env.options.flags.has('bosses_jp')
+    bstats.is_unsafe = env.options.flags.has('bosses_unsafe')
+    bstats.is_et = env.options.flags.has('bosses_et')
+    
     if env.options.hide_flags:
         env.spoilers.add_raw(f"HIDDEN INFO:",
         '',
@@ -594,7 +605,10 @@ def build(romfile, options, force_recompile=False):
         'vanilla_agility',
         'characters_irretrievable',
         'objective_zeromus',
-        'no_earned_characters'
+        'no_earned_characters',
+        'bosses_jp',
+        'bosses_unsafe',
+        'bosses_et'
         ]
     flags_as_hex = []
     for slug in embedded_flags:
@@ -603,6 +617,7 @@ def build(romfile, options, force_recompile=False):
 
     # must be first
     wacky_rando.setup(env)
+ 
 
     if options.flags.has('drops_no_j'):
         env.add_file('scripts/adjust_us_drops.f4c')
@@ -614,24 +629,94 @@ def build(romfile, options, force_recompile=False):
 
     if options.flags.has('japanese_abilities'):
         env.add_file('scripts/japanese_abilities.f4c')
-
-    RANDO_MODULES = [
-        core_rando,
-        character_rando,
-        objective_rando,
-        keyitem_rando,
-        boss_rando,
-        treasure_rando,
-        shop_rando,
-        fusoya_rando,
-        encounter_rando,
-        sprite_rando,
-        summons_rando,
-        wyvern_rando,
-        dialogue_rando,
-        kit_rando,
-        custom_weapon_rando
-        ]
+        
+    if options.flags.has('bosses_jp'):
+        env.add_file('scripts/japanese_agility.f4c')    
+        env.add_file('scripts/japanese_scripts.f4c') 
+        env.add_file('scripts/zeromus_jp.f4c')
+        if options.flags.has('no_free_bosses'):
+            env.add_file('scripts/japanese_monsters_unsafe.f4c')  
+            from . import boss_rando_jp_unsafe
+            RANDO_MODULES = [
+                core_rando,
+                character_rando,
+                objective_rando,
+                keyitem_rando,
+                boss_rando_jp_unsafe,
+                treasure_rando,
+                shop_rando,
+                fusoya_rando,
+                encounter_rando,
+                sprite_rando,
+                summons_rando,
+                wyvern_rando,
+                dialogue_rando,
+                kit_rando,
+                custom_weapon_rando
+            ]
+        else:
+            env.add_file('scripts/japanese_monsters.f4c')  
+            from . import boss_rando_jp
+            RANDO_MODULES = [
+                core_rando,
+                character_rando,
+                objective_rando,
+                keyitem_rando,
+                boss_rando_jp,
+                treasure_rando,
+                shop_rando,
+                fusoya_rando,
+                encounter_rando,
+                sprite_rando,
+                summons_rando,
+                wyvern_rando,
+                dialogue_rando,
+                kit_rando,
+                custom_weapon_rando
+            ]
+    elif options.flags.has('bosses_et'):
+        env.add_file('scripts/easytype_agility.f4c')    
+        env.add_file('scripts/easytype_scripts.f4c')
+        env.add_file('scripts/easytype_monsters.f4c')  
+        env.add_file('scripts/zeromus_et.f4c') 
+        from . import boss_rando_et
+        RANDO_MODULES = [
+            core_rando,
+            character_rando,
+            objective_rando,
+            keyitem_rando,
+            boss_rando_et,
+            treasure_rando,
+            shop_rando,
+            fusoya_rando,
+            encounter_rando,
+            sprite_rando,
+            summons_rando,
+            wyvern_rando,
+            dialogue_rando,
+            kit_rando,
+            custom_weapon_rando
+            ]    
+            
+    else:
+        from . import boss_rando_us
+        RANDO_MODULES = [
+            core_rando,
+            character_rando,
+            objective_rando,
+            keyitem_rando,
+            boss_rando_us,
+            treasure_rando,
+            shop_rando,
+            fusoya_rando,
+            encounter_rando,
+            sprite_rando,
+            summons_rando,
+            wyvern_rando,
+            dialogue_rando,
+            kit_rando,
+            custom_weapon_rando
+            ]
 
     for method_name in ['setup', 'apply', 'validate']:
         for module in RANDO_MODULES:
@@ -642,22 +727,34 @@ def build(romfile, options, force_recompile=False):
 
             method(env)
 
-    if not options.flags.has('vanilla_z') or options.flags.has('vintage'):
+    if not options.flags.has('vanilla_z'): 
         ZEROMUS_PICS_DIR = os.path.join(os.path.dirname(__file__), 'compiled_zeromus_pics')
-        if not options.flags.has('vanilla_z'):
-            z_asset = select_from_catalog(os.path.join(ZEROMUS_PICS_DIR, 'catalog'), env)
-            if options.flags.has('vintage'):
-                z_asset += '.vintage'
-            z_asset += '.asset'
+        z_asset = select_from_catalog(os.path.join(ZEROMUS_PICS_DIR, 'catalog'), env)
+        if options.flags.has('vintage'):
+            z_asset += '.vintage'
+        z_asset += '.asset'
+        with open(os.path.join(ZEROMUS_PICS_DIR, z_asset), 'r') as infile:
+            zeromus_sprite_script = infile.read()
+        env.add_scripts('// [[[ ZEROMUS SPRITE START ]]]\n' + zeromus_sprite_script + '\n// [[[ ZEROMUS SPRITE END ]]]\n')
+    elif options.flags.has('bosses_et'):
+        ZEROMUS_PICS_DIR = os.path.join(os.path.dirname(__file__), 'compiled_zeromus_pics')
+        if not options.flags.has('vintage'):
+            z_asset = 'Zeromus_ET.png.f4c'
         else:
-            z_asset = 'ZeromNES.png.f4c'
+            z_asset = 'ZeromNES_ET.png.f4c'
         with open(os.path.join(ZEROMUS_PICS_DIR, z_asset), 'r') as infile:
             zeromus_sprite_script = infile.read()
         env.add_scripts('// [[[ ZEROMUS SPRITE START ]]]\n' + zeromus_sprite_script + '\n// [[[ ZEROMUS SPRITE END ]]]\n')
 
     env.add_file('scripts/midiharp.f4c')
     HARP_SONGS_DIR = os.path.join(os.path.dirname(__file__), 'compiled_songs')
-    song_asset = select_from_catalog(os.path.join(HARP_SONGS_DIR, 'catalog'), env) + '.asset'
+
+    
+    if not options.flags.has('vanilla_harp'):
+        song_asset = select_from_catalog(os.path.join(HARP_SONGS_DIR, 'catalog'), env) + '.asset'
+    else:
+        song_asset = 'vanilla_harp.f4c'
+        
     env.add_substitution('midiharp default credits', '')
     with open(os.path.join(HARP_SONGS_DIR, song_asset), 'r') as infile:
         harp_script = infile.read()
@@ -712,6 +809,12 @@ def build(romfile, options, force_recompile=False):
 
     if not options.hide_flags:
         env.add_substitution('flags hidden', '')
+        
+    # separate section to add tileset/palette changes, as it appears that patch is being overwritten this f4c implemented earlier. 
+    if options.flags.has('bosses_jp'):
+        env.add_file('scripts/japanese_cave_tileset.f4c')
+        env.add_file('scripts/japanese_dungeon_palette.f4c')   
+
 
     # must be last
     wacky_rando.apply(env)

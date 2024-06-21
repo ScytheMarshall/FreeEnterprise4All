@@ -1,0 +1,274 @@
+
+monster($B2)   // Cal     
+{
+    level 31
+    hp 1369
+    gp 500
+    xp 1000
+    attack index $1F         // (4, 99, 54)
+    defense index $60        // (0, 0, 0)
+    magic defense index $AF  // (3, 60, 11)
+    speed index $11          // (14, 17)
+    drop index $00
+    drop rate $00
+    attack sequence $AC
+    spell power 31
+    reaction sequence $AD
+    gfx {
+        size $01
+        palette $B2
+        pointer $8168
+    }
+}
+
+monster($B3)   // Calbrena
+{
+    boss
+    level 47
+    hp 4312
+    gp 5000
+    xp 15000
+    attack index $39         // (8, 90, 106)
+    defense index $6E        // (1, 80, 2)
+    magic defense index $C3  // (6, 60, 25)
+    speed index $38          // (10, 10)  (require patch to 10)
+    drop index $00
+    drop rate $00
+    attack sequence $AA
+    weak element #Fire
+    spell power 41
+    reaction sequence $AB
+    gfx {
+        size $9B
+        palette $00
+        pointer $A99C
+    }
+}
+
+
+monster($B5)   // Shadow  
+{
+    boss
+    level 7
+    hp 1
+    gp 1000
+    xp 5000
+    attack index $2F         // (6, 99, 86)
+    defense index $80        // (3, 30, 4)
+    magic defense index $A0  // (0, 0, 0)
+    speed index $34          // (66, 66) 
+    drop index $00
+    drop rate $00
+    attack sequence $CB
+    spell power 31
+    race #Dragon
+    gfx {
+        size $08
+        palette $B5
+        pointer $99A8
+    }
+}
+
+monster($B6)   // Dr.Lugae
+{
+    boss
+    level 32
+    hp 4936
+    gp 2000
+    xp 5500
+    attack index $00         // (1, 75, 18)
+    defense index $60        // (0, 0, 0)
+    magic defense index $AF  // (3, 60, 11)
+    speed index $38          // (10, 10)
+    drop index $00
+    drop rate $00
+    attack sequence $B9
+    reaction sequence $BA
+    gfx {
+        size $A5
+        palette $00
+        pointer $AD59
+    }
+}
+
+
+
+monster($BC)   // Odin    
+{
+    boss
+    level 53
+    hp 20001
+    gp 0
+    xp 18000
+    attack index $3F         // (9, 85, 116)
+    defense index $7C        // (2, 90, 3)
+    magic defense index $CA  // (7, 50, 32)
+    speed index $2E          // (43, 46)
+    drop index $00
+    drop rate $00
+    attack sequence $C0
+    weak element #Lit #Immune
+    spell power 95
+    reaction sequence $C1
+    gfx {
+        size $AA
+        palette $00
+        pointer $C5F8
+    }
+}
+
+monster($C1)   // Elements
+{
+    boss
+    level 79
+    hp 57000
+    gp 10000
+    xp 40000
+    attack index $44         // (10, 80, 128)
+    defense index $74        // (2, 35, 3)
+    magic defense index $86  // (3, 60, 4)
+    speed index $3C          // (89, 89)
+    drop index $00
+    drop rate $00
+    attack sequence $CE
+    spell power 26
+    reaction sequence $CF
+    gfx {
+        size $8F
+        palette $00
+        pointer $A249
+    }
+}
+
+
+
+monster($D2)   // Brena   
+{
+    boss
+    level 15
+    hp 300
+    gp 500
+    xp 1000
+    attack index $1E         // (4, 99, 52)
+    defense index $67        // (1, 40, 1)
+    magic defense index $AF  // (3, 60, 11)
+    speed index $12          // (15, 18)
+    drop index $00
+    drop rate $00
+    attack sequence $AE
+    spell power 31
+    reaction sequence $AF
+    gfx {
+        size $01
+        palette $D3
+        pointer $8168
+    }
+}
+
+monster($9E)   // Pale Dim
+{
+    boss
+    level 98
+    hp 30000
+    gp 0
+    xp 59000
+    attack index $50         // (11, 85, 144)
+    defense index $99        // (5, 40, 5)
+    magic defense index $DA  // (10, 50, 48)
+    speed index $27          // (36, 39)
+    drop index $00
+    drop rate $00
+    attack sequence $EE
+    weak element #Fire #Lit 
+    resist element #Ice #Absorb
+    resist status #Poison #Blind #Mute #Piggy #Mini #Toad #Stone #Swoon #Sleep #Stun
+    spell power 31
+    race #Dragon
+    reaction sequence $EF
+    gfx {
+        size $07
+        palette $9E
+        pointer $96A8
+    }
+}
+
+
+
+monster($98)   // Wyvern  
+{
+    boss
+    level 99
+    hp 36000
+    gp 0
+    xp 64000
+    attack index $58         // (12, 90, 160)
+    defense index $95        // (4, 80, 5)
+    magic defense index $DC  // (10, 50, 52)
+    speed index $2E          // (43, 46)
+    drop index $00
+    drop rate $00
+    attack sequence $EA
+    resist element #Fire #Lit #Ice #Absorb
+    spell power 10
+    race #Dragon
+    reaction sequence $EB
+    gfx {
+        size $BB
+        palette $00
+        pointer $C868
+    }
+}
+
+
+
+
+monster($95)   // D. Lunar
+{
+    boss
+    level 99
+    hp 21500
+    gp 0
+    xp 50000
+    attack index $5F         // (13, 99, 174)
+    defense index $80        // (3, 30, 4)
+    magic defense index $DD  // (10, 80, 54)
+    speed index $01          // (23, 23)
+    drop index $00
+    drop rate $00
+    attack sequence $B2
+    weak element #Fire
+    spell power 29
+    race #Dragon #Zombie
+    reaction sequence $B3
+    gfx {
+        size $07
+        palette $95
+        pointer $95E8
+    }
+}
+
+
+monster($9A)   // Ogopogo 
+{
+    boss
+    level 62
+    hp 30000
+    gp 0
+    xp 61100
+    attack index $54         // (11, 99, 152)
+    defense index $92        // (4, 55, 4)
+    magic defense index $D2  // (9, 50, 40)
+    speed index $3B          // (38, 38)
+    drop index $00
+    drop rate $00
+    attack sequence $EC
+    weak element #Lit
+    spell power 127
+    reaction sequence $ED
+    gfx {
+        size $BD
+        palette $00
+        pointer $C724
+    }
+}
+

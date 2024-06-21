@@ -452,10 +452,18 @@ class FlagLogicCore:
             if flagset.has('Omode:classicforge') and not flagset.has('Owin:crystal'):
                 flagset.set('Owin:crystal')
                 self._lib.push(log, ['correction', 'Classic Forge is enabled; forced to add Owin:crystal'])
+            elif flagset.has('Omode:harp') and not flagset.has('Owin:crystal'):
+                flagset.set('Owin:crystal')
+                self._lib.push(log, ['correction', 'THE HARP CHECK is enabled; forced to add Owin:crystal'])
             elif len(win_flags) == 0:
                 flagset.set('Owin:game')
                 self._lib.push(log, ['correction', 'Objectives set without outcome specified; added Owin:game'])
 
+            # Force Oreq:all if harp check enabled
+            if flagset.has('Omode:harp') and not flagset.has('Oreq:all'):
+                flagset.set('Oreq:all')
+                self._lib.push(log, ['correction', 'THE HARP CHECK is enabled; forced to add Oreq:all'])
+            
             # force Pkey if pass objective is set
             pass_quest_flags = flagset.get_list(r'^O\d+:quest_pass$')
             if len(pass_quest_flags) > 0 and flagset.has('Pnone'):

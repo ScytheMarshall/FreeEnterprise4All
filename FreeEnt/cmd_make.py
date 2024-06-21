@@ -68,7 +68,7 @@ class MakeCommand(CLICommand):
         output_filename = args.output
         if output_filename is None:
             build_label = f'v{FreeEnt.VERSION_STR}.{build_output.seed}.{build_output.binary_flags}'
-            output_filename = f'FreeEnterprise.{build_label}.smc'
+            output_filename = f'FF4FEPerfected.{build_label}.smc'
 
         if len(build_output.rom):
             with open(output_filename, 'wb') as outfile:

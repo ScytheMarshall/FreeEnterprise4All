@@ -4,11 +4,13 @@ from .errors import *
 from . import util
 from .spoilers import SpoilerRow
 
+# add Omode:harp
 MODES = {
     'Omode:classicforge'  : ['quest_forge'],
     'Omode:classicgiant'  : ['quest_giant'],
     'Omode:fiends'        : ['boss_milon', 'boss_milonz', 'boss_kainazzo', 'boss_valvalis', 'boss_rubicant', 'boss_elements'],
     'Omode:dkmatter'      : ['internal_dkmatter'],
+    'Omode:harp'          : ['internal_magnes'],
 }
 
 OBJECTIVE_SLUGS_TO_IDS = {}
@@ -37,11 +39,11 @@ TOUGH_QUEST_OBJECTIVES_EXCLUDED = [
     'quest_fabul',
     'quest_ordeals',
     'quest_baroninn',
+    'quest_agart',
     'quest_pass',
     'quest_dwarfcastle',
     'quest_lowerbabil',
     'quest_unlocksewer',
-    'quest_music',
     'quest_toroiatreasury',
     'quest_magma',
     'quest_unlocksealedcave',
@@ -215,8 +217,9 @@ def apply(env):
     env.add_substitution('objective thresholds', ' '.join([('00' if b == 0xFF else '01') for b in objective_ids]))
 
     # handle changes for partial objectives
+    # force require all if Omode:harp is on
     required_objective_count = env.options.flags.get_suffix('Oreq:')
-    if required_objective_count == 'all' or required_objective_count is None:
+    if required_objective_count == 'all' or required_objective_count is None or env.options.flags.has('objective_mode_magnes'):
         required_objective_count = total_objective_count
     else:
         required_objective_count = int(required_objective_count)

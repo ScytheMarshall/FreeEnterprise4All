@@ -1,0 +1,284 @@
+// hook into Reaction code to detect its use in Z fight
+
+// Playable Golbez?!?!
+actor(#Golbez)
+{
+    name $0C
+    load from stats $0D
+    discard
+    commands {
+        #Fight
+        #DarkWave
+        #Black
+        #Item
+    }
+    right hand #Obsidian 
+    left hand #Aegis
+    head #Glass
+    body #Sorcerer
+    arms #DiamondRing
+}
+
+// msfpatch {
+//     DetectUptCo:
+//         ldx $1800
+//         cpx #$01b7
+//         bne $+DetectUptCo_Return
+// 
+//        // this is Zeromus fight, make a note that this happened in plot flag $7F
+//         lda #$80
+//         ora $128f
+//         sta $128f
+// 
+//     DetectUptCo_Return:
+//         // do displaced instructions and return
+//         ldx #$0280
+//         ldy #$0008
+//         jml $03dd42
+// 
+//     .addr $03dd3c
+//         jml $=DetectUptCo
+// }
+
+
+// zeromus event checks for the UptCo flag (in zeromus.f4c)
+
+placement($172 9)  //#LunarCoreZemusRoom
+{
+    npc #Edward2
+    position 15 17
+    walking off
+    tangible
+    face up
+    palette 0
+    turning off
+    marching off
+    speed 2
+}
+
+event($E3)
+{
+    [#B #If #not_Flag #flag.FuckYouThatsWhy] {
+        message $83 from bank 3
+        fight $B7
+        [#B #GotoEvent $E3]    
+    }
+
+    consts(placement) {
+        4   PartyMember1
+        5   PartyMember2
+        6   PartyMember3
+        7   PartyMember4
+        8   PartyMember5
+
+        9   Golbez
+
+        3   WaveringFlame
+       // 10  GolbezFallen
+    }
+ 
+    toggle screen shake
+    toggle music fade
+    toggle tint $00
+
+    pause 4
+
+    message $81 from bank 3
+    sound #Glow
+    toggle tint $DF
+    music #Hurry
+    toggle screen shake
+    vfx #PackageBombs
+
+    sound #Explosion
+    batch 10 {
+        screen flash
+    }
+    toggle screen shake
+    pause 4
+    player toggle turning
+    batch {
+        p #PartyMember1 move down
+        p #PartyMember2 move down
+        p #PartyMember3 move down
+        p #PartyMember4 move down
+        p #PartyMember5 move down
+    }
+    batch 1 {
+        p #PartyMember1 lie down
+        p #PartyMember2 lie down
+        p #PartyMember3 lie down
+        p #PartyMember4 lie down
+        p #PartyMember5 lie down
+    }
+    player toggle turning
+    pause 3
+    batch 7 {
+        p #PartyMember1 toggle visible
+        p #PartyMember2 toggle visible
+        p #PartyMember3 toggle visible
+        p #PartyMember4 toggle visible
+        p #PartyMember5 toggle visible
+    }
+    toggle music fade
+    toggle tint $00
+    pause 12
+
+    music #Golbez
+    pause 6
+    p #Golbez toggle visible
+    batch 6 {
+        p #Golbez move up
+    }
+    p #Golbez face down
+    // p #Golbez spin
+    // p #Golbez wave out
+    pause 2
+    // p #Golbez wave in
+    pause 2
+    p #Golbez wave out
+    pause 4
+    
+    message $82 from bank 3
+    p #Golbez face down
+    pause 4
+    p #Golbez face up
+    p #Golbez move up
+
+    [#B #ClearParty]
+    give actor #Golbez
+
+    fight $B7
+
+    // UNCOMMENT to create the nightmare loop
+    // clear #FuckYouThatsWhy
+    // [#B #GotoEvent $E3]
+
+    toggle screen shake
+    message $37 from bank 3   // Seriously?
+    sound #Earthquake
+    pause 24
+    sound $5E
+    pause 24
+    sound #Explosion
+    batch 8 {
+        screen flash
+    }
+    batch 10 {
+        screen up down
+    }
+    pause 8
+    sound #Explosion
+    batch 4 {
+        screen flash
+    }
+    toggle screen shake
+    batch 5 {
+        screen up down
+    }
+    toggle screen shake
+    sound #Explosion
+    batch 4 {
+        screen flash
+    }
+    toggle screen shake
+    batch 10 {
+        screen up down
+    }
+    toggle screen shake
+    pause 8
+    music $42
+    toggle screen shake
+    batch 80 {
+        screen up down
+    }
+    toggle screen shake
+    pause 16
+    batch 15 {
+        p #WaveringFlame toggle visible
+    }
+    toggle music fade
+    toggle tint $00
+    toggle screen shake
+
+    pause 8
+    // p #Golbez wave out
+    pause 8
+
+    // for convenience, define ending in separate file
+    [#B #GotoEvent $1C]    
+}
+
+
+
+
+// need to also patch name code for battle
+patch($16fb53 bus) { 0C }
+
+// initial stats
+patch($7aaa0) {
+  95 0F 32 00 00 00 00 1A E8 1A E8 B4 00 B4 00 35 
+  0C 35 28 35 00 00 46 F9 60 0F 00 10 00 F9 60 0F
+}
+
+patch($7c916) {
+  19 1A 1B 1C 1D 1E 1F 20 21 22 23 24 25 26 27 28 29 2A 2B 2C 2D 2E 2F 30 42
+}
+
+text(bank 3 message $81) {
+Zeromus:__
+
+
+
+ YOU WERE SUPPOSED TO 
+ FADE THE HARP CHECK!!
+
+
+
+ I will show you how!
+}
+
+text(bank 3 message $82) {
+Golbez:Don't worry!
+ The evil one is here!
+
+
+ Time for my heel turn!
+}
+
+text(bank 3 message $37) {
+Zeromus:__Seriously?
+}
+
+text(bank 3 message $83) {
+Zeromus:Yeah, no.
+}
+
+text(battle message $3E) {
+You're going to die!
+}
+
+ai_script(moon $48)
+{
+    chain {
+        pass
+
+        use #GhostAnna
+        
+        message $3E   // Edward!
+        message $3E   // You're going to die!
+
+        use #GhostDisappear
+
+        use #GhostFusoyaGolbez  // hacked to only unpause battle
+        condition 2
+        use #ZeromusShake2
+    }
+}
+
+// roughly patch AI condition sets to alter Zeromus
+patch($7648e) { 60 }  // Zeromus middle condition set changes from 11 to 60
+
+patch($766f9) { 50 }  // condition set 60 is condition 50
+
+patch($76840) { 03 #actor.Golbez 00 FF }  // condition 50 is "golbez actor is alive"

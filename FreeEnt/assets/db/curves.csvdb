@@ -13,7 +13,7 @@ DwarfCastle,23,Dwarf Castle,10,25,35,28,2,0,0,0
 BahamutCave,35,Cave Bahamut,8,12,30,30,18,2,0,0
 LunarPath,36,Lunar Path,8,12,30,30,18,2,0,0
 CaveEblan,26,Cave Eblan,10,10,40,25,15,0,0,0
-CaveMagnes,21,Cave Magnes,0,20,40,30,10,0,0,0
+CaveMagnes,21,Cave Magnes,45,35,20,0,0,0,0,0
 Eblan,25,Eblan,10,10,25,30,23,2,0,0
 Fabul,12,Fabul,20,30,30,18,2,0,0,0
 Giant,37,Giant of Bab-il,0,10,30,30,26,4,0,0

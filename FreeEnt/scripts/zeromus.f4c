@@ -288,7 +288,7 @@ event($E7)  //Zeromus Battle, Ending Events
 
     pause 8
 
-    [#B #If #Flag #flag.fe_UptCo] {
+    [#B #If #Flag #flag.FuckYouThatsWhy] {
         [#B #GotoEvent $E3]
     }
 

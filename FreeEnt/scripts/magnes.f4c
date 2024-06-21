@@ -161,7 +161,6 @@ event($73)  //Dark Elf 'Me Attack You' battle
     player lie down
     player visible
     toggle screen fade
-    take item #TwinHarp
     pause 4
     p #Harp move left
     p #Harp toggle visible
@@ -196,7 +195,6 @@ event($73)  //Dark Elf 'Me Attack You' battle
     p #DarkElfSeal toggle visible
     player move down
     player face up
-    [#B #Objectives_Tick #objective.quest_music]
 }
 
 event($81)  //Dark Elf 'Fire2' battle
@@ -208,33 +206,35 @@ event($81)  //Dark Elf 'Fire2' battle
     }
     // autodetected map #CaveMagnesCrystalRoom
     map message 3  // "GRRR_ YOU_ YOU_!"
-    [#B #Rando_CheckFlag #randoflag.bosses]
-    [#B #If #Flag #flag.Result] {
-        map message 0 // ME CHANGE
-        sound #BlackMagic
+ //   [#B #Rando_CheckFlag #randoflag.bosses]
+ //   [#B #If #Flag #flag.Result] {
+ //       map message 0 // ME CHANGE
+        
+       sound #BlackMagic
         batch 5 {
             p #TrueForm toggle visible
             p #DarkElf toggle visible
         }
         pause 4
-    }
-    [#B #Rando_BossBattle #rando.darkelf_slot]
+//    }
+
+    fight $82
+
     music #None
-    [#B #Objectives_TickBossSlot #rando.darkelf_slot]
-    [#B #Rando_PostBossBattle #rando.darkelf_slot]
+
     pause 8
     message $E0   // "Dark Elf:W_ WHY DID THAT  MUSIC REACH HERE?"
 
-    [#B #If #Flag #flag.Result] {
-        batch 10 {
-            p #TrueForm toggle visible
-        }
-    }
-    [#B #If #not_Flag #flag.Result] {
-        batch 10 {
-            p #DarkElf toggle visible
-        }
-    }
+ //   [#B #If #Flag #flag.Result] {
+     batch 10 {
+         p #TrueForm toggle visible
+     }
+//    }
+//    [#B #If #not_Flag #flag.Result] {
+//        batch 10 {
+//            p #DarkElf toggle visible
+//        }
+//    }
 
     sound $7E
     batch 8 {
@@ -246,7 +246,7 @@ event($81)  //Dark Elf 'Fire2' battle
     [#B #If #not_Flag #flag.Result] {
         p #DarkElf toggle visible
     }
-    music #Prelude fade in
+    music #CharacterDied fade in
     pause 8
     deactivate #DarkElf
     deactivate #DarkElfSeal
@@ -268,10 +268,11 @@ event($74)  //Obtaining the Earth Crystal
     p #CaveMagnesCrystal toggle visible
     deactivate #CaveMagnesCrystal
     message #msg.fe_ReceivedFanfare
-    music #Prelude
+    music #CharacterDied
+    set #FuckYouThatsWhy
     [#B #Objectives_TickRewardSlot #reward_slot.magnes_item]
     [#B #Rando_DeliverRewardFromSlot #reward_slot.magnes_item]
-    [#B #Objectives_Tick #objective.quest_magnes]
+    [#B #Objectives_Tick #objective.internal_magnes]
 }
 
 text(bank 1 message $DB) {
@@ -294,12 +295,9 @@ Dark Elf:WHAT!?  WHAT IS
  U-Ugh!
 }
 
-text(map #CaveMagnesCrystalRoom message $00) {
-Dark Elf: ME CHANGE!
-}
 
 text(map #CaveMagnes1F message $00) {
-Magnetic field in effect.
+TURN AROUND AND LEAVE NOW!
 }
 
 // "Erase" Cid NPC in Magnes crystal room
@@ -338,4 +336,9 @@ ai_script($AA)
 
 text(battle message $0B) {
 We can't_
+}
+
+
+text(map name $47) {
+THE HARP CHECK
 }

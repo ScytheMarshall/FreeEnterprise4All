@@ -1,0 +1,606 @@
+//---------------------------------------------------------------------
+
+npc(#DarkElf)
+{
+    sprite #DarkElf
+    default active
+    eventcall {
+        if #DarkElfBattle1:
+            $81   //Dark Elf 'Fire2' battle
+        else:
+            $73   //Dark Elf 'Me Attack You' battle
+    }
+}
+
+// change Yang placement to our boss rando alternate
+placement($94 2)
+{
+    position 11 11
+    npc #fe_DynamicNPC
+    // %darkelf_slot sprite main palette%
+    // %end%
+    walking off
+    tangible
+    face down
+    turning on
+    marching on
+    speed 3
+}
+
+// Create TwinHarp NPC
+npc(#fe_TwinHarp)
+{
+    sprite #FlameTop
+    default inactive
+    eventcall { $28 } // map message 1
+}
+
+// override FlameTop tiles with harp graphic
+chr($dfe60 3bit) {
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000000
+0000260000062000
+0000026212660000
+0000025454560000
+0000025353560000
+0000025151560000
+0000025353560000
+0000002266650000
+0000005555500000
+0000000000000000
+0000000000000000
+}
+
+placement($94 3)  //#CaveMagnesCrystalRoom
+{
+    npc #fe_TwinHarp
+    position 12 12
+    walking off
+    tangible
+    face down
+    palette 0
+    turning off
+    marching off
+    speed 1
+}
+
+
+
+event($73)  //Dark Elf 'Me Attack You' battle
+{
+    // do TwinHarp item check here instead
+    [#B #If #not_Item #item.TwinHarp] {
+        message $DB   // "Dark Elf:YOU CANNOT GO  ANY FURTHER."
+        fight $FC
+        [#B #EndEvent]
+    }
+
+    consts(placement) {
+        2   Yang1
+        3   Harp
+    }
+    // autodetected map #CaveMagnesCrystalRoom
+    message $DB   // "Dark Elf:YOU CANNOT GO  ANY FURTHER."
+    music #BossBattle
+    fight $E6
+    player face up
+    music #Hurry
+    pause 6
+    player lie down
+    pause 16
+    player invisible
+    consts(placement) {
+        0   Edward4
+        1   EdwardHarp2
+        2   Man4
+        3   Woman2
+    }
+    load map #ToroiaCastleHospital at 9 7 
+
+    p #Edward4 bow head
+    pause 8
+    p #Edward4 face down
+    pause 4
+    p #Edward4 face right
+    p #Edward4 move right
+    p #Edward4 move right
+    p #Edward4 lie down
+    batch 1 {
+        p #Man4 move down
+        p #Woman2 move down
+    }
+    p #Man4 move down
+    p #Man4 move down
+    p #Man4 move right
+    p #Man4 face up
+    p #Edward4 bow head
+    pause 4
+    p #Edward4 face down
+    pause 4
+    toggle music fade
+    player toggle turning
+    batch 1 {
+        p #Edward4 face right
+        p #Man4 move down
+        p #Woman2 move up
+    }
+    player toggle turning
+    p #Edward4 move right
+    p #Edward4 move right
+    p #Edward4 face up
+    batch 1 {
+        p #Man4 move up
+        p #Woman2 move down
+    }
+    batch 1 {
+        p #Man4 move up
+        p #Woman2 face right
+    }
+    p #Man4 face right
+    p #Edward4 move up
+    p #Edward4 move up
+    p #Edward4 bow head
+    pause 4
+    batch 1 {
+        p #Edward4 toggle visible
+        p #EdwardHarp2 toggle visible
+    }
+    music #Edward
+    pause 48
+    toggle screen fade
+    consts(placement) {
+        1   DarkElf
+        3   Harp
+        5   DarkElfSeal
+    }
+    load map #CaveMagnesCrystalRoom at 11 12 
+    player lie down
+    player visible
+    toggle screen fade
+    take item #TwinHarp
+    pause 4
+    p #Harp move left
+    p #Harp toggle visible
+    p #Harp move right
+    pause 4
+    message $DE   // "[harp]TwinHarp made a sound synchronizing the tune"
+    sound $5D
+    toggle tint $B7
+    batch 16 {
+        p #DarkElf toggle visible
+    }
+    screen blur
+    screen blur
+    batch 8 {
+        screen flash
+    }
+    toggle tint $00
+    pause 8
+    message $DF   // "[Edward]:Wield your sword_!  Dark Elf cannot control"
+    player bow head
+    pause 8
+    player face down
+    pause 8
+    clear status 
+    restore hp
+    restore mp
+    set #DarkElfBattle1
+    clear #DarkElfBattle2
+    activate #DarkElfSeal
+    activate #fe_TwinHarp
+    [#B #Tracker_SetKeyItemUsed #tracker_key_item_index.twinharp]
+    p #DarkElfSeal toggle visible
+    player move down
+    player face up
+}
+
+event($81)  //Dark Elf 'Fire2' battle
+{
+    consts(placement) {
+        1   DarkElf
+        2   TrueForm
+        5   DarkElfSeal
+    }
+    // autodetected map #CaveMagnesCrystalRoom
+    map message 3  // "GRRR_ YOU_ YOU_!"
+    [#B #Rando_CheckFlag #randoflag.bosses]
+    [#B #If #Flag #flag.Result] {
+        map message 0 // ME CHANGE
+        sound #BlackMagic
+        batch 5 {
+            p #TrueForm toggle visible
+            p #DarkElf toggle visible
+        }
+        pause 4
+    }
+
+    music #None
+
+    pause 8
+    message $E0   // "Dark Elf:W_ WHY DID THAT  MUSIC REACH HERE?"
+
+    [#B #If #Flag #flag.Result] {
+        batch 10 {
+            p #TrueForm toggle visible
+        }
+    }
+    [#B #If #not_Flag #flag.Result] {
+        batch 10 {
+            p #DarkElf toggle visible
+        }
+    }
+
+    sound $7E
+    batch 8 {
+        screen flash
+    }
+    [#B #If #Flag #flag.Result] {
+        p #TrueForm toggle visible
+    }
+    [#B #If #not_Flag #flag.Result] {
+        p #DarkElf toggle visible
+    }
+    music #CharacterDied fade in
+    pause 8
+    deactivate #DarkElf
+    deactivate #DarkElfSeal
+    p #DarkElfSeal toggle visible
+    vfx #PopWarpStack
+    vfx #PopWarpStack
+}
+
+event($74)  //Obtaining the Earth Crystal
+{
+    consts(placement) {
+        0   CaveMagnesCrystal
+    }
+    // autodetected map #CaveMagnesCrystalRoom
+
+    sound #Crystal
+    pause 12
+    [#B #Text_LoadRewardNameFromSlot #reward_slot.magnes_item 0]
+    p #CaveMagnesCrystal toggle visible
+    deactivate #CaveMagnesCrystal
+    message #msg.fe_ReceivedFanfare
+    music #CharacterDied
+    [#B #Objectives_TickRewardSlot #reward_slot.magnes_item]
+    [#B #Rando_DeliverRewardFromSlot #reward_slot.magnes_item]
+    [#B #Objectives_Tick #objective.internal_magnes]
+}
+
+text(bank 1 message $DB) {
+Dark Elf:YOU CANNOT GO
+ ANY FURTHER.
+ YOU CANNOT TAKE MY
+ CRYSTAL!
+ YOU CANNOT USE METALLIC
+ WEAPONS.
+ YOU CANNOT DEFEAT ME.
+}
+
+text(bank 1 message $DE) {
+[harp]TwinHarp made a sound
+synchronizing the tune
+played by [Edward]!
+
+Dark Elf:WHAT!?  WHAT IS
+ THIS NASTY MUSIC!?
+ U-Ugh!
+}
+
+text(bank 1 message $E0) {
+harumph:Lousy Harp
+ Cartel shenanigans!
+ I will have my revenge_
+
+__HARUMPH!!
+}
+
+text(map #CaveMagnesCrystalRoom message $03) {
+Dark Elf:As a dwarf would
+ say, I'm a harumph!
+}
+
+text(map #CaveMagnes1F message $00) {
+TURN AROUND AND LEAVE NOW!
+}
+
+// "Erase" Cid NPC in Magnes crystal room
+
+placement($94 4)  //#CaveMagnesCrystalRoom
+{
+    npc #fe_None
+    position 0 0
+    intangible
+}
+
+// Alter messages in Dark Elf "we can't" fight
+
+ai_script($AA)
+{
+    pass
+    
+    pass
+    
+    pass
+    
+    message $09   // "DarkElf:ME ATTACK YOU!"
+    chain {
+        use #Fire2 on group
+        
+        use #Lit2 on group
+        
+        use #Ice2 on group
+    }
+    
+    use #Weak on group
+    
+    message $0B   // "[Cecil]:We can't_"
+    use #EndBattle
+}
+
+text(battle message $0B) {
+We can't_
+}
+
+text(map name $47) {
+THE HARP CHECK
+}
+
+
+text(map #CaveMagnesCrystalRoom message $00) {
+harumph: PREPARE TO DIE!
+}
+
+text(map #CaveMagnesCrystalRoom message $02) {
+Sealed by harumph.
+}
+
+text(map #CaveMagnesCrystalRoom message $03) {
+harumphs_
+YOU_ FOOLS_!
+}
+
+// magnes superboss stuff is below
+formation($178)
+{
+    monsters {
+        $48 x 1   // harumph phase 1
+        $6F x 1   // harumph phase 2
+    }
+    transforming
+    arrangement $3A
+    can't run
+    continue music
+    gfx bits 1
+    cursor graph $00
+}
+
+text(monster name $48) {harumph}
+text(monster name $48) {harumph}
+
+monster($48)   // Dark Elf
+{
+    boss
+    level 99
+    hp 65000
+    gp 0
+    xp 0
+    attack index $1F         // (4, 99, 54)
+    defense index $60        // (0, 0, 0)
+    magic defense index $DF  // (99, 99, 254)
+    speed index $2E          // (43, 46)
+    drop index $00
+    drop rate $00
+    attack sequence $1E
+    spell power 32
+    reaction sequence $F7
+    gfx {
+        size $97
+        palette $92
+        pointer $A834
+    }
+}
+
+aigroup($1E) {
+    condition set $11 : script $FA  // condition 1
+    condition set $00 : script $8F  // intro
+}
+
+ai_script($8F)
+{
+    message $16   // "die harp cartel"
+    pass
+    use #Enemy_BigBang
+    condition 1
+    
+}
+
+aigroup($F7) {
+    condition set $3C : script $3C  // < 20000 HP and damaged
+    condition set $04 : script $01  // fight if damaged
+}
+
+ai_script($3C)
+{
+    message $17   // "time to end this"
+    use $5F
+    music #Zeromus
+    use #Enemy_Vanish2
+}
+
+aigroup($FA) {
+
+}
+
+ai_script($FA)
+{
+    pass
+    fight
+    pass
+    use #Nuke
+    
+}
+
+text(battle message $16) {
+harumph:DIE HARP CARTEL!
+}
+
+text(battle message $17) {
+harumph:Time to end this!
+}
+
+text(spell name $5F) {HarpFade}
+text(spell name $60) {Nuke}
+
+// 0x5F,#spell.Enemy_HarpFade,,HarpFade,,"0xC0,0x00,0x64,0x2A,0x00,0x80"
+spell($5F)  // #Enemy_HarpFade
+{
+    casting time 0
+    target $06
+    param $00   // 0
+    hit 100
+    boss True
+    effect $2A
+    damage False
+    element $00
+    impact False
+    mp cost 0
+    ignore wall True
+}
+
+
+// 0x60,#spell.Enemy_Nuke,,Nuke,,"0xA0,0x64,0x64,0x01,0x80,0x80"
+spell($60)  // #Enemy_Nuke
+{
+    casting time 0
+    target $05
+    param $64   // 100
+    hit 100
+    boss True
+    effect $01
+    damage False
+    element $00
+    impact True
+    mp cost 0
+    ignore wall True
+}
+
+// -------
+
+monster($6F)   // harumph (harp check phase 2)
+{
+    boss
+    level 99
+    hp 65000
+    gp 0
+    xp 0
+    attack index $1F         // (4, 99, 54)
+    defense index $63        // (0, 0, 3)
+    magic defense index $D2  // (9, 50, 40)
+    speed index $2E          // (43, 46)
+    drop index $00
+    drop rate $00
+    attack sequence $DA
+    spell power 32
+    reaction sequence $AD
+    gfx {
+        size $04
+        palette $92
+        pointer $8234
+    }
+}
+
+aigroup($DA) {
+    condition set $00 : script $DD  // $FF $FF $FF $FF
+}
+
+ai_script($DD)
+{
+    pass
+    use #Mute
+    pass
+    use #ZeromusShake2
+    pass
+    use #Enemy_BigWave
+}
+
+
+// Dummied out dummied monsters from formations
+
+formation($1D8)
+{
+    monsters {
+        $11 x 1   // TrapRose
+        $74 x 4   // Crawler 
+    }
+    arrangement $65
+    gfx bits 2
+    cursor graph $43
+}
+
+formation($08)
+{
+    monsters {
+        $04 x 2   // replace SandMoth with 2 more Larva
+        $04 x 2   // Larva   
+    }
+    arrangement $07
+    gfx bits 2
+    cursor graph $08
+}
+
+
+formation($1DA)
+{
+    monsters {
+        $6F x 1   // Talantla
+        $6D x 2   // BlackCat
+    }
+    arrangement $79
+    gfx bits 2
+    cursor graph $14
+}
+
+formation($75)
+{
+    monsters {
+        $58 x 2   // Carapace
+        $75 x 2   // Ice Liz 
+    }
+    arrangement $26
+    gfx bits 2
+    cursor graph $21
+}
+
+
+// patch in new conditions, new attacks
+
+patch($ee60c6 bus) {
+11 FA 00 8F FF 01 02 00 22 FF 01 24 02 25 00 01 FF 01 24 00 01 FF 21 26 FF 01 24 00 26 FF 07 01 FF 01 26 00 25 FF 01 28 02 29 00 01 FF 01 02 03 01 00 2B FF 55 00 01 2C 00 01 FF 56 58 04 2D FF 01 2E 00 2F FF 01 2E 0B 30 00 01 FF 01 02 02 31 00 01 FF 04 31 FF 01 02 03 32 00 01 FF 01 02 03 01 00 00 FF 07 20 FF 01 5D 03 01 00 00 FF 07 20 06 35 FF 02 36 00 01 FF 02 37 00 01 FF 01 02 00 6F FF 01 2C 00 39 FF 07 3A FF 06 3A FF 01 2C 0B 01 00 39 FF 04 3A FF 01 16 03 2D 00 3D FF 01 16 03 2D 00 3E FF 00 09 FF 08 0A FF 07 43 06 44 FF 07 45 06 46 FF 55 00 01 02 00 01 FF 01 47 00 01 FF 06 48 FF 01 49 00 01 FF 06 01 07 47 FF 01 02 00 4A FF 01 4B 03 4C 00 01 FF 07 35 FF 07 4D FF 56 58 07 4E FF 01 4F 02 50 00 01 FF 01 4F 00 01 FF 04 50 FF 02 F3 19 00 00 F2 FF 20 51 23 52 FF 04 01 FF 01 04 03 05 00 03 FF 01 02 02 01 00 53 FF 01 02 02 53 00 01 FF 01 54 00 55 FF 01 54 00 01 FF 07 56 FF 04 56 FF 01 02 02 57 00 01 FF 01 57 00 F8 FF 01 3F 26 7A 02 40 00 01 FF 01 59 03 5A 00 01 FF 01 5B 00 00 FF 24 31 FF 01 0E 02 5C 00 01 FF 01 5D 02 5C 00 01 FF 01 5E 02 5C 00 01 FF 01 1B 00 01 FF 08 5F 09 60 0A 36 FF 01 45 00 01 FF 08 77 09 0B 0A 37 FF 0E 62 00 63 FF 27 37 00 36 FF 01 66 03 01 00 67 FF 01 44 02 68 00 69 FF 01 01 02 02 00 00 FF 00 06 FF 51 08 07 07 FF 55 00 01 6F 00 70 FF 55 00 01 6F 00 01 FF 56 58 04 42 FF 00 71 FF 02 72 00 00 FF 21 73 04 63 FF 01 02 00 74 FF 01 0C 00 0B FF 51 0D FF 00 76 FF 0E 02 00 01 FF 0E 78 00 79 FF 0A 7B FF 01 0F 00 0E FF 08 10 FF 00 14 FF 51 15 FF 11 50 00 24 FF 01 04 00 40 FF 07 D2 FF 02 2C 00 3B FF 02 2C 00 61 FF 25 01 03 02 00 00 FF 24 01 FF 01 02 00 6F FF 27 13 01 12 00 11 FF 00 80 FF 28 81 FF 00 82 FF 00 83 FF 00 01 FF 29 84 2A 85 2B 86 2C 87 2D 88 2E 89 2F 8A 04 8B FF 00 00 FF 33 92 32 91 31 90 06 8F FF 00 01 FF 35 95 34 94 04 93 FF 11 96 36 97 00 01 FF 02 99 00 98 FF 37 9A 04 36 FF 03 01 00 00 FF 24 9B FF 11 01 00 9C FF 08 9D FF 11 9F 00 9E FF 06 8D FF 38 04 00 A0 FF 38 04 00 A1 FF 02 A3 00 A2 FF 07 A4 FF 12 A6 11 A5 00 A7 FF 3A A9 39 A8 FF 3B AB 00 AA FF 00 AC FF 3C AD FF 00 AE FF 3E B0 00 AF FF 3E B2 00 B1 FF 02 B4 3D B4 3F B4 00 B3 FF 12 B6 11 B5 00 B7 FF 40 B8 41 B9 42 B9 FF 00 BA FF 43 BB FF 00 F4 FF 44 BC 08 40 09 2B 0A 42 FF 03 BD 00 01 FF 06 01 FF 03 BD 00 01 FF 06 01 FF 56 58 FF 56 58 06 47 FF 11 2C 00 2B FF 51 2F 16 2D 02 2E FF 45 00 11 F5 00 BF FF 46 BE 48 C2 06 C1 1A C0 1B C0 1C C0 1D C0 1E C0 FF 00 C3 FF 02 C4 11 00 00 5F FF 24 C5 FF 02 C8 12 C7 11 00 00 C6 FF 49 C9 FF 02 CA 12 01 11 CB 00 00 FF 00 CC FF 11 CE 00 CD FF 04 CF FF 1F D0 00 D1 FF 00 D3 FF 4A D4 FF 11 D6 00 D5 FF 5A 1E 04 1D 07 1D FF 00 51 FF 5B 52 FF 4B DB 11 DA 00 D9 FF 00 00 FF 08 DC 09 DD 0F DE FF 12 E2 4C E1 11 E0 00 DF FF 4D E3 FF 00 E4 FF 12 E7 11 E6 00 E5 FF 50 EA 4F E9 4E E8 FF 11 ED 00 EB FF 58 EE 57 EC FF 13 F1 00 EF FF 59 F0 FF 00 D7 FF 00 D6 FF 00 41 FF 52 43 0F 42 FF 00 41 FF 53 44 5F 45 FF 00 33 FF 54 34 FF 00 DD FF 00 3C FF 00 01 FF 06 8E FF 12 49 11 48 00 47 FF 5E 4A 04 46 FF 15 57 14 55 13 4C 00 4B FF 61 56 18 54 5D 4E 51 58 0F 4F 07 4D FF 01 17 00 16 FF 04 18 FF 01 1A 02 1B 00 19 FF 51 1C FF 11 20 00 1F FF 00 FF 12 22 00 21 FF 0A 23 FF 19 26 11 3D 00 25 FF 51 27 FF 00 28 FF 0A 29 51 2A 07 2A FF 00 30 FF 51 31 06 32 08 33 09 34 0A 35 FF 00 38 FF 06 39 0F 3A FF 00 3B FF 07 3C FF 61 40 00 3F FF 00 53 FF 06 F9 FF 3C 3C 04 01 FF 00 00 FF 00 FB FF 00 FC FF 17 7C FF 04 FD FF 00 7D FF 7D
+}
+
+patch($0f8b68 bus) {
+49 5C 6D 6B 47 5C 5F 60 4F 70 66 60 FF FF FF FF
+}
+
+
+patch($0f99da bus) {
+C0 00 E4 2A 00 80 A0 64 64 01 80 80
+}
+
+patch($07a10c bus) { 
+17 04 24 21
+}
+
+patch($0fa1cb bus) {
+2F 00 00 24 21
+}
+
+patch($00ffdc bus) {
+72 85 8D 7A
+}

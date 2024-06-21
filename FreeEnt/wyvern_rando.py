@@ -111,10 +111,16 @@ def apply(env):
             script = f'target {target} use {cmd}'
 
         env.add_substitution('wyvern meganuke replacement', script)
-        env.add_file('scripts/wyvern_replacemeganuke.f4c')
+        if env.options.flags.has('bosses_jp'):
+            env.add_file('scripts/wyvern_replacemeganuke_et.f4c')
+        else:
+            env.add_file('scripts/wyvern_replacemeganuke.f4c')
 
         env.spoilers.add_table(
             "MISC", 
             [["MegaNuke replacement", databases.get_spell_spoiler_name(cmd)]],
             public = env.options.flags.has_any('-spoil:all', '-spoil:misc')
             )
+    elif env.options.flags.has('bosses_jp'):
+        env.add_file('scripts/wyvern_easytype.f4c')       
+
