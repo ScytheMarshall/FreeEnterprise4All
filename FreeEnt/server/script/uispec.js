@@ -4533,6 +4533,11 @@ var FLAG_UISPEC = [
     "title": "OTHER",
     "controls": [
       {
+        "flag": "-randomstaticprng",
+        "title": "Randomize static PRNG table",
+        "description": "FF4 uses a static table of 256 random bytes for random number generation (e.g., to decide when a random encounter happens.) This replaces that table with 256 random bytes."
+      },
+      {
         "flag": "@kit",
         "title": "Starter kits",
         "description": "Starter kits allow you to begin the game with additional items in your inventory.",

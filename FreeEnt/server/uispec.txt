@@ -315,6 +315,7 @@
 .[G64] Allow 64-floor glitch
 
 == OTHER
+[-randomstaticprng] Randomize static PRNG table
 [@kit] Starter kits
 .<> Kit 1
 ..(-kit:basic)        Basic kit

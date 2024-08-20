@@ -17,6 +17,7 @@ from .address import *
 
 
 import math
+import random
 
 DEBUG = 0
 MAX_RANDOMIZATION_ATTEMPTS = 100
@@ -945,6 +946,10 @@ def apply(env):
     if (RewardSlot.fallen_golbez_item not in rewards_assignment):
         env.add_substitution('golbez awards item', '')
 
+    # randomize static PRNG table
+    if env.options.flags.has('random_static_prng'):
+        env.add_binary(BusAddress(0x14EE00), random.SystemRandom([env.options.seed]).randbytes(0x100))
+
     # generate spoiler logs
     item_spoiler_names = {it.const: it.spoilername for it in databases.get_items_dbview()}
 
@@ -973,7 +978,6 @@ def apply(env):
 
 if __name__ == '__main__':
     import FreeEnt
-    import random
     import argparse
 
     parser = argparse.ArgumentParser();
