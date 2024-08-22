@@ -553,6 +553,12 @@ def apply(env):
 
     stat_scaling_reports = []
 
+    # potentially remove boss spots again; boss_rando pulls the original BOSS_SLOTS and turns it into a list
+    if env.options.flags.has('no_officer_slot'):
+        BOSS_SLOTS.remove('officer_slot')
+    if env.options.flags.has('no_kq_eblan_slot'):
+        BOSS_SLOTS.remove('kingqueen_slot')
+
     assignment = {k : env.assignments[k] for k in env.assignments if k in BOSS_SLOTS}
 
     for slot in assignment:

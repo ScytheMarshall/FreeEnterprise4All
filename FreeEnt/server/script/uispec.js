@@ -4447,6 +4447,23 @@ var FLAG_UISPEC = [
         "flag": "Bwoahdin",
         "title": "Replace Odin's first two Zantetsukens 1 and 2 with random attack",
         "description": "The replacement attack will be single-target (and generally weaker than e.g. Nuke, unless <em>Bunsafe</em> is enabled). Odin will not raise the sword before the random attack."
+      },
+      {
+        "flag": "@anon39",
+        "title": "Remove certain boss slots",
+        "type": "select",
+        "subcontrols": [
+          {
+            "flag": "Bremove:kingqueen_slot",
+            "title": "Remove the KQ Eblan slot boss fight",
+            "description": "Normally in Free Enterprise, the KQ Eblan boss fight is included in the randomization, with invented stats at the Hook 1 slot based off the second part of the vanilla Lugae boss fight. This flag removes that boss slot entirely while keeping KQ Eblan in the pool."
+          },
+          {
+            "flag": "Bremove:officer_slot",
+            "title": "Remove the Officer slot boss fight",
+            "description": "Normally in Free Enterprise, the Officer/Soldiers boss fight is included in the randomization. This flag removes the boss slot at Kaipo Inn entirely while keeping Officer/Soldiers in the pool."
+          }
+        ]
       }
     ]
   },
@@ -4454,7 +4471,7 @@ var FLAG_UISPEC = [
     "title": "ENCOUNTERS",
     "controls": [
       {
-        "flag": "@anon39",
+        "flag": "@anon40",
         "title": "Random encounter rate",
         "important": true,
         "type": "select",
@@ -4527,7 +4544,7 @@ var FLAG_UISPEC = [
         ]
       },
       {
-        "flag": "@anon40",
+        "flag": "@anon41",
         "title": "Drop tables",
         "type": "select",
         "subcontrols": [
@@ -4604,7 +4621,7 @@ var FLAG_UISPEC = [
         "description": "Starter kits allow you to begin the game with additional items in your inventory.",
         "subcontrols": [
           {
-            "flag": "@anon41",
+            "flag": "@anon42",
             "title": "Kit 1",
             "type": "select",
             "subcontrols": [
@@ -4746,7 +4763,7 @@ var FLAG_UISPEC = [
             ]
           },
           {
-            "flag": "@anon42",
+            "flag": "@anon43",
             "title": "Kit 2",
             "type": "select",
             "subcontrols": [
@@ -4888,7 +4905,7 @@ var FLAG_UISPEC = [
             ]
           },
           {
-            "flag": "@anon43",
+            "flag": "@anon44",
             "title": "Kit 3",
             "type": "select",
             "subcontrols": [
@@ -5061,7 +5078,7 @@ var FLAG_UISPEC = [
         "description": "Normally, Kokkol the Smith forges the Adamant and Legend to make Excalibur. These flags change what Kokkol will make.",
         "subcontrols": [
           {
-            "flag": "@anon44",
+            "flag": "@anon45",
             "title": "Alternative forge items",
             "type": "select",
             "subcontrols": [
@@ -5089,7 +5106,7 @@ var FLAG_UISPEC = [
         "description": "By default, Free Enterprise runs with the \"FuSoYa Challenge\", where FuSoYa begins with 500 HP and a collection of low-level spells, and each boss defeated grants him 100 HP and three random additional spells. This behaviour may be changed using these flags.",
         "subcontrols": [
           {
-            "flag": "@anon45",
+            "flag": "@anon46",
             "title": "Spell learning changes",
             "type": "select",
             "subcontrols": [
@@ -5162,7 +5179,7 @@ var FLAG_UISPEC = [
         ]
       },
       {
-        "flag": "@anon46",
+        "flag": "@anon47",
         "title": "Restore vanilla behaviors",
         "subcontrols": [
           {
@@ -5218,7 +5235,7 @@ var FLAG_UISPEC = [
         "description": "<ul>\n    <li>Guidingway will introduce the challenge.</li>\n    <li>Guidingway will not explain the challenge.</li>\n    <li>Wacky challenges are not intended to be balanced, robust, coherent, fair, or bug-free.</li>\n    <li>(They are intended to be wacky.)</li>\n</ul>",
         "subcontrols": [
           {
-            "flag": "@anon47",
+            "flag": "@anon48",
             "title": "Select challenge",
             "type": "select",
             "subcontrols": [
@@ -5384,7 +5401,7 @@ var FLAG_UISPEC = [
         ]
       },
       {
-        "flag": "@anon48",
+        "flag": "@anon49",
         "title": "Miscellaneous tweaks",
         "subcontrols": [
           {
@@ -5405,7 +5422,7 @@ var FLAG_UISPEC = [
     "title": "SPOILERS",
     "controls": [
       {
-        "flag": "@anon49",
+        "flag": "@anon50",
         "title": "No spoiler log",
         "type": "select",
         "subcontrols": [
@@ -5459,7 +5476,7 @@ var FLAG_UISPEC = [
             ]
           },
           {
-            "flag": "@anon50",
+            "flag": "@anon51",
             "title": "Partial spoiler log",
             "subcontrols": [
               {
@@ -5475,7 +5492,7 @@ var FLAG_UISPEC = [
                 "title": "Spoil characters"
               },
               {
-                "flag": "@anon51",
+                "flag": "@anon52",
                 "title": "Spoil treasure chests",
                 "type": "select",
                 "subcontrols": [

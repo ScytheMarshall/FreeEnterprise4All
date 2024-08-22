@@ -475,6 +475,12 @@ def apply(env):
     elif env.options.flags.has('location_fusoya'):
         # shuffle locations in each tier so that location slots are filled up in a random order
         location_tiers = {} 
+        if env.options.flags.has('no_officer_slot'):
+            LOCATION_SLOTS.pop('officer_slot')
+            MOD_BOSS_SLOT_SPOILER_NAMES.pop('officer_slot')
+        if env.options.flags.has('no_kq_eblan_slot'):
+            LOCATION_SLOTS.pop('kingqueen_slot')
+            MOD_BOSS_SLOT_SPOILER_NAMES.pop('kingqueen_slot')
         
         for i in LOCATION_SLOTS.values():
             slot_order = [slot for slot in LOCATION_SLOTS if LOCATION_SLOTS[slot] == i]
@@ -501,6 +507,7 @@ def apply(env):
         env.rnd.shuffle(shuffled_spells)
             
         # every spell can be placed at least once, due to combinatorics
+        # probably true when a couple slots are removed, but not going to worry about it
             
         while location_tiers:   # going to remove slots when they're full, stop when all slots full/list is empty
             for spell in shuffled_spells: 
@@ -546,7 +553,14 @@ def apply(env):
         spell_slots.pop('starting2_slot')
         for location_slot in spell_slots:
             learned_spells.extend(spell_slots[location_slot])
-            
+        if env.options.flags.has('no_officer_slot'):
+            learned_spells.insert(3, '00') # Officer is the second slot, so its spells would normally start at index 3
+            learned_spells.insert(4, '00')
+            learned_spells.insert(5, '00') 
+        if env.options.flags.has('no_kq_eblan_slot'):
+            learned_spells.insert(60, '00') # King/Queen Eblan is the twenty-first slot, so its spells would normally start at index 60
+            learned_spells.insert(61, '00')
+            learned_spells.insert(62, '00') 
         env.add_substitution('fusoya challenge spells', '\n'.join(learned_spells))
             
         spoilers = []

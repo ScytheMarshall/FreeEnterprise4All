@@ -492,6 +492,10 @@ def apply_friendlyfire(env):
     env.add_toggle('wacky_spell_filter_hook')
     env.add_file('scripts/wacky/spell_filter_hook.f4c')
 
+def setup_payablegolbez(env):
+    bribe_slots = BOSS_SLOTS.copy()
+    env.meta['payablegolbez_slots'] = bribe_slots
+
 def apply_payablegolbez(env):
     BOSS_SLOT_HPS = {
         'antlion_slot' : 1000,
@@ -530,7 +534,8 @@ def apply_payablegolbez(env):
         'wyvern_slot' : 25000,
     }
     bribe_values = []
-    for slot in BOSS_SLOTS:
+    bribe_slots = env.meta.get('payablegolbez_slots')
+    for slot in bribe_slots:
         bribe = BOSS_SLOT_HPS[slot] * 5
         bribe_values.extend([
             ((bribe >> (i * 8)) & 0xFF) for i in range(4)

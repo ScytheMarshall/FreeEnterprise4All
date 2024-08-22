@@ -295,6 +295,10 @@
 .(Bwhyburn) Disable Wyvern's opening MegaNuke
 .(Bwhichburn) Replace Wyvern's opening MegaNuke with random attack
 [Bwoahdin] Replace Odin's first two Zantetsukens 1 and 2 with random attack
+<> Remove certain boss slots
+.[Bremove:officer_slot] Remove the Officer slot boss fight
+.[Bremove:kingqueen_slot] Remove the KQ Eblan slot boss fight
+
 
 == ENCOUNTERS
 <>* Random encounter rate

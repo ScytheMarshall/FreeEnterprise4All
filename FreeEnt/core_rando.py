@@ -503,6 +503,12 @@ def apply(env):
     #     layout = '"Package  SandRuby   [lightsword]Legend"      [[ 01 ]]\n        "[key]Baron   [harp]TwinHarp  [crystal]Earth" [[ 01 ]]\n        "         [key]Tower     Hook"            [[ 01 ]]\n        "[key]Luca    [crystal]Darkness  [tail]Rat"   [[ 01 ]]\n        "Adamant  Pan        [knife]Spoon"            [[ 01 ]]\n        "[tail]Pink    [crystal]Crystal"              [[ 00 ]]'
     #     env.add_substitution('tracker layout', layout)
 
+    # potentially remove boss spots (this dict gets used in boss_rando, so need to remove it here)
+    if env.options.flags.has('no_officer_slot'):
+        BOSS_SLOTS.pop('officer_slot')
+    if env.options.flags.has('no_kq_eblan_slot'):
+        BOSS_SLOTS.pop('kingqueen_slot')
+
     assignable_boss_slots = BOSS_SLOTS.copy()
     bosses = list(BOSSES)
 
@@ -975,6 +981,7 @@ def apply(env):
         boss_objective_consts.append(f'#objective.boss_{boss_assignment[slot]}')
         env.meta['available_bosses'].add(boss_assignment[slot])
     env.add_script('patch($21f840 bus) {\n' + '\n'.join(boss_objective_consts) + '\n}')
+    env.add_substitution('randomizer boss count', '{:02X}'.format(len(BOSS_SLOTS)))
 
     # remove golbez item delivery if not needed
     if (RewardSlot.fallen_golbez_item not in rewards_assignment):
