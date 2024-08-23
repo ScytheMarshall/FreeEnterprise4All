@@ -4454,14 +4454,14 @@ var FLAG_UISPEC = [
         "type": "select",
         "subcontrols": [
           {
-            "flag": "Bremove:kingqueen_slot",
-            "title": "Remove the KQ Eblan slot boss fight",
-            "description": "Normally in Free Enterprise, the KQ Eblan boss fight is included in the randomization, with invented stats at the Hook 1 slot based off the second part of the vanilla Lugae boss fight. This flag removes that boss slot entirely while keeping KQ Eblan in the pool."
-          },
-          {
             "flag": "Bremove:officer_slot",
             "title": "Remove the Officer slot boss fight",
             "description": "Normally in Free Enterprise, the Officer/Soldiers boss fight is included in the randomization. This flag removes the boss slot at Kaipo Inn entirely while keeping Officer/Soldiers in the pool."
+          },
+          {
+            "flag": "Bremove:kingqueen_slot",
+            "title": "Remove the KQ Eblan slot boss fight",
+            "description": "Normally in Free Enterprise, the KQ Eblan boss fight is included in the randomization, with invented stats at the Hook 1 slot based off the second part of the vanilla Lugae boss fight. This flag removes that boss slot entirely while keeping KQ Eblan in the pool."
           }
         ]
       }
@@ -5148,8 +5148,8 @@ var FLAG_UISPEC = [
       },
       {
         "flag": "@exp",
-        "title": "Restore vanilla EXP distribution",
-        "description": "To reduce grinding, Free Enterprise normally applies a number of experience boosts, which may be individually disabled by these flags.",
+        "title": "Restore vanilla or change EXP distribution",
+        "description": "To reduce grinding, Free Enterprise normally applies a number of experience boosts, which may be individually disabled by these flags. There are also options to change the experience distribution in other ways.",
         "subcontrols": [
           {
             "flag": "-exp:split",
@@ -5167,19 +5167,90 @@ var FLAG_UISPEC = [
             "description": "By default in Free Enterprise, once 10 key items have been collected, earned EXP is doubled. Set this flag to remove this bonus."
           },
           {
-            "flag": "-exp:objectivebonus",
-            "title": "Each completed objective gives 12.5% extra EXP",
-            "description": "Normally, objectives do not increase the amount of EXP received from battles. Under this flag, each completed objective earns you 12.5% more EXP from each battle."
+            "flag": "@objectiveexp",
+            "title": "Award extra EXP for completing objectives",
+            "description": "Normally, objectives do not increase the amount of EXP received from battles. Under this flag, each completed objective earns you more EXP from each battle.",
+            "subcontrols": [
+              {
+                "flag": "@anon47",
+                "title": "Amount of bonus exp",
+                "type": "select",
+                "subcontrols": [
+                  {
+                    "flag": "-exp:objectivebonus_25",
+                    "title": "Each completed objective gives 25% extra EXP"
+                  },
+                  {
+                    "flag": "-exp:objectivebonus_10",
+                    "title": "Each completed objective gives 10% extra EXP"
+                  },
+                  {
+                    "flag": "-exp:objectivebonus_num_obj",
+                    "title": "Each completed objective gives extra EXP",
+                    "description": "The EXP bonus is 100% divided by the number of available objectives in the seed; e.g. with 7 objectives, each objective gives you about 14% extra EXP (subject to some truncation)."
+                  }
+                ]
+              }
+            ]
           },
           {
-            "flag": "-exp:geometric",
-            "title": "Repeated monster kills scale down in EXP",
-            "description": "Normally in FF4, each copy of a monster killed in battle gives the same amount of EXP. Under this flag, each monster of the same type defeated in the same battle will yield 90% of the EXP of the previous monster of that type, giving diminishing returns for repeated monster kills."
+            "flag": "@geometricexp",
+            "title": "Decrease EXP earned from repeated same-type monster kills",
+            "description": "Normally in FF4, each instance of a monster type killed in battle gives the same amount of EXP. Under this flag, each monster of the same type defeated in the same battle will yield a scaled amount of the EXP of the previous monster of that type, giving diminishing returns for repeated monster kills. Note that the reduction is per monster type and not \"per slot\" in battle.",
+            "subcontrols": [
+              {
+                "flag": "@anon48",
+                "title": "Per-monster-kill percentage reduction",
+                "type": "select",
+                "subcontrols": [
+                  {
+                    "flag": "-exp:geometric_90",
+                    "title": "Repeated monster kills scale down in EXP to 90%"
+                  },
+                  {
+                    "flag": "-exp:geometric_80",
+                    "title": "Repeated monster kills scale down in EXP to 80%"
+                  },
+                  {
+                    "flag": "-exp:geometric_70",
+                    "title": "Repeated monster kills scale down in EXP to 70%"
+                  },
+                  {
+                    "flag": "-exp:geometric_60",
+                    "title": "Repeated monster kills scale down in EXP to 60%"
+                  },
+                  {
+                    "flag": "-exp:geometric_50",
+                    "title": "Repeated monster kills scale down in EXP to 50%"
+                  },
+                  {
+                    "flag": "-exp:geometric_40",
+                    "title": "Repeated monster kills scale down in EXP to 40%"
+                  },
+                  {
+                    "flag": "-exp:geometric_30",
+                    "title": "Repeated monster kills scale down in EXP to 30%"
+                  },
+                  {
+                    "flag": "-exp:geometric_20",
+                    "title": "Repeated monster kills scale down in EXP to 20%"
+                  },
+                  {
+                    "flag": "-exp:geometric_10",
+                    "title": "Repeated monster kills scale down in EXP to 10%"
+                  },
+                  {
+                    "flag": "-exp:geometric_0",
+                    "title": "Repeated monster kills do not award EXP"
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
       {
-        "flag": "@anon47",
+        "flag": "@anon49",
         "title": "Restore vanilla behaviors",
         "subcontrols": [
           {
@@ -5235,7 +5306,7 @@ var FLAG_UISPEC = [
         "description": "<ul>\n    <li>Guidingway will introduce the challenge.</li>\n    <li>Guidingway will not explain the challenge.</li>\n    <li>Wacky challenges are not intended to be balanced, robust, coherent, fair, or bug-free.</li>\n    <li>(They are intended to be wacky.)</li>\n</ul>",
         "subcontrols": [
           {
-            "flag": "@anon48",
+            "flag": "@anon50",
             "title": "Select challenge",
             "type": "select",
             "subcontrols": [
@@ -5401,7 +5472,7 @@ var FLAG_UISPEC = [
         ]
       },
       {
-        "flag": "@anon49",
+        "flag": "@anon51",
         "title": "Miscellaneous tweaks",
         "subcontrols": [
           {
@@ -5422,7 +5493,7 @@ var FLAG_UISPEC = [
     "title": "SPOILERS",
     "controls": [
       {
-        "flag": "@anon50",
+        "flag": "@anon52",
         "title": "No spoiler log",
         "type": "select",
         "subcontrols": [
@@ -5476,7 +5547,7 @@ var FLAG_UISPEC = [
             ]
           },
           {
-            "flag": "@anon51",
+            "flag": "@anon53",
             "title": "Partial spoiler log",
             "subcontrols": [
               {
@@ -5492,7 +5563,7 @@ var FLAG_UISPEC = [
                 "title": "Spoil characters"
               },
               {
-                "flag": "@anon52",
+                "flag": "@anon54",
                 "title": "Spoil treasure chests",
                 "type": "select",
                 "subcontrols": [
