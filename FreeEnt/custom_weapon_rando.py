@@ -19,6 +19,7 @@ _CAST_TABLE = {
     'Nuke' : 0x30,
     'Heal' : 0x12,
     'Wall' : 0x0A,
+    'Fatal' : 0x2B,
 }
 
 _EQUIP = ['dkcecil', 'kain', 'crydia', 'tellah', 'edward', 'rosa', 'yang', 'palom', 'porom', 'pcecil', 'cid', 'arydia', 'edge', 'fusoya']
@@ -124,6 +125,16 @@ def apply(env):
         env.add_substitution('custom weapon enabled', '')
         return
 
+    if custom_weapon.id == 0x103 and env.options.flags.has('darkpaladin'):
+        custom_weapon.name = '[darksword]Bringer'
+        custom_weapon.spoilername = 'Deathbringer'
+        custom_weapon.elements = ['dark']
+        custom_weapon.cast = 'Fatal'
+        custom_weapon.spellpower = 8
+        custom_weapon.dragons = 'y'
+        custom_weapon.spirits = ''
+        custom_weapon.undead = ''
+
     # write item name
     env.add_script(f'text(item name ${CUSTOM_WEAPON_ITEM_ID:02X}) {{{custom_weapon.name}}}')
 
@@ -183,8 +194,12 @@ def apply(env):
     env.add_binary(UnheaderedAddress(0x7A590 + CUSTOM_WEAPON_ELEMENT_TABLE_INDEX * 0x03), [element_value & 0xFF, (element_value >> 8) & 0xFF, (element_value >> 16) & 0xFF], as_script=True)
 
     # set override item description
-    with open(os.path.join(os.path.dirname(__file__), 'assets', 'item_info', f'custom_weapon_{custom_weapon.id:X}_description.bin'), 'rb') as infile:
-        description_data = infile.read()
+    if not (custom_weapon.id == 0x103 and env.options.flags.has('darkpaladin')):
+        with open(os.path.join(os.path.dirname(__file__), 'assets', 'item_info', f'custom_weapon_{custom_weapon.id:X}_description.bin'), 'rb') as infile:
+            description_data = infile.read()
+    else: 
+        with open(os.path.join(os.path.dirname(__file__), 'assets', 'item_info', f'dp_custom_weapon_{custom_weapon.id:X}_description.bin'), 'rb') as infile:
+            description_data = infile.read()
     env.meta.setdefault('item_description_overrides', {})[CUSTOM_WEAPON_ITEM_ID] = description_data
 
     # write proxy item value

@@ -321,7 +321,13 @@ def apply(env):
     for sa in sorted_shop_assignments:
         if sa.manifest:
             for item in sa.manifest:
-                shop_spoilers.append( SpoilerRow(sa.shop.memo, databases.get_item_spoiler_name(item), obscurable=True) )
+                item_spoiler_name = databases.get_item_spoiler_name(item)
+                if env.options.flags.has('darkpaladin'):
+                    item_spoiler_name = item_spoiler_name.replace('Paladin','Ancient')
+                    item_spoiler_name = item_spoiler_name.replace('Light','Chaos')
+                    if not item_spoiler_name == 'Crystal Ring':
+                        item_spoiler_name = item_spoiler_name.replace('Crystal','Hades')
+                shop_spoilers.append( SpoilerRow(sa.shop.memo, item_spoiler_name, obscurable=True) )
         else:
             shop_spoilers.append( SpoilerRow(sa.shop.memo, "(nothing)", obscurable=True) )
 

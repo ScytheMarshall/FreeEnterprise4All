@@ -38,7 +38,7 @@ FIGHT_SPOILER_DESCRIPTIONS = {
     0x1F4 : "Behemoth"
 }
 
-# needed tool for Tspecific
+# needed tool for Tplayable
 _CHARACTER_TO_USERS = {
     'cecil' : ['dkcecil', 'pcecil'],
     'rydia' : ['crydia', 'arydia']
@@ -349,10 +349,20 @@ def apply(env):
             try:
                 item = env.meta['rewards_assignment'][slot].item
                 contents = databases.get_item_spoiler_name(item)
+                if env.options.flags.has('darkpaladin'):
+                    contents = contents.replace('Paladin','Ancient')
+                    contents = contents.replace('Light','Chaos')
+                    if not contents == 'Crystal Ring':
+                        contents = contents.replace('Crystal','Hades')
             except KeyError:
                 contents = 'DEBUG'
         elif not contents.endswith(' gp'):
             contents = databases.get_item_spoiler_name(contents)
+            if env.options.flags.has('darkpaladin'):
+                contents = contents.replace('Paladin','Ancient')
+                contents = contents.replace('Light','Chaos')
+                if not contents == 'Crystal Ring':
+                    contents = contents.replace('Crystal','Hades')
 
         if fight is not None:
             miab = f" (MIAB: {FIGHT_SPOILER_DESCRIPTIONS[fight]})"

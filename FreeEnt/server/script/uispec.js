@@ -5478,12 +5478,17 @@ var FLAG_UISPEC = [
           {
             "flag": "-tweak:kainmagic",
             "title": "Give Kain magic (with Lance)",
-            "description": "Kain gets two spellsets: White (with a new spell Lance replacing Sight) and Black."
+            "description": "Kain gets two spellsets: White (with a new spell Lance replacing Sight) and Black. (Yes, Lance is overpowered when other characters use it. Enjoy your 1200 strats!)"
           },
           {
             "flag": "-tweak:edwardheal",
             "title": "Improve Edward's Heal command",
             "description": "Edward's Heal command will now use the best of Cure3/Cure2/Cure1 available."
+          },
+          {
+            "flag": "-tweak:darkpaladin",
+            "title": "Cecil becomes a Dark Paladin",
+            "description": "Cecil now becomes a Dark Paladin upon class change on Ordeals. He keeps the DKC sprite and Dark command, and gains a set of Black magic. Dark Knight and Paladin-specific equipment is reworked, based somewhat on <em>Unprecedented Crisis.</em>"
           }
         ]
       }

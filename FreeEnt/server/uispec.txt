@@ -505,6 +505,7 @@
 [] Miscellaneous tweaks
 .[-tweak:kainmagic] Give Kain magic (with Lance)
 .[-tweak:edwardheal] Improve Edward's Heal command
+.[-tweak:darkpaladin] Cecil becomes a Dark Paladin
 
 == SPOILERS
 <> No spoiler log

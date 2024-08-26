@@ -763,9 +763,13 @@ def build(romfile, options, force_recompile=False):
         + '\n'.join([f'.def {k} ${blob_defines[k]:06X}' for k in blob_defines])
         + '\n}')
 
-    # item descriptions
-    with open(os.path.join(os.path.dirname(__file__), 'assets/item_info/item_descriptions.bin'), 'rb') as infile:
-        item_description_data = list(infile.read())
+    # item descriptions, possibly adjusted for a big edit
+    if options.flags.has('darkpaladin'):
+        with open(os.path.join(os.path.dirname(__file__), 'assets/item_info/darkpal_item_descriptions.bin'), 'rb') as infile:
+            item_description_data = list(infile.read())
+    else:
+        with open(os.path.join(os.path.dirname(__file__), 'assets/item_info/item_descriptions.bin'), 'rb') as infile:
+            item_description_data = list(infile.read())
     for item_id in env.meta.get('item_description_overrides', {}):
         item_description_override = env.meta['item_description_overrides'][item_id]
 

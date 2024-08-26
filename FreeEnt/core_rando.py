@@ -989,6 +989,19 @@ def apply(env):
 
     # generate spoiler logs
     item_spoiler_names = {it.const: it.spoilername for it in databases.get_items_dbview()}
+    if env.options.flags.has('darkpaladin'):
+        item_spoiler_names.update(
+            {'#item.Light' : 'Chaos Sword',
+            '#item.CrystalSword' : 'Hades Sword',
+            '#item.PaladinShield' : 'Ancient Shield',
+            '#item.PaladinHelm' : 'Ancient Helm',
+            '#item.PaladinArmor' : 'Ancient Armor',
+            '#item.PaladinGauntlet' : 'Ancient Gauntlet',
+            '#item.CrystalShield' : 'Hades Shield',
+            '#item.CrystalHelm' : 'Hades Helm',
+            '#item.CrystalArmor' : 'Hades Armor',
+            '#item.CrystalGauntlet' : 'Hades Gauntlet'}
+        )
 
     key_item_spoilers = []
     for key_item_reward in list(ESSENTIAL_KEY_ITEMS) + list(NONESSENTIAL_KEY_ITEMS) + [ItemReward("#item.Pass")]:
