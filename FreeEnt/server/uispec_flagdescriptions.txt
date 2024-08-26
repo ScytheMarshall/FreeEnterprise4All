@@ -567,4 +567,4 @@ Kain gets two spellsets: White (with a new spell Lance replacing Sight) and Blac
 Edward's Heal command will now use the best of Cure3/Cure2/Cure1 available.
 
 [-tweak:darkpaladin]
-Cecil now becomes a Dark Paladin upon class change on Ordeals. He keeps the DKC sprite and Dark command, and gains a set of Black magic. Dark Knight and Paladin-specific equipment is reworked, based somewhat on <em>Unprecedented Crisis.</em>
+Cecil now becomes a Dark Paladin upon class change on Ordeals. He keeps the Dark Wave command and gains a set of Black magic, along with significant stat changes to become more offensive-oriented. Dark Knight and Paladin-specific equipment is reworked, based somewhat on <em>Unprecedented Crisis.</em>
