@@ -86,3 +86,6 @@ patch ($0f92fc bus) { 04 00 }
 // so handle in character_rando.py
 
 // also handle item description overrides in generator.py
+
+// handle all initial/level-up stats patching in
+// character_rando.py, for sanity/ease of arithmetic/loops
