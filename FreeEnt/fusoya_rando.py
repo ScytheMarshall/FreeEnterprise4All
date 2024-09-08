@@ -442,6 +442,8 @@ def apply(env):
 	        'spellset(#FusoyaBlack) {{ initial {{ {} }} }}'.format(' '.join(black))
             )
             spoilers = [ ("Missing spells", ', '.join([databases.get_spell_spoiler_name(s) for s in missing_spells])) ]
+            if env.options.flags.has('kainmagic'):
+                spoilers = [(p, s.replace('Sight', 'Lance')) for p,s in spoilers]
             env.spoilers.add_table("FUSOYA SPELLS", spoilers, public=env.options.flags.has_any('-spoil:all', '-spoil:misc'), ditto_depth=1)
             
     elif env.options.flags.has('nerfed_fusoya'):
@@ -470,6 +472,8 @@ def apply(env):
         spoilers = []
         spoilers.append( ("Initial white magic", ', '.join([databases.get_spell_spoiler_name(s) for s in white])) )
         spoilers.append( ("Initial black magic", ', '.join([databases.get_spell_spoiler_name(s) for s in black])) )
+        if env.options.flags.has('kainmagic'):
+            spoilers = [(p, s.replace('Sight', 'Lance')) for p,s in spoilers]
         env.spoilers.add_table("FUSOYA SPELLS", spoilers, public=env.options.flags.has_any('-spoil:all', '-spoil:misc'), ditto_depth=1)
 
     elif env.options.flags.has('location_fusoya'):
@@ -567,6 +571,8 @@ def apply(env):
         spoilers.append( ("Initial spells", ', '.join([databases.get_spell_spoiler_name(s) for s in initial_spells])) )
         for position in MOD_BOSS_SLOT_SPOILER_NAMES: 
             spoilers.append( (MOD_BOSS_SLOT_SPOILER_NAMES[position], ', '.join([databases.get_spell_spoiler_name(s) for s in spell_slots[position]]) ) )
+        if env.options.flags.has('kainmagic'):
+            spoilers = [(p, s.replace('Sight', 'Lance')) for p,s in spoilers]
         env.spoilers.add_table("FUSOYA SPELLS", spoilers, public=env.options.flags.has_any('-spoil:all', '-spoil:misc'), ditto_depth=1)
         
     else:
@@ -622,6 +628,8 @@ def apply(env):
             boss_number = (i // 3) + 1
             level_spells = learned_spells[i:i+3] # syntax handles fewer than three spells for free
             spoilers.append( (f"Boss {boss_number}", ', '.join([databases.get_spell_spoiler_name(s) for s in level_spells])) )
+        if env.options.flags.has('kainmagic'):
+            spoilers = [(p, s.replace('Sight', 'Lance')) for p,s in spoilers]
         env.spoilers.add_table("FUSOYA SPELLS", spoilers, public=env.options.flags.has_any('-spoil:all', '-spoil:misc'), ditto_depth=1)
 
 if __name__ == '__main__':
