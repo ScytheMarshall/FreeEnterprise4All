@@ -5167,25 +5167,30 @@ var FLAG_UISPEC = [
             "description": "By default in Free Enterprise, once 10 key items have been collected, earned EXP is doubled. Set this flag to remove this bonus."
           },
           {
+            "flag": "-exp:crystalbonus",
+            "title": "Double EXP after obtaining the Crystal",
+            "description": "Under this flag, characters earn double EXP once you obtain the Crystal."
+          },
+          {
             "flag": "@objectiveexp",
             "title": "Award extra EXP for completing objectives",
             "description": "Normally, objectives do not increase the amount of EXP received from battles. Under this flag, each completed objective earns you more EXP from each battle.",
             "subcontrols": [
               {
                 "flag": "@anon47",
-                "title": "Amount of bonus exp",
+                "title": "Amount of bonus EXP",
                 "type": "select",
                 "subcontrols": [
                   {
-                    "flag": "-exp:objectivebonus_25",
+                    "flag": "-exp:objectivebonus25",
                     "title": "Each completed objective gives 25% extra EXP"
                   },
                   {
-                    "flag": "-exp:objectivebonus_10",
+                    "flag": "-exp:objectivebonus10",
                     "title": "Each completed objective gives 10% extra EXP"
                   },
                   {
-                    "flag": "-exp:objectivebonus_num_obj",
+                    "flag": "-exp:objectivebonus_num",
                     "title": "Each completed objective gives extra EXP",
                     "description": "The EXP bonus is 100% divided by the number of available objectives in the seed; e.g. with 7 objectives, each objective gives you about 14% extra EXP (subject to some truncation)."
                   }
@@ -5194,12 +5199,118 @@ var FLAG_UISPEC = [
             ]
           },
           {
+            "flag": "@kicheckexp",
+            "title": "Award extra EXP for completing key item checks",
+            "description": "Normally, completing key item checks does not increase the amount of EXP received from battles. Under this flag, each completed key item check beyond the starting item earns you more EXP from each battle.",
+            "subcontrols": [
+              {
+                "flag": "@anon48",
+                "title": "Amount of bonus EXP",
+                "type": "select",
+                "subcontrols": [
+                  {
+                    "flag": "-exp:kicheckbonus10",
+                    "title": "Each completed KI check gives 10% extra EXP"
+                  },
+                  {
+                    "flag": "-exp:kicheckbonus5",
+                    "title": "Each completed KI check gives 5% extra EXP"
+                  },
+                  {
+                    "flag": "-exp:kicheckbonus2",
+                    "title": "Each completed KI check gives 2% extra EXP"
+                  },
+                  {
+                    "flag": "-exp:kicheckbonus_num",
+                    "title": "Each completed KI check gives extra EXP",
+                    "description": "The EXP bonus is 100% divided by the number of potential key item checks in the seed; e.g. with the 21 non-starting main and summon checks on, each objective gives you about 4.7% extra EXP (subject to some truncation)."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "flag": "@zonkbonusexp",
+            "title": "Award extra EXP after non-KI rewards from KI checks",
+            "description": "Normally, the rewards from key item checks do not impact the amount of EXP received from battles. Under this flag, every time you get a non-key-item reward from a potential key item check (a \"zonk\") you earn more EXP from future battles.",
+            "subcontrols": [
+              {
+                "flag": "@anon49",
+                "title": "Amount of bonus EXP",
+                "type": "select",
+                "subcontrols": [
+                  {
+                    "flag": "-exp:zonkbonus10",
+                    "title": "Each non-KI reward gives 10% extra EXP"
+                  },
+                  {
+                    "flag": "-exp:zonkbonus5",
+                    "title": "Each non-KI reward gives 5% extra EXP"
+                  },
+                  {
+                    "flag": "-exp:zonkbonus2",
+                    "title": "Each non-KI reward gives 2% extra EXP"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "flag": "@miabbonusexp",
+            "title": "Award extra EXP during MIAB encounters",
+            "description": "Normally, MIAB encounters have the same EXP calculation as other encounters. Under this flag, MIAB encounters award double or 1.5 times the usual EXP.",
+            "subcontrols": [
+              {
+                "flag": "@anon50",
+                "title": "Amount of bonus EXP",
+                "type": "select",
+                "subcontrols": [
+                  {
+                    "flag": "-exp:miabbonus100",
+                    "title": "MIAB encounters give double EXP"
+                  },
+                  {
+                    "flag": "-exp:miabbonus50",
+                    "title": "MIAB encounters give 50% extra EXP"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "flag": "@moonbonusexp",
+            "title": "Award extra EXP when on the moon",
+            "description": "Normally, location of encounter does not increase EXP. Under this flag, encounters on the moon award double or triple the usual EXP.",
+            "subcontrols": [
+              {
+                "flag": "@anon51",
+                "title": "Amount of bonus EXP",
+                "type": "select",
+                "subcontrols": [
+                  {
+                    "flag": "-exp:moonbonus200",
+                    "title": "Moon encounters give triple EXP"
+                  },
+                  {
+                    "flag": "-exp:moonbonus100",
+                    "title": "Moon encounters give double EXP"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "flag": "-exp:maxlevelbonus",
+            "title": "Award extra EXP when underlevelled",
+            "description": "Normally, level does not play into EXP calculations. Under this flag, if 5 plus twice the largest level in your party is less than the smallest monster level in the encounter, then the encounter awards 20% bonus EXP (and another 20% for each additional deficit of 5)."
+          },
+          {
             "flag": "@geometricexp",
             "title": "Decrease EXP earned from repeated same-type monster kills",
             "description": "Normally in FF4, each instance of a monster type killed in battle gives the same amount of EXP. Under this flag, each monster of the same type defeated in the same battle will yield a scaled amount of the EXP of the previous monster of that type, giving diminishing returns for repeated monster kills. Note that the reduction is per monster type and not \"per slot\" in battle.",
             "subcontrols": [
               {
-                "flag": "@anon48",
+                "flag": "@anon52",
                 "title": "Per-monster-kill percentage reduction",
                 "type": "select",
                 "subcontrols": [
@@ -5250,7 +5361,7 @@ var FLAG_UISPEC = [
         ]
       },
       {
-        "flag": "@anon49",
+        "flag": "@anon53",
         "title": "Restore vanilla behaviors",
         "subcontrols": [
           {
@@ -5306,7 +5417,7 @@ var FLAG_UISPEC = [
         "description": "<ul>\n    <li>Guidingway will introduce the challenge.</li>\n    <li>Guidingway will not explain the challenge.</li>\n    <li>Wacky challenges are not intended to be balanced, robust, coherent, fair, or bug-free.</li>\n    <li>(They are intended to be wacky.)</li>\n</ul>",
         "subcontrols": [
           {
-            "flag": "@anon50",
+            "flag": "@anon54",
             "title": "Select challenge",
             "type": "select",
             "subcontrols": [
@@ -5472,7 +5583,7 @@ var FLAG_UISPEC = [
         ]
       },
       {
-        "flag": "@anon51",
+        "flag": "@anon55",
         "title": "Miscellaneous tweaks",
         "subcontrols": [
           {
@@ -5488,7 +5599,7 @@ var FLAG_UISPEC = [
           {
             "flag": "-tweak:darkpaladin",
             "title": "Cecil becomes a Dark Paladin",
-            "description": "Cecil now becomes a Dark Paladin upon class change on Ordeals. He keeps the DKC sprite and Dark command, and gains a set of Black magic. Dark Knight and Paladin-specific equipment is reworked, based somewhat on <em>Unprecedented Crisis.</em>"
+            "description": "Cecil now becomes a Dark Paladin upon class change on Ordeals. He keeps the Dark Wave command and gains a set of Black magic, along with significant stat changes to become more offensive-oriented. Dark Knight and Paladin-specific equipment is reworked, based somewhat on <em>Unprecedented Crisis.</em>"
           }
         ]
       }
@@ -5498,7 +5609,7 @@ var FLAG_UISPEC = [
     "title": "SPOILERS",
     "controls": [
       {
-        "flag": "@anon52",
+        "flag": "@anon56",
         "title": "No spoiler log",
         "type": "select",
         "subcontrols": [
@@ -5552,7 +5663,7 @@ var FLAG_UISPEC = [
             ]
           },
           {
-            "flag": "@anon53",
+            "flag": "@anon57",
             "title": "Partial spoiler log",
             "subcontrols": [
               {
@@ -5568,7 +5679,7 @@ var FLAG_UISPEC = [
                 "title": "Spoil characters"
               },
               {
-                "flag": "@anon54",
+                "flag": "@anon58",
                 "title": "Spoil treasure chests",
                 "type": "select",
                 "subcontrols": [

@@ -503,7 +503,7 @@ def apply(env):
     #     layout = '"Package  SandRuby   [lightsword]Legend"      [[ 01 ]]\n        "[key]Baron   [harp]TwinHarp  [crystal]Earth" [[ 01 ]]\n        "         [key]Tower     Hook"            [[ 01 ]]\n        "[key]Luca    [crystal]Darkness  [tail]Rat"   [[ 01 ]]\n        "Adamant  Pan        [knife]Spoon"            [[ 01 ]]\n        "[tail]Pink    [crystal]Crystal"              [[ 00 ]]'
     #     env.add_substitution('tracker layout', layout)
 
-    # potentially remove boss spots (this dict gets used in boss_rando, so need to remove it here)
+    # potentially remove boss spots (other modules will need to do this again)
     if env.options.flags.has('no_officer_slot'):
         BOSS_SLOTS.pop('officer_slot')
     if env.options.flags.has('no_kq_eblan_slot'):
@@ -968,8 +968,17 @@ def apply(env):
             potential_key_item_slots.extend(SUMMON_QUEST_SLOTS)
         if env.options.flags.has('key_items_in_moon_bosses'):
             potential_key_item_slots.extend(MOON_BOSS_SLOTS)
-        if env.options.flags.has_any('key_items_in_miabs','key_items_in_lst_miabs'):
-            potential_key_item_slots.extend(CHEST_ITEM_SLOTS)
+        if env.options.flags.has('key_items_in_miabs'):
+            if env.options.flags.has('key_items_in_moon_bosses') or unsafe or env.options.flags.has('key_items_in_lst_miabs'):
+                miab_slots = list(CHEST_ITEM_SLOTS)
+            else:
+                miab_slots = [s for s in CHEST_ITEM_SLOTS if 'lunar_core' not in s.name]
+            potential_key_item_slots.extend(miab_slots)
+        elif env.options.flags.has('key_items_in_lst_miabs'):
+            miab_slots = [s for s in CHEST_ITEM_SLOTS if 'lunar_core' in s.name]
+            potential_key_item_slots.extend(miab_slots)
+    # put this information in env to facilitate -exp:kicheckbonus_num
+    env.meta['number_key_item_slots'] = len(potential_key_item_slots)
 
     env.add_binary(BusAddress(0x21dc00), [1 if s in potential_key_item_slots else 0 for s in range(RewardSlot.MAX_COUNT)], as_script=True)
     env.add_substitution('randomizer key item count', '{:02X}'.format(rewards_assignment.count_key_items()))
