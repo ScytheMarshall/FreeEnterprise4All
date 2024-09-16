@@ -9,6 +9,7 @@ MODES = {
     'Omode:classicgiant'  : ['quest_giant'],
     'Omode:fiends'        : ['boss_milon', 'boss_milonz', 'boss_kainazzo', 'boss_valvalis', 'boss_rubicant', 'boss_elements'],
     'Omode:dkmatter'      : ['internal_dkmatter'],
+    'Omode:external'      : ['external_objective']
 }
 
 OBJECTIVE_SLUGS_TO_IDS = {}
@@ -115,6 +116,9 @@ def setup(env):
         if env.options.flags.has('objective_mode_dkmatter'):
             env.meta['required_treasures'].setdefault('#item.DkMatter', 0)
             env.meta['required_treasures']['#item.DkMatter'] += 45
+        
+        if env.options.flags.has('objective_mode_external'):
+            env.meta['objective_starter_kit'] = [( 'fe_EagleEye', [1] )]
 
 
 def apply(env):
@@ -275,7 +279,9 @@ def apply(env):
     # apply additional objective needs
     if OBJECTIVE_SLUGS_TO_IDS['internal_dkmatter'] in objective_ids:
         env.add_file('scripts/dark_matter_hunt.f4c')
-        
+    
+    if OBJECTIVE_SLUGS_TO_IDS['external_objective'] in objective_ids:
+        env.add_file('scripts/external_objective.f4c')
 
 
 if __name__ == '__main__':

@@ -59,6 +59,8 @@ def apply(env):
         banned_items.append('#item.AdamantArmor')
     if env.options.flags.has('no_cursed_rings'):
         banned_items.append('#item.Cursed')
+    if env.options.flags.has('objective_mode_external'):
+        banned_items.append('#item.fe_EagleEye')
     if banned_items:
         items_dbview.refine(lambda it: it.const not in banned_items)
 

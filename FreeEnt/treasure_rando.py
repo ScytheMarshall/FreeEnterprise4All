@@ -121,6 +121,8 @@ def apply(env):
         items_dbview.refine(lambda it: it.const != '#item.AdamantArmor')
     if env.options.flags.has('no_cursed_rings'):
         items_dbview.refine(lambda it: it.const != '#item.Cursed')
+    if env.options.flags.has('objective_mode_external'):
+        items_dbview.refine(lambda it: it.const != '#item.fe_EagleEye')
     
     # In Omnidextrous, everyone can equip anything, hence can use everything, so this flag does nothing.
     if env.options.flags.has('treasure_playable') and not (env.meta.get('wacky_challenge') == 'omnidextrous'):

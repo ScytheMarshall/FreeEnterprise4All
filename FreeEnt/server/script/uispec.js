@@ -387,6 +387,10 @@ var FLAG_UISPEC = [
                   {
                     "flag": "O1:quest_pass",
                     "title": "Unlock the Pass door in Toroia"
+                  },
+                  {
+                    "flag": "O1:external_objective",
+                    "title": "Complete external goal and use EagleEye"
                   }
                 ]
               },
@@ -738,6 +742,10 @@ var FLAG_UISPEC = [
                   {
                     "flag": "O2:quest_pass",
                     "title": "Unlock the Pass door in Toroia"
+                  },
+                  {
+                    "flag": "O2:external_objective",
+                    "title": "Complete external goal and use EagleEye"
                   }
                 ]
               },
@@ -1089,6 +1097,10 @@ var FLAG_UISPEC = [
                   {
                     "flag": "O3:quest_pass",
                     "title": "Unlock the Pass door in Toroia"
+                  },
+                  {
+                    "flag": "O3:external_objective",
+                    "title": "Complete external goal and use EagleEye"
                   }
                 ]
               },
@@ -1440,6 +1452,10 @@ var FLAG_UISPEC = [
                   {
                     "flag": "O4:quest_pass",
                     "title": "Unlock the Pass door in Toroia"
+                  },
+                  {
+                    "flag": "O4:external_objective",
+                    "title": "Complete external goal and use EagleEye"
                   }
                 ]
               },
@@ -1791,6 +1807,10 @@ var FLAG_UISPEC = [
                   {
                     "flag": "O5:quest_pass",
                     "title": "Unlock the Pass door in Toroia"
+                  },
+                  {
+                    "flag": "O5:external_objective",
+                    "title": "Complete external goal and use EagleEye"
                   }
                 ]
               },
@@ -2142,6 +2162,10 @@ var FLAG_UISPEC = [
                   {
                     "flag": "O6:quest_pass",
                     "title": "Unlock the Pass door in Toroia"
+                  },
+                  {
+                    "flag": "O6:external_objective",
+                    "title": "Complete external goal and use EagleEye"
                   }
                 ]
               },
@@ -2493,6 +2517,10 @@ var FLAG_UISPEC = [
                   {
                     "flag": "O7:quest_pass",
                     "title": "Unlock the Pass door in Toroia"
+                  },
+                  {
+                    "flag": "O7:external_objective",
+                    "title": "Complete external goal and use EagleEye"
                   }
                 ]
               },
@@ -2844,6 +2872,10 @@ var FLAG_UISPEC = [
                   {
                     "flag": "O8:quest_pass",
                     "title": "Unlock the Pass door in Toroia"
+                  },
+                  {
+                    "flag": "O8:external_objective",
+                    "title": "Complete external goal and use EagleEye"
                   }
                 ]
               }
