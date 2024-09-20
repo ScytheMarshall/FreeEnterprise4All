@@ -390,14 +390,15 @@ class FlagLogicCore:
         # NOTE: mutex flags ARE handled internally by FlagSet, don't worry about them here
 
         # key item flags
-        kmiab_flags = flagset.get_list(r'^Kmiab:')
-        if flagset.has_any('Ksummon', 'Kmoon') or kmiab_flags and not flagset.has('Kmain'):
+        if flagset.has_any('Ksummon', 'Kmoon', 
+                           'Kmiab:standard', 'Kmiab:above', 'Kmiab:below', 'Kmiab:lst', 'Kmiab:all') and not flagset.has('Kmain'):
             flagset.set('Kmain')
             self._lib.push(log, ['correction', 'Advanced key item randomizations are enabled; forced to add Kmain'])
 
         if flagset.has('Kvanilla'):
             self._simple_disable(flagset, log, 'Key items not randomized', ['Kunsafe','Kunweighted'])
 
+        kmiab_flags = flagset.get_list(r'^Kmiab:')
         if 'Kmiab:all' in kmiab_flags and len(kmiab_flags) > 1:
             self._simple_disable_regex(flagset, log, 'All miabs already included', r'^Kmiab:(standard|above|below|lst)')
         elif 'Kmiab:standard' in kmiab_flags and len(kmiab_flags) > 1:
