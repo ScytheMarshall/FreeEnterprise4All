@@ -540,6 +540,12 @@ def _get_spell_power_ratio(monster1, monster2):
     else:
         return monster1['spell power'] / monster2['spell power']
 
+def _get_spell_power_ratio_min_one(monster1, monster2):
+    spellpower1 = monster1['spell power']
+    spellpower2 = monster2['spell power']
+    adj_spellpower1 = (1 if spellpower1 is None else spellpower1)
+    adj_spellpower2 = (1 if spellpower2 is None else spellpower2)
+    return adj_spellpower1 / adj_spellpower2
 
 def apply(env):
     # random boss assignments handled in core_rando
@@ -738,12 +744,18 @@ def apply(env):
                 monster_scaled_stats[stats_name] = closest_value
                 csv_row.extend(closest_value)
 
-            if monster['spell power'] is not None:
-                scaled_spell_power = min(255, int(math.ceil(monster['spell power'] * _get_spell_power_ratio(ref_leader, leader))))
+            if env.options.flags.has('bosses_nonzero_spellpower'):
+                adj_monster_spellpower = (1 if monster['spell power'] is None else monster['spell power'])
+                scaled_spell_power = min(255, int(math.ceil(adj_monster_spellpower * _get_spell_power_ratio_min_one(ref_leader, leader))))
                 script_lines.append(f'    spell power {scaled_spell_power}')
                 csv_row.append(scaled_spell_power)
             else:
-                csv_row.append('')
+                if monster['spell power'] is not None:
+                    scaled_spell_power = min(255, int(math.ceil(monster['spell power'] * _get_spell_power_ratio(ref_leader, leader))))
+                    script_lines.append(f'    spell power {scaled_spell_power}')
+                    csv_row.append(scaled_spell_power)
+                else:
+                    csv_row.append('')
 
             script_lines.append('}')
 

@@ -4506,6 +4506,12 @@ var FLAG_UISPEC = [
         "description": "The replacement attack will be single-target (and generally weaker than e.g. Nuke, unless <em>Bunsafe</em> is enabled). Odin will not raise the sword before the random attack."
       },
       {
+        "flag": "Bspellpower",
+        "title": "All bosses gain scaled spell power",
+        "description": "Normally in Free Enterprise, bosses without spell power do not gain spell power when moved into a spot that usually has spell power. This flag treats all bosses without spell power as having 1 spell power for the purposes of boss scaling.",
+        "hard": true
+      },
+      {
         "flag": "@anon40",
         "title": "Remove certain boss slots",
         "type": "select",

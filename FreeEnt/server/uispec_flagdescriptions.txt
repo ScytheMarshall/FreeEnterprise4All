@@ -195,6 +195,9 @@ The replacement attack will be weaker than MegaNuke (unless <em>Bunsafe</em> is 
 [Bwoahdin]
 The replacement attack will be single-target (and generally weaker than e.g. Nuke, unless <em>Bunsafe</em> is enabled). Odin will not raise the sword before the random attack.
 
+[Bspellpower]
+Normally in Free Enterprise, bosses without spell power do not gain spell power when moved into a spot that usually has spell power. This flag treats all bosses without spell power as having 1 spell power for the purposes of boss scaling.
+
 [Bremove:officer_slot]
 Normally in Free Enterprise, the Officer/Soldiers boss fight is included in the randomization. This flag removes the boss slot at Kaipo Inn entirely while keeping Officer/Soldiers in the pool.
 
