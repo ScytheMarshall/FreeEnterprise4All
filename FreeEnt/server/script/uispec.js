@@ -3781,7 +3781,7 @@ var FLAG_UISPEC = [
           },
           {
             "flag": "@Cthrifttier",
-            "title": "Characters start with fully random gear",
+            "title": "Characters start with a full set of random gear",
             "description": "Characters start with a full set of gear: weapon(s), possibly a shield, and head/body/arms, all from at most the tier specified. (Duplicate characters will have the same starting gear.)",
             "type": "select",
             "subcontrols": [
@@ -3825,19 +3825,23 @@ var FLAG_UISPEC = [
       {
         "flag": "@anon30",
         "title": "Limit maximum party size",
+        "hard": true,
         "type": "select",
         "subcontrols": [
           {
             "flag": "Cparty:1",
-            "title": "Maximum party size 1"
+            "title": "Maximum party size 1",
+            "hard": true
           },
           {
             "flag": "Cparty:2",
-            "title": "Maximum party size 2"
+            "title": "Maximum party size 2",
+            "hard": true
           },
           {
             "flag": "Cparty:3",
-            "title": "Maximum party size 3"
+            "title": "Maximum party size 3",
+            "hard": true
           },
           {
             "flag": "Cparty:4",
