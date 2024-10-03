@@ -160,6 +160,7 @@ F4C_FILES = '''
     scripts/config_init.f4c
     scripts/shadow_party.f4c
     scripts/fusoya_challenge.f4c
+    scripts/agility.f4c
     scripts/experience_acceleration.f4c
     scripts/fix_airship_menu_softlock.f4c
     scripts/fix_edward_ghost_command.f4c
@@ -706,6 +707,33 @@ def build(romfile, options, force_recompile=False):
     
     if options.flags.has('let_monsters_flee'):
         env.add_file('scripts/monster_flee.f4c')
+
+    # agility flag substitutions and toggles
+    scale_agility_mod = env.options.flags.get_suffix('-agility:scale') # either 1 or 10; 5 is default
+    if scale_agility_mod:
+        scale_agility_mod = int(scale_agility_mod)
+        env.add_substitution('scale agility parameter', f'#$00{10*scale_agility_mod:02X}')
+        env.add_toggle('scale_agility')
+
+    fixed_anchor_agi = env.options.flags.get_suffix('-agility:anchor')
+    if fixed_anchor_agi:
+        fixed_anchor_agi = int(fixed_anchor_agi)
+        env.add_toggle('fixed_anchor')
+        env.add_substitution('fixed anchor agility', f'#${fixed_anchor_agi:02X}')
+
+    count_timer = 2
+    if env.options.flags.get_suffix('-agility:scale') == '10':
+        count_timer *= 2
+    if env.options.flags.has_any('fastest_agility') or env.options.flags.get_suffix('-agility:anchor2'): # matches 27 or 28
+        count_timer *= 2
+    elif env.options.flags.has_any('monster_agility', 'formula_agility') or env.options.flags.get_suffix('-agility:anchor4'): # matches 41 or 42
+        count_timer *= 3
+    if count_timer != 2:
+        env.add_toggle('rescale_inner_count_timer') # goal: make Count not completely broken
+        env.add_substitution('count inner timer length', f'#${count_timer:02X}')
+
+    if env.options.flags.has('-speedmodbalance'):
+        env.add_file('scripts/speed_modifier.f4c')
 
     # experience flag substitutions and toggles
     # split, noboost, nokeyboost, crystalbonus, and maxlevelbonus are all handled directly via f4c scripts

@@ -439,6 +439,28 @@
 ..(-fusoya:location) Location-dependent spells
 ..(-fusoya:nerfed)! Fixed starting spells, no learning
 .[-fusoya:maybe]! Spells not guaranteed to be learned
+[@agility] Change the ATB system (or make it vanilla)
+.<> Different anchoring or ATB formula
+..(-agility:vanilla) Use vanilla agility anchoring
+..(-agility:slowest) Use your slowest character as anchor
+..(-agility:fastest)! Use your fastest character as anchor
+..(-agility:average) Use your average agility for anchoring
+..(-agility:median) Use your median agility for anchoring
+..(-agility:monster)! Use average monster agility for anchoring
+..(-agility:flat) Everyone is the same agility
+..(-agility:750formula) Use a formula to determine agility
+..<@anchor> Use a fixed agility anchor
+...<> Anchor agility
+....(-agility:anchor7) 7 Agility anchor
+....(-agility:anchor27)! 27 Agility anchor
+....(-agility:anchor28)! 28 Agility anchor
+....(-agility:anchor41)! 41 Agility anchor
+....(-agility:anchor42)! 42 Agility anchor
+.[@agilityscale] Scale the base ATB
+..<> Base ATB for the anchor
+...(-agility:scale1) Base ATB is 1 tick 
+...(-agility:scale10) Base ATB is 10 ticks 
+.[-speedmodbalance] Alter the speed modifier behaviour
 [@exp] Restore vanilla or change EXP distribution
 .[-exp:split] Split EXP distribution
 .[-exp:noboost] No low-level EXP boost
@@ -482,7 +504,6 @@
 ...(-exp:geometric_10) Repeated monster kills scale down in EXP to 10%
 ...(-exp:geometric_0) Repeated monster kills do not award EXP
 [] Restore vanilla behaviors
-.[-vanilla:agility] Vanilla agility anchoring
 .[-vanilla:hobs] Vanilla Hobs spell
 .[-vanilla:growup] Vanilla Dwarf Castle summons
 .[-vanilla:fashion] Vanilla fashion

@@ -5214,6 +5214,126 @@ var FLAG_UISPEC = [
         ]
       },
       {
+        "flag": "@agility",
+        "title": "Change the ATB system (or make it vanilla)",
+        "description": "FF4 scales the speed of combat based on the agility stat of your party's \"agility anchor\". In Free Enterprise, the anchor is always the first occupied party slot (in the sequence of middle, top, bottom, top-middle, bottom-middle). Under these flags, the ATB system will change, either by choosing a different anchor or by using a different formula for calculating the speed of combat (in a few different ways). \n\nNote that any of these flags except for scaling the base ATB and changing the speed modifier will override the <em>Chero</em> agility effect, if playing with the hero challenge.",
+        "subcontrols": [
+          {
+            "flag": "@anon48",
+            "title": "Different anchoring or ATB formula",
+            "type": "select",
+            "subcontrols": [
+              {
+                "flag": "-agility:vanilla",
+                "title": "Use vanilla agility anchoring",
+                "description": "In vanilla FF4, if Cecil is in the party, then he is the agility anchor, regardless of position. Enabling this flag will restore that behavior, making the first Cecil in your party the anchor, if present."
+              },
+              {
+                "flag": "-agility:slowest",
+                "title": "Use your slowest character as anchor"
+              },
+              {
+                "flag": "-agility:fastest",
+                "title": "Use your fastest character as anchor",
+                "description": "This flag will double the Count timer.",
+                "hard": true
+              },
+              {
+                "flag": "-agility:average",
+                "title": "Use your average agility for anchoring",
+                "description": "Under this flag, the (truncated) average of your party's agility values is used as the anchoring value, even if none of your characters have exactly that agility."
+              },
+              {
+                "flag": "-agility:median",
+                "title": "Use your median agility for anchoring"
+              },
+              {
+                "flag": "-agility:monster",
+                "title": "Use average monster agility for anchoring",
+                "description": "Under this flag, the (truncated) average of the monster formation's agility values is used as the anchoring value. Note that some monsters are incredibly fast, so your party will be very slow. This flag will triple the Count timer.",
+                "hard": true
+              },
+              {
+                "flag": "-agility:flat",
+                "title": "Everyone is the same agility",
+                "description": "Under this flag, every character and monster will have the same base ATB (5 ticks, unless scaled)."
+              },
+              {
+                "flag": "-agility:750formula",
+                "title": "Use a formula to determine agility",
+                "description": "Under this flag, every character and monster will have their base ATB calculated as (15 * 10 * scale) / (Agility + 32), where the scale parameter is 5 by default (unless scaled, below). This flag will triple the Count timer."
+              },
+              {
+                "flag": "@anchor",
+                "title": "Use a fixed agility anchor",
+                "description": "Under these flags, all agility anchoring will be based on the given fixed value, even if none of your characters have that agility. For 27 or 28 Agility anchoring, the Count timer will be doubled. For 41 or 42 Agility anchoring, the Count timer will be tripled.",
+                "type": "select",
+                "subcontrols": [
+                  {
+                    "flag": "@anon49",
+                    "title": "Anchor agility",
+                    "type": "select",
+                    "subcontrols": [
+                      {
+                        "flag": "-agility:anchor7",
+                        "title": "7 Agility anchor"
+                      },
+                      {
+                        "flag": "-agility:anchor27",
+                        "title": "27 Agility anchor",
+                        "hard": true
+                      },
+                      {
+                        "flag": "-agility:anchor28",
+                        "title": "28 Agility anchor",
+                        "hard": true
+                      },
+                      {
+                        "flag": "-agility:anchor41",
+                        "title": "41 Agility anchor",
+                        "hard": true
+                      },
+                      {
+                        "flag": "-agility:anchor42",
+                        "title": "42 Agility anchor",
+                        "hard": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "flag": "@agilityscale",
+            "title": "Scale the base ATB",
+            "description": "The default base ATB for the agility anchor is 5 ticks. Under these flags, the base ATB can be scaled down to 1 tick or up to 10 ticks. Under the 10 tick scaling, the Count timer will be doubled.",
+            "subcontrols": [
+              {
+                "flag": "@anon50",
+                "title": "Base ATB for the anchor",
+                "type": "select",
+                "subcontrols": [
+                  {
+                    "flag": "-agility:scale1",
+                    "title": "Base ATB is 1 tick"
+                  },
+                  {
+                    "flag": "-agility:scale10",
+                    "title": "Base ATB is 10 ticks"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "flag": "-speedmodbalance",
+            "title": "Alter the speed modifier behaviour",
+            "description": "In vanilla FF4, the speed modifier is a number from 12 to 32 that, when divided by 16, gives a fraction by which character timers are scaled (to speed up or slow down your characters and their charge times). Under this flag, the speed modifier now goes from 8 to 32, Slow only adds 4 instead of 8, Fast subtracts 4 instead of 3, and SilkWebs only add 8 instead of 16 (Hermes were already subtracting 8)."
+          }
+        ]
+      },
+      {
         "flag": "@exp",
         "title": "Restore vanilla or change EXP distribution",
         "description": "To reduce grinding, Free Enterprise normally applies a number of experience boosts, which may be individually disabled by these flags. There are also options to change the experience distribution in other ways.",
@@ -5244,7 +5364,7 @@ var FLAG_UISPEC = [
             "description": "Normally, objectives do not increase the amount of EXP received from battles. Under this flag, each completed objective earns you more EXP from each battle.",
             "subcontrols": [
               {
-                "flag": "@anon48",
+                "flag": "@anon51",
                 "title": "Amount of bonus EXP",
                 "type": "select",
                 "subcontrols": [
@@ -5271,7 +5391,7 @@ var FLAG_UISPEC = [
             "description": "Normally, completing key item checks does not increase the amount of EXP received from battles. Under this flag, each completed key item check beyond the starting item earns you more EXP from each battle.",
             "subcontrols": [
               {
-                "flag": "@anon49",
+                "flag": "@anon52",
                 "title": "Amount of bonus EXP",
                 "type": "select",
                 "subcontrols": [
@@ -5302,7 +5422,7 @@ var FLAG_UISPEC = [
             "description": "Normally, the rewards from key item checks do not impact the amount of EXP received from battles. Under this flag, every time you get a non-key-item reward from a potential key item check (a \"zonk\") you earn more EXP from future battles.",
             "subcontrols": [
               {
-                "flag": "@anon50",
+                "flag": "@anon53",
                 "title": "Amount of bonus EXP",
                 "type": "select",
                 "subcontrols": [
@@ -5328,7 +5448,7 @@ var FLAG_UISPEC = [
             "description": "Normally, MIAB encounters have the same EXP calculation as other encounters. Under this flag, MIAB encounters award double or 1.5 times the usual EXP.",
             "subcontrols": [
               {
-                "flag": "@anon51",
+                "flag": "@anon54",
                 "title": "Amount of bonus EXP",
                 "type": "select",
                 "subcontrols": [
@@ -5350,7 +5470,7 @@ var FLAG_UISPEC = [
             "description": "Normally, location of encounter does not increase EXP. Under this flag, encounters on the moon award double or triple the usual EXP.",
             "subcontrols": [
               {
-                "flag": "@anon52",
+                "flag": "@anon55",
                 "title": "Amount of bonus EXP",
                 "type": "select",
                 "subcontrols": [
@@ -5377,7 +5497,7 @@ var FLAG_UISPEC = [
             "description": "Normally in FF4, each instance of a monster type killed in battle gives the same amount of EXP. Under this flag, each monster of the same type defeated in the same battle will yield a scaled amount of the EXP of the previous monster of that type, giving diminishing returns for repeated monster kills. Note that the reduction is per monster type and not \"per slot\" in battle.",
             "subcontrols": [
               {
-                "flag": "@anon53",
+                "flag": "@anon56",
                 "title": "Per-monster-kill percentage reduction",
                 "type": "select",
                 "subcontrols": [
@@ -5428,14 +5548,9 @@ var FLAG_UISPEC = [
         ]
       },
       {
-        "flag": "@anon54",
+        "flag": "@anon57",
         "title": "Restore vanilla behaviors",
         "subcontrols": [
-          {
-            "flag": "-vanilla:agility",
-            "title": "Vanilla agility anchoring",
-            "description": "FF4 scales the speed of combat based on the agility stat of your party's \"agility anchor\". In Free Enterprise, the anchor is always the first occupied party slot (in the sequence of middle, top, bottom, top-middle, bottom-middle). However, in vanilla FF4, if Cecil is in the party, then he is the agility anchor, regardless of position. Enabling this flag will restore that behavior, making the first Cecil in your party the anchor, if present. (Note that this overrides the <em>Chero</em> agility effect, if playing with the hero challenge.)"
-          },
           {
             "flag": "-vanilla:hobs",
             "title": "Vanilla Hobs spell",
@@ -5484,7 +5599,7 @@ var FLAG_UISPEC = [
         "description": "<ul>\n    <li>Guidingway will introduce the challenge.</li>\n    <li>Guidingway will not explain the challenge.</li>\n    <li>Wacky challenges are not intended to be balanced, robust, coherent, fair, or bug-free.</li>\n    <li>(They are intended to be wacky.)</li>\n</ul>",
         "subcontrols": [
           {
-            "flag": "@anon55",
+            "flag": "@anon58",
             "title": "Select challenge",
             "type": "select",
             "subcontrols": [
@@ -5650,7 +5765,7 @@ var FLAG_UISPEC = [
         ]
       },
       {
-        "flag": "@anon56",
+        "flag": "@anon59",
         "title": "Miscellaneous tweaks",
         "subcontrols": [
           {
@@ -5676,7 +5791,7 @@ var FLAG_UISPEC = [
     "title": "SPOILERS",
     "controls": [
       {
-        "flag": "@anon57",
+        "flag": "@anon60",
         "title": "No spoiler log",
         "type": "select",
         "subcontrols": [
@@ -5730,7 +5845,7 @@ var FLAG_UISPEC = [
             ]
           },
           {
-            "flag": "@anon58",
+            "flag": "@anon61",
             "title": "Partial spoiler log",
             "subcontrols": [
               {
@@ -5746,7 +5861,7 @@ var FLAG_UISPEC = [
                 "title": "Spoil characters"
               },
               {
-                "flag": "@anon59",
+                "flag": "@anon62",
                 "title": "Spoil treasure chests",
                 "type": "select",
                 "subcontrols": [

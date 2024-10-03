@@ -1600,41 +1600,6 @@ msfpatch {
         jml $03f0b0
 }
 
-//-----------------------------------------------
-// remove original Cover-actor-finder code, and also
-// fix agility scaler to correctly detect Cecil
-msfpatch {
-    .addr $038d5c
-        jml $=CharEx__AgilityAnchorMod
-
-    .new
-    CharEx__AgilityAnchorMod:
-        // %flags: ~vanilla_agility ~hero_challenge%
-        bra $+Accept
-        // %end%
-
-        // %flags: ~vanilla_agility hero_challenge%
-        lda $2000,x
-        and #$1f
-        cmp #$01
-        beq $+Accept
-        // %end%
-        
-        // %flags: vanilla_agility%
-        lda $2000,x
-        beq $+Next
-        lda $2001,x
-        and #$0f
-        cmp #$00 // DKCecil job
-        beq $+Accept
-        cmp #$09 // PCecil job
-        beq $+Accept
-        // %end%
-    %Next:
-        jml $038d69
-    %Accept:
-        jml $038d84
-}
 
 //-----------------------------------------------
 // fix Cover to work with multiple Paladins
