@@ -204,6 +204,7 @@ msfpatch {
     .def Rewards__CurrentValueHi  $7e1623
     .def Rewards__PendingDeliverySlot  $7e1626
     .def Rewards__KeyItemChecksCount  $7e162b
+    .def Rewards__ZonkChecksCount  $7e162c
 
     // sub: given reward code A, return in
     //   X the reward code
@@ -255,25 +256,30 @@ msfpatch {
         jmp $_EvEx__End
 
     %DeliverItem:
-        // for exp flag purposes, possibly increment a checks counter
+        lda $_Rewards__CurrentValueHi
+        beq $+DeliverNormalItem
+
+        // this is a key item, execute required additional steps:
+        // increment key item checks counter (since it had to be one),
+        // for exp flag purposes
+        inc $_Rewards__KeyItemChecksCount
+        // set corresponding plot flags
+        jsl $=Rewards__DeliverKeyItemSideEffects
+        bra $+NotZonkCheck
+
+    %DeliverNormalItem:
+        // for exp flag purposes, possibly increment checks counters
         // to transfer A to X, need to ensure the upper byte of A is #$00
         lda #$00
         xba
         lda $_Rewards__CurrentSlot
         tax 
         lda $=PossibleKeyItemRewardSlots,x
-        beq $+NotKeyCheck
+        beq $+NotZonkCheck
         inc $_Rewards__KeyItemChecksCount
+        inc $_Rewards__ZonkChecksCount
 
-    %NotKeyCheck:
-        lda $_Rewards__CurrentValueHi
-        beq $+DeliverNormalItem
-
-        // this is a key item, execute required additional steps:
-        // set corresponding plot flags
-        jsl $=Rewards__DeliverKeyItemSideEffects
-
-    %DeliverNormalItem:
+    %NotZonkCheck:
         // get item code back and do "give item" handler
         lda $_Rewards__CurrentValueLo
         sta $08fb
@@ -456,19 +462,21 @@ msfpatch {
     Rewards__MIABContents:
         // A contains reward slot
         sta $_Rewards__CurrentSlot
-        // %if experience_kicheck_bonus%
+        
+        // for exp flag purposes, possibly increment checks counters
         // to transfer A to X, need to ensure the upper byte of A is #$00
         xba
         lda #$00
         xba
         tax
         lda $=PossibleKeyItemRewardSlots,x
+        pha // store the potential key item check value for later
         beq $+NotKeyMIAB
         inc $_Rewards__KeyItemChecksCount
 
     %NotKeyMIAB:
         lda $_Rewards__CurrentSlot
-        // %end%
+
         jsl $=Rewards__GetFromSlot
         stx $_Rewards__CurrentValueLo
 
@@ -486,7 +494,7 @@ msfpatch {
         bcs $+ExternalReward
 
         and #$02
-        beq $+IsRegularItem
+        beq $+CheckForZonk
 
         lda $_Rewards__CurrentValueLo
         cmp #$fc // hook
@@ -496,11 +504,17 @@ msfpatch {
         jsl $=Rewards__DeliverKeyItemSideEffects
 
         // mark slot as delivered
+        pla // pop the stack because we pushed a value there just in case
         lda $_Rewards__CurrentSlot
         ldx #$_Tracker__RewardSlotFlags
         jsl $=Tracker__SetBit
+        bra $+NotZonkMIAB
 
-    %IsRegularItem:
+    %CheckForZonk:
+        pla // recheck if the miab could give a key item
+        beq $+NotZonkMIAB
+        inc $_Rewards__ZonkChecksCount
+    %NotZonkMIAB:
         lda $_Rewards__CurrentValueLo
         sta $1804
         stz $c6
@@ -509,6 +523,7 @@ msfpatch {
     %ExternalReward:
         // set a special item code to display the reward without
         // giving it
+        pla // pop the stack because we pushed a value there just in case
         lda #$fe
         sta $1804
         

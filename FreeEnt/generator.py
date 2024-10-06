@@ -762,11 +762,11 @@ def build(romfile, options, force_recompile=False):
     if exp_zonk_bonus:
         exp_zonk_bonus = 100 // int(exp_zonk_bonus)
         # need to check for the starting key item here, using the rewards assignment;
-        # cannot count starting non-KI as a zonk, so also ignore starting KI if necessary
+        # cannot count starting non-KI as a zonk
         if (env.meta['rewards_assignment'])[rewards.RewardSlot.starting_item].is_key: 
-            env.add_substitution('starting key item zonk', '#$01')
-        else:
             env.add_substitution('starting key item zonk', '#$00')
+        else:
+            env.add_substitution('starting key item zonk', '#$01')
         env.add_substitution('experience zonk bonus divisor', f'#${exp_zonk_bonus:02X}')
         env.add_toggle('experience_zonk_bonus')
 
