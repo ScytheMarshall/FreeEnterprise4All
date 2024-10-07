@@ -165,6 +165,7 @@ F4C_FILES = '''
     scripts/fix_airship_menu_softlock.f4c
     scripts/fix_edward_ghost_command.f4c
     scripts/fix_attack_power_overflow.f4c
+    scripts/fix_wisdom_will_timers.f4c
     scripts/uptco_surprise.f4c
     scripts/sound_engine.f4c
     scripts/mute.f4c
