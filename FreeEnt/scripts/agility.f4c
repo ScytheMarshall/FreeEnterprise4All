@@ -13,6 +13,10 @@
 // slot to point to (we need to pass the correct slot
 // offset in the X register)
 msfpatch {
+    // %wacky scrambled stats agi address%
+    .def  CharAgilityAddress  $2015
+    // %end%    
+
     .addr $038d5c
         jml $=CharEx__AgilityAnchorMod
 
@@ -38,9 +42,9 @@ msfpatch {
         phx // put the first non-empty slot index onto the stack
     %PartyMinAgilityLoop:
         txy
-        lda $2015,x
+        lda $_CharAgilityAddress,x
         plx // now X is the stored index of slowest agility
-        cmp $2015,x
+        cmp $_CharAgilityAddress,x
         // if A is less than the saved agility, then that's the new smallest
         // otherwise, push X to the stack first, then bring the slot index back
         bcc $+PartyMinAgilitySmaller
@@ -69,9 +73,9 @@ msfpatch {
         phx // put the first non-empty slot index onto the stack
     %PartyMaxAgilityLoop:
         txy
-        lda $2015,x
+        lda $_CharAgilityAddress,x
         plx // now X is the stored index of fastest agility
-        cmp $2015,x
+        cmp $_CharAgilityAddress,x
         // if A is less than the saved agility, then we don't update
         // otherwise, push X to the stack first, then bring the slot index back
         bcc $+PartyMaxAgilitySmaller
@@ -106,7 +110,7 @@ msfpatch {
         stz $1676 // will store number of party members
         ldy #$0000
     %CalculateMedianAgility_LoopStart:
-        lda $2015,x
+        lda $_CharAgilityAddress,x
         sta $1670,y
         inc $1676
         iny
@@ -155,7 +159,7 @@ msfpatch {
     %FindMedianSlot_LoopStart:
         lda $2000,x
         beq $+FindMedianSlot_LoopNext
-        lda $2015,x
+        lda $_CharAgilityAddress,x
         cmp $1676
         beq $+Accept
     %FindMedianSlot_LoopNext:
@@ -250,7 +254,7 @@ msfpatch {
         lda $3540,y // check if this party slot is empty via the empty_slot array
         bne $+PartyAgilitySumLoopNext
         inc $_Util__Divide_Divisor0
-        lda $2015,x
+        lda $_CharAgilityAddress,x
         clc
         adc $_Util__Divide_Dividend0
         sta $_Util__Divide_Dividend0
@@ -291,11 +295,11 @@ msfpatch {
         nop
     
     .addr $038da8
-        lda $2015,x // load the slot agility
+        jsl $=MonsterCharAgiSplit
         adc #$20 // add 32 to the agility
         sta $e3 // store to lower byte of 8-bit mult result
         stz $e4 // set the upper byte to 0
-        nop nop nop // meet up with the original code for the division
+        nop nop // meet up with the original code for the division
 }
 
 // %elif fixed_anchor%
@@ -305,6 +309,46 @@ msfpatch {
         nop
 }
 
+// %else%
+msfpatch {
+    .addr $038d84
+        lda $_CharAgilityAddress,x
+}
+
+// %end%
+
+// Scrambled Stats wacky agility changes:
+// aside from the substitutions above that only apply
+// under this wacky, we need to make sure monster agility 
+// is not impacted when loading slot agility from possibly
+// not the usual place
+
+// Outside of flag/formula agility, call the monster/char split
+// function to correctly separate agility loads
+// %flags: ~flat_agility ~formula_agility%
+msfpatch {
+    .addr $038da8
+        jsl $=MonsterCharAgiSplit
+        nop
+}
+// %end%
+
+// we don't need this function on flat_agility, so cut it to
+// save space
+// %flags: ~flat_agility%
+msfpatch {
+    MonsterCharAgiSplit:
+        cpx #$0280 // check if X is pulling a monster slot
+        bcs $+MonsterAgi
+        lda $_CharAgilityAddress,x
+        bra $+DoneAgi
+
+    %MonsterAgi:
+        lda $2015,x // just load agility normally
+    %DoneAgi:
+        sta $df // displaced, $df is a dead-end register
+        rtl
+}
 // %end%
 
 // %if scale_agility%

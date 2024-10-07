@@ -1071,6 +1071,7 @@ const _FE_FLAGSPEC = {
         "-wacky:fistfight",
         "-wacky:omnidextrous",
         "-wacky:whatsmygear",
+        "-wacky:scrambledstats",
         "-wacky:biggermagnet",
         "-wacky:sixleggedrace",
         "-wacky:floorislava",
@@ -2120,6 +2121,7 @@ const _FE_FLAGSPEC = {
             "-wacky:fistfight",
             "-wacky:omnidextrous",
             "-wacky:whatsmygear",
+            "-wacky:scrambledstats",
             "-wacky:biggermagnet",
             "-wacky:sixleggedrace",
             "-wacky:floorislava",
@@ -8510,178 +8512,184 @@ const _FE_FLAGSPEC = {
             "value": 6
         },
         {
-            "flag": "-wacky:biggermagnet",
+            "flag": "-wacky:scrambledstats",
             "offset": 290,
             "size": 6,
             "value": 7
         },
         {
-            "flag": "-wacky:sixleggedrace",
+            "flag": "-wacky:biggermagnet",
             "offset": 290,
             "size": 6,
             "value": 8
         },
         {
-            "flag": "-wacky:floorislava",
+            "flag": "-wacky:sixleggedrace",
             "offset": 290,
             "size": 6,
             "value": 9
         },
         {
-            "flag": "-wacky:neatfreak",
+            "flag": "-wacky:floorislava",
             "offset": 290,
             "size": 6,
             "value": 10
         },
         {
-            "flag": "-wacky:timeismoney",
+            "flag": "-wacky:neatfreak",
             "offset": 290,
             "size": 6,
             "value": 11
         },
         {
-            "flag": "-wacky:nightmode",
+            "flag": "-wacky:timeismoney",
             "offset": 290,
             "size": 6,
             "value": 12
         },
         {
-            "flag": "-wacky:mysteryjuice",
+            "flag": "-wacky:nightmode",
             "offset": 290,
             "size": 6,
             "value": 13
         },
         {
-            "flag": "-wacky:misspelled",
+            "flag": "-wacky:mysteryjuice",
             "offset": 290,
             "size": 6,
             "value": 14
         },
         {
-            "flag": "-wacky:enemyunknown",
+            "flag": "-wacky:misspelled",
             "offset": 290,
             "size": 6,
             "value": 15
         },
         {
-            "flag": "-wacky:kleptomania",
+            "flag": "-wacky:enemyunknown",
             "offset": 290,
             "size": 6,
             "value": 16
         },
         {
-            "flag": "-wacky:darts",
+            "flag": "-wacky:kleptomania",
             "offset": 290,
             "size": 6,
             "value": 17
         },
         {
-            "flag": "-wacky:unstackable",
+            "flag": "-wacky:darts",
             "offset": 290,
             "size": 6,
             "value": 18
         },
         {
-            "flag": "-wacky:menarepigs",
+            "flag": "-wacky:unstackable",
             "offset": 290,
             "size": 6,
             "value": 19
         },
         {
-            "flag": "-wacky:skywarriors",
+            "flag": "-wacky:menarepigs",
             "offset": 290,
             "size": 6,
             "value": 20
         },
         {
-            "flag": "-wacky:zombies",
+            "flag": "-wacky:skywarriors",
             "offset": 290,
             "size": 6,
             "value": 21
         },
         {
-            "flag": "-wacky:afflicted",
+            "flag": "-wacky:zombies",
             "offset": 290,
             "size": 6,
             "value": 22
         },
         {
-            "flag": "-wacky:batman",
+            "flag": "-wacky:afflicted",
             "offset": 290,
             "size": 6,
             "value": 23
         },
         {
-            "flag": "-wacky:battlescars",
+            "flag": "-wacky:batman",
             "offset": 290,
             "size": 6,
             "value": 24
         },
         {
-            "flag": "-wacky:imaginarynumbers",
+            "flag": "-wacky:battlescars",
             "offset": 290,
             "size": 6,
             "value": 25
         },
         {
-            "flag": "-wacky:tellahmaneuver",
+            "flag": "-wacky:imaginarynumbers",
             "offset": 290,
             "size": 6,
             "value": 26
         },
         {
-            "flag": "-wacky:3point",
+            "flag": "-wacky:tellahmaneuver",
             "offset": 290,
             "size": 6,
             "value": 27
         },
         {
-            "flag": "-wacky:friendlyfire",
+            "flag": "-wacky:3point",
             "offset": 290,
             "size": 6,
             "value": 28
         },
         {
-            "flag": "-wacky:payablegolbez",
+            "flag": "-wacky:friendlyfire",
             "offset": 290,
             "size": 6,
             "value": 29
         },
         {
-            "flag": "-wacky:gottagofast",
+            "flag": "-wacky:payablegolbez",
             "offset": 290,
             "size": 6,
             "value": 30
         },
         {
-            "flag": "-wacky:worthfighting",
+            "flag": "-wacky:gottagofast",
             "offset": 290,
             "size": 6,
             "value": 31
         },
         {
-            "flag": "-wacky:saveusbigchocobo",
+            "flag": "-wacky:worthfighting",
             "offset": 290,
             "size": 6,
             "value": 32
         },
         {
-            "flag": "-wacky:isthisrandomized",
+            "flag": "-wacky:saveusbigchocobo",
             "offset": 290,
             "size": 6,
             "value": 33
         },
         {
-            "flag": "-wacky:forwardisback",
+            "flag": "-wacky:isthisrandomized",
             "offset": 290,
             "size": 6,
             "value": 34
         },
         {
-            "flag": "-wacky:dropitlikeitshot",
+            "flag": "-wacky:forwardisback",
             "offset": 290,
             "size": 6,
             "value": 35
+        },
+        {
+            "flag": "-wacky:dropitlikeitshot",
+            "offset": 290,
+            "size": 6,
+            "value": 36
         },
         {
             "flag": "-tweak:kainmagic",

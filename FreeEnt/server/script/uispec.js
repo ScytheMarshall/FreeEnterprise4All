@@ -5719,6 +5719,11 @@ var FLAG_UISPEC = [
                 "hard": true
               },
               {
+                "flag": "-wacky:scrambledstats",
+                "title": "\"Scrambled Stats\"",
+                "hard": true
+              },
+              {
                 "flag": "-wacky:sixleggedrace",
                 "title": "\"Six-Legged Race\""
               },
