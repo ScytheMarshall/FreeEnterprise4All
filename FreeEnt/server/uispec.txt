@@ -324,6 +324,7 @@
 .(Eno:jdrops) Use US version drop/sneak tables
 [Ecantrun]! Can't run from battles
 [Enoexp]! No EXP for random encounters
+[Enomacgiant]! Disable MacGiant encounters
 
 == GLITCHES
 [@G] Enable major glitches

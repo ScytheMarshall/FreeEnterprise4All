@@ -4635,6 +4635,12 @@ var FLAG_UISPEC = [
         "title": "No EXP for random encounters",
         "description": "Bosses and monster-in-a-box fights still award EXP.",
         "hard": true
+      },
+      {
+        "flag": "Enomacgiant",
+        "title": "Disable MacGiant encounters",
+        "description": "The MacGiant in the Searcher encounter is replaced by a Machine.",
+        "hard": true
       }
     ]
   },

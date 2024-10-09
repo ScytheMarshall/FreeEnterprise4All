@@ -225,6 +225,9 @@ Back attacks and "Surprised!" encounters will still occur, even when encounters 
 [Enoexp]
 Bosses and monster-in-a-box fights still award EXP.
 
+[Enomacgiant]
+The MacGiant in the Searcher encounter is replaced by a Machine.
+
 [@kit]
 Starter kits allow you to begin the game with additional items in your inventory.
 

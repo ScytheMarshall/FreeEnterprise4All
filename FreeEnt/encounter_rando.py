@@ -56,3 +56,6 @@ def apply(env):
 
     if env.options.flags.has('encounter_cant_run'):
         env.add_file('scripts/cant_run.f4c')
+
+    if env.options.flags.has('encounter_no_macgiant'):
+        env.add_file('scripts/encounter_no_macgiant.f4c')
