@@ -5,6 +5,7 @@
 ..[Omode:classicgiant] Classic Giant%
 ..[Omode:fiends] Fiends%
 ..[Omode:dkmatter] Dark Matter Hunt
+..[Omode:external] External Objective
 .[@Ocustom] Custom objectives
 ..<> Custom objective #1
 ...(O1:*)

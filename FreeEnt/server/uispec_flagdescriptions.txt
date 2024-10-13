@@ -13,6 +13,9 @@ Defeat Milon, Milon Z., Kainazzo, Valvalis, Rubicant, and Elements to complete t
 [Omode:dkmatter]
 45 Dark Matters are randomly placed in chests (MIABs excluded); bring 30 of them to Kory in Agart to complete this objective.
 
+[Omode:external]
+Use the EagleEye provided to you at the start of the game to complete this objective. This objective is intended for external objectives that cannot be referenced in-game, such as bingo goals or meta objectives.
+
 [Orandom:tough_quest]
 Refers only to the more difficult, later-game quest objectives.
 

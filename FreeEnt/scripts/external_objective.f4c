@@ -12,7 +12,7 @@ event($DB)
 {
     player face down
     player wave out
-    [#B #Objectives_Tick #objective.external_objective]
+    [#B #Objectives_Tick #objective.internal_external]
 }
 
 // add a check to prevent being able to TrashCan the EagleEye

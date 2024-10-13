@@ -97,7 +97,6 @@ const _FE_FLAGSPEC = {
         "O1:quest_tradepan",
         "O1:quest_tradepink",
         "O1:quest_pass",
-        "O1:external_objective",
         "O2:char_cecil",
         "O2:char_kain",
         "O2:char_rydia",
@@ -184,7 +183,6 @@ const _FE_FLAGSPEC = {
         "O2:quest_tradepan",
         "O2:quest_tradepink",
         "O2:quest_pass",
-        "O2:external_objective",
         "O3:char_cecil",
         "O3:char_kain",
         "O3:char_rydia",
@@ -271,7 +269,6 @@ const _FE_FLAGSPEC = {
         "O3:quest_tradepan",
         "O3:quest_tradepink",
         "O3:quest_pass",
-        "O3:external_objective",
         "O4:char_cecil",
         "O4:char_kain",
         "O4:char_rydia",
@@ -358,7 +355,6 @@ const _FE_FLAGSPEC = {
         "O4:quest_tradepan",
         "O4:quest_tradepink",
         "O4:quest_pass",
-        "O4:external_objective",
         "O5:char_cecil",
         "O5:char_kain",
         "O5:char_rydia",
@@ -445,7 +441,6 @@ const _FE_FLAGSPEC = {
         "O5:quest_tradepan",
         "O5:quest_tradepink",
         "O5:quest_pass",
-        "O5:external_objective",
         "O6:char_cecil",
         "O6:char_kain",
         "O6:char_rydia",
@@ -532,7 +527,6 @@ const _FE_FLAGSPEC = {
         "O6:quest_tradepan",
         "O6:quest_tradepink",
         "O6:quest_pass",
-        "O6:external_objective",
         "O7:char_cecil",
         "O7:char_kain",
         "O7:char_rydia",
@@ -619,7 +613,6 @@ const _FE_FLAGSPEC = {
         "O7:quest_tradepan",
         "O7:quest_tradepink",
         "O7:quest_pass",
-        "O7:external_objective",
         "O8:char_cecil",
         "O8:char_kain",
         "O8:char_rydia",
@@ -706,7 +699,6 @@ const _FE_FLAGSPEC = {
         "O8:quest_tradepan",
         "O8:quest_tradepink",
         "O8:quest_pass",
-        "O8:external_objective",
         "Orandom:1",
         "Orandom:2",
         "Orandom:3",
@@ -1211,8 +1203,7 @@ const _FE_FLAGSPEC = {
             "O1:quest_wakeyang",
             "O1:quest_tradepan",
             "O1:quest_tradepink",
-            "O1:quest_pass",
-            "O1:external_objective"
+            "O1:quest_pass"
         ],
         [
             "O2:char_cecil",
@@ -1300,8 +1291,7 @@ const _FE_FLAGSPEC = {
             "O2:quest_wakeyang",
             "O2:quest_tradepan",
             "O2:quest_tradepink",
-            "O2:quest_pass",
-            "O2:external_objective"
+            "O2:quest_pass"
         ],
         [
             "O3:char_cecil",
@@ -1389,8 +1379,7 @@ const _FE_FLAGSPEC = {
             "O3:quest_wakeyang",
             "O3:quest_tradepan",
             "O3:quest_tradepink",
-            "O3:quest_pass",
-            "O3:external_objective"
+            "O3:quest_pass"
         ],
         [
             "O4:char_cecil",
@@ -1478,8 +1467,7 @@ const _FE_FLAGSPEC = {
             "O4:quest_wakeyang",
             "O4:quest_tradepan",
             "O4:quest_tradepink",
-            "O4:quest_pass",
-            "O4:external_objective"
+            "O4:quest_pass"
         ],
         [
             "O5:char_cecil",
@@ -1567,8 +1555,7 @@ const _FE_FLAGSPEC = {
             "O5:quest_wakeyang",
             "O5:quest_tradepan",
             "O5:quest_tradepink",
-            "O5:quest_pass",
-            "O5:external_objective"
+            "O5:quest_pass"
         ],
         [
             "O6:char_cecil",
@@ -1656,8 +1643,7 @@ const _FE_FLAGSPEC = {
             "O6:quest_wakeyang",
             "O6:quest_tradepan",
             "O6:quest_tradepink",
-            "O6:quest_pass",
-            "O6:external_objective"
+            "O6:quest_pass"
         ],
         [
             "O7:char_cecil",
@@ -1745,8 +1731,7 @@ const _FE_FLAGSPEC = {
             "O7:quest_wakeyang",
             "O7:quest_tradepan",
             "O7:quest_tradepink",
-            "O7:quest_pass",
-            "O7:external_objective"
+            "O7:quest_pass"
         ],
         [
             "O8:char_cecil",
@@ -1834,8 +1819,7 @@ const _FE_FLAGSPEC = {
             "O8:quest_wakeyang",
             "O8:quest_tradepan",
             "O8:quest_tradepink",
-            "O8:quest_pass",
-            "O8:external_objective"
+            "O8:quest_pass"
         ],
         [
             "Orandom:1",
@@ -2717,12 +2701,6 @@ const _FE_FLAGSPEC = {
             "value": 86
         },
         {
-            "flag": "O1:external_objective",
-            "offset": 5,
-            "size": 7,
-            "value": 87
-        },
-        {
             "flag": "O2:char_cecil",
             "offset": 12,
             "size": 7,
@@ -3237,12 +3215,6 @@ const _FE_FLAGSPEC = {
             "offset": 12,
             "size": 7,
             "value": 86
-        },
-        {
-            "flag": "O2:external_objective",
-            "offset": 12,
-            "size": 7,
-            "value": 87
         },
         {
             "flag": "O3:char_cecil",
@@ -3761,12 +3733,6 @@ const _FE_FLAGSPEC = {
             "value": 86
         },
         {
-            "flag": "O3:external_objective",
-            "offset": 19,
-            "size": 7,
-            "value": 87
-        },
-        {
             "flag": "O4:char_cecil",
             "offset": 26,
             "size": 7,
@@ -4281,12 +4247,6 @@ const _FE_FLAGSPEC = {
             "offset": 26,
             "size": 7,
             "value": 86
-        },
-        {
-            "flag": "O4:external_objective",
-            "offset": 26,
-            "size": 7,
-            "value": 87
         },
         {
             "flag": "O5:char_cecil",
@@ -4805,12 +4765,6 @@ const _FE_FLAGSPEC = {
             "value": 86
         },
         {
-            "flag": "O5:external_objective",
-            "offset": 33,
-            "size": 7,
-            "value": 87
-        },
-        {
             "flag": "O6:char_cecil",
             "offset": 40,
             "size": 7,
@@ -5325,12 +5279,6 @@ const _FE_FLAGSPEC = {
             "offset": 40,
             "size": 7,
             "value": 86
-        },
-        {
-            "flag": "O6:external_objective",
-            "offset": 40,
-            "size": 7,
-            "value": 87
         },
         {
             "flag": "O7:char_cecil",
@@ -5849,12 +5797,6 @@ const _FE_FLAGSPEC = {
             "value": 86
         },
         {
-            "flag": "O7:external_objective",
-            "offset": 47,
-            "size": 7,
-            "value": 87
-        },
-        {
             "flag": "O8:char_cecil",
             "offset": 54,
             "size": 7,
@@ -6369,12 +6311,6 @@ const _FE_FLAGSPEC = {
             "offset": 54,
             "size": 7,
             "value": 86
-        },
-        {
-            "flag": "O8:external_objective",
-            "offset": 54,
-            "size": 7,
-            "value": 87
         },
         {
             "flag": "Orandom:1",
@@ -8921,7 +8857,6 @@ const _FE_FLAGSPEC = {
                 "O1:quest_tradepan",
                 "O1:quest_tradepink",
                 "O1:quest_pass",
-                "O1:external_objective",
                 "O2:char_cecil",
                 "O2:char_kain",
                 "O2:char_rydia",
@@ -9008,7 +8943,6 @@ const _FE_FLAGSPEC = {
                 "O2:quest_tradepan",
                 "O2:quest_tradepink",
                 "O2:quest_pass",
-                "O2:external_objective",
                 "O3:char_cecil",
                 "O3:char_kain",
                 "O3:char_rydia",
@@ -9095,7 +9029,6 @@ const _FE_FLAGSPEC = {
                 "O3:quest_tradepan",
                 "O3:quest_tradepink",
                 "O3:quest_pass",
-                "O3:external_objective",
                 "O4:char_cecil",
                 "O4:char_kain",
                 "O4:char_rydia",
@@ -9182,7 +9115,6 @@ const _FE_FLAGSPEC = {
                 "O4:quest_tradepan",
                 "O4:quest_tradepink",
                 "O4:quest_pass",
-                "O4:external_objective",
                 "O5:char_cecil",
                 "O5:char_kain",
                 "O5:char_rydia",
@@ -9269,7 +9201,6 @@ const _FE_FLAGSPEC = {
                 "O5:quest_tradepan",
                 "O5:quest_tradepink",
                 "O5:quest_pass",
-                "O5:external_objective",
                 "O6:char_cecil",
                 "O6:char_kain",
                 "O6:char_rydia",
@@ -9356,7 +9287,6 @@ const _FE_FLAGSPEC = {
                 "O6:quest_tradepan",
                 "O6:quest_tradepink",
                 "O6:quest_pass",
-                "O6:external_objective",
                 "O7:char_cecil",
                 "O7:char_kain",
                 "O7:char_rydia",
@@ -9443,7 +9373,6 @@ const _FE_FLAGSPEC = {
                 "O7:quest_tradepan",
                 "O7:quest_tradepink",
                 "O7:quest_pass",
-                "O7:external_objective",
                 "O8:char_cecil",
                 "O8:char_kain",
                 "O8:char_rydia",
@@ -9530,7 +9459,6 @@ const _FE_FLAGSPEC = {
                 "O8:quest_tradepan",
                 "O8:quest_tradepink",
                 "O8:quest_pass",
-                "O8:external_objective",
                 "Orandom:1",
                 "Orandom:2",
                 "Orandom:3",

@@ -9,7 +9,7 @@ MODES = {
     'Omode:classicgiant'  : ['quest_giant'],
     'Omode:fiends'        : ['boss_milon', 'boss_milonz', 'boss_kainazzo', 'boss_valvalis', 'boss_rubicant', 'boss_elements'],
     'Omode:dkmatter'      : ['internal_dkmatter'],
-    'Omode:external'      : ['external_objective']
+    'Omode:external'      : ['internal_external']
 }
 
 OBJECTIVE_SLUGS_TO_IDS = {}
@@ -280,7 +280,7 @@ def apply(env):
     if OBJECTIVE_SLUGS_TO_IDS['internal_dkmatter'] in objective_ids:
         env.add_file('scripts/dark_matter_hunt.f4c')
     
-    if OBJECTIVE_SLUGS_TO_IDS['external_objective'] in objective_ids:
+    if OBJECTIVE_SLUGS_TO_IDS['internal_external'] in objective_ids:
         env.add_file('scripts/external_objective.f4c')
 
 

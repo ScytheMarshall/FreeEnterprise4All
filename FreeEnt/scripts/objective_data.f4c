@@ -88,5 +88,5 @@ consts(objective) {
   $68  quest_tradepink
   $69  quest_pass
   $6A  internal_dkmatter
-  $6B  external_objective
+  $6B  internal_external
 }
