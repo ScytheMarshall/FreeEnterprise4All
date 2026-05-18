@@ -245,7 +245,8 @@ def spellset_data(env):
             '#Quake' : 38,
             '#Fatal' : 42,
             '#Weak'  : 46,
-            '#Nuke'  : 54
+            '#Nuke'  : 54,
+            '#Meteo' : 56
         })
         spellsets['TellahBlack'].update({
             '#Weak' : 33
